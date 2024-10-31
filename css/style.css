@@ -70,6 +70,10 @@ header {
   & button[data-mobile-menu] {
   }
 }
+#sidebar:popover-open {
+  padding: 0;
+  border: 0;
+}
 
 @media (min-width: 48rem) {
   .feedback-cont {

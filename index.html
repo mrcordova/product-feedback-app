@@ -34,7 +34,10 @@
             <h1>Frontend Mentor</h1>
             <p>Feedback Board</p>
           </div>
-          <button data-mobile-menu popovertarget="sidebar">
+          <button
+            data-mobile-menu
+            popovertarget="sidebar"
+            popovertargetaction="show">
             <img
               src="./assets/shared/mobile/icon-hamburger.svg"
               alt="icon-hamburger" />
@@ -88,14 +91,30 @@
     </div>
 
     <div id="sidebar" popover>
-      <nav>
-        <div>
-          <h1>Frontend Mentor Feedback Board</h1>
-          <p>Feedback Board</p>
+      <nav class="feedback-cont">
+        <picture>
+          <source
+            media="(min-width: 90rem)"
+            srcset="./assets/suggestions/desktop/background-header.png" />
+          <source
+            media="(min-width: 48rem)"
+            srcset="./assets/suggestions/tablet/background-header.png" />
+          <img
+            src="./assets/suggestions/mobile/background-header.png"
+            alt="gradient background" />
+        </picture>
+        <div class="feedback-title-cont">
+          <div>
+            <h1>Frontend Mentor</h1>
+            <p>Feedback Board</p>
+          </div>
+          <button
+            data-mobile-menu
+            popovertarget="sidebar"
+            popovertargetaction="hide">
+            <img src="./assets/shared/mobile/icon-close.svg" alt="icon-close" />
+          </button>
         </div>
-        <button>
-          <img src="./assets/shared/mobile/icon-close.svg" alt="icon-close" />
-        </button>
       </nav>
       <div>
         <div>
