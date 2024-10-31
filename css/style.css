@@ -31,3 +31,13 @@
   --vivid-targine: #f49f85;
   --maya-blue: #62bcfa;
 }
+html {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 90rem;
+}
+
+body {
+  min-height: 100%;
+  transition: all 1s ease;
+}
