@@ -76,115 +76,119 @@
         </div>
       </div>
     </header>
-    <div>
-      <div>
-        <span>Sort by :</span>
-        <button>
-          Most Upvotes
-          <img src="./assets/shared/icon-arrow-down.svg" alt="caret down" />
-        </button>
-      </div>
-      <button>
-        <img src="./assets/shared/icon-plus.svg" alt="plus icon" />
-        Add Feedback
-      </button>
-    </div>
 
-    <div id="sidebar" popover>
-      <nav class="feedback-cont">
-        <picture>
-          <source
-            media="(min-width: 90rem)"
-            srcset="./assets/suggestions/desktop/background-header.png" />
-          <source
-            media="(min-width: 48rem)"
-            srcset="./assets/suggestions/tablet/background-header.png" />
-          <img
-            src="./assets/suggestions/mobile/background-header.png"
-            alt="gradient background" />
-        </picture>
-        <div class="feedback-title-cont">
-          <div>
-            <p class="feedback-title jost-bold">Frontend Mentor</p>
-            <p class="jost-medium feedback-subtitle"">Feedback Board</p>
-          </div>
-          <button
-            data-mobile-menu
-            popovertarget="sidebar"
-            popovertargetaction="hide">
-            <img src="./assets/shared/mobile/icon-close.svg" alt="icon-close" />
+    <main>
+      <div class="subheader">
+        <div>
+          <span>Sort by :</span>
+          <button>
+            Most Upvotes
+            <img src="./assets/shared/icon-arrow-down.svg" alt="caret down" />
           </button>
         </div>
-      </nav>
-      <div class="popover-cards">
-        <div>
-          <div>All</div>
-          <div>UI</div>
-          <div>UX</div>
-          <div>Enchancement</div>
-          <div>Bug</div>
-          <div>Feature</div>
-        </div>
-        <div>
+        <button>
+          <img src="./assets/shared/icon-plus.svg" alt="plus icon" />
+          Add Feedback
+        </button>
+      </div>
+      <div id="sidebar" popover>
+        <nav class="feedback-cont">
+          <picture>
+            <source
+              media="(min-width: 90rem)"
+              srcset="./assets/suggestions/desktop/background-header.png" />
+            <source
+              media="(min-width: 48rem)"
+              srcset="./assets/suggestions/tablet/background-header.png" />
+            <img
+              src="./assets/suggestions/mobile/background-header.png"
+              alt="gradient background" />
+          </picture>
+          <div class="feedback-title-cont">
+            <div>
+              <p class="feedback-title jost-bold">Frontend Mentor</p>
+              <p class="jost-medium feedback-subtitle">Feedback Board</p>
+            </div>
+            <button
+              data-mobile-menu
+              popovertarget="sidebar"
+              popovertargetaction="hide">
+              <img
+                src="./assets/shared/mobile/icon-close.svg"
+                alt="icon-close" />
+            </button>
+          </div>
+        </nav>
+        <div class="popover-cards">
           <div>
-            <p>Roadmap</p>
-            <a href="">View</a>
+            <div>All</div>
+            <div>UI</div>
+            <div>UX</div>
+            <div>Enchancement</div>
+            <div>Bug</div>
+            <div>Feature</div>
           </div>
           <div>
             <div>
-              <div></div>
-              <p>Planned</p>
-              <span>2</span>
+              <p>Roadmap</p>
+              <a href="">View</a>
             </div>
             <div>
-              <div></div>
-              <p>In-Progess</p>
-              <span>3</span>
-            </div>
-            <div>
-              <div></div>
-              <p>Live</p>
-              <span>1</span>
+              <div>
+                <div></div>
+                <p>Planned</p>
+                <span>2</span>
+              </div>
+              <div>
+                <div></div>
+                <p>In-Progess</p>
+                <span>3</span>
+              </div>
+              <div>
+                <div></div>
+                <p>Live</p>
+                <span>1</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div>
       <div>
         <div>
-          <h2>Add tags for solutions</h2>
-          <p>Easier to search for solutions based on a specific stack.</p>
-          <div>Enchancement</div>
-        </div>
-        <div>
           <div>
-            <img src="./assets/shared/icon-arrow-up.svg" alt="arrow up" />
-            <span>112</span>
+            <h2>Add tags for solutions</h2>
+            <p>Easier to search for solutions based on a specific stack.</p>
+            <div>Enchancement</div>
           </div>
           <div>
-            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
-            <span>2</span>
+            <div>
+              <img src="./assets/shared/icon-arrow-up.svg" alt="arrow up" />
+              <span>112</span>
+            </div>
+            <div>
+              <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+              <span>2</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <img
-        src="./assets/suggestions/illustration-empty.svg"
-        alt="no feedback yet img" />
-      <p>There is no feedback yet.</p>
-      <p>
-        <!-- No feedback -->
-        Got a suggestion? Found a bug that needs to be squashed? We love hearing
-        about new ideas to improve our app. Add Feedback
-        <!-- No feedback end -->
-      </p>
-      <button>
-        <img src="./assets/shared/icon-plus.svg" alt="plus icon" />
-        Feedback
-      </button>
-    </div>
+      <div>
+        <img
+          src="./assets/suggestions/illustration-empty.svg"
+          alt="no feedback yet img" />
+        <p>There is no feedback yet.</p>
+        <p>
+          <!-- No feedback -->
+          Got a suggestion? Found a bug that needs to be squashed? We love
+          hearing about new ideas to improve our app. Add Feedback
+          <!-- No feedback end -->
+        </p>
+        <button>
+          <img src="./assets/shared/icon-plus.svg" alt="plus icon" />
+          Feedback
+        </button>
+      </div>
+    </main>
   </body>
 </html>

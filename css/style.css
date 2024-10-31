@@ -46,6 +46,8 @@ html {
 body {
   min-height: 100%;
   transition: all 1s ease;
+  display: flex;
+  flex-direction: column;
 }
 header {
   display: flex;
@@ -126,6 +128,14 @@ header {
   }
 }
 
+.subheader {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--american-blue);
+  padding-block: clamp(0.5rem, calc(0.142rem + 1.527vw), 0.875rem);
+  padding-inline: 1.5rem clamp(0.75rem, calc(2.216rem + -3.053vw), 1.5rem);
+}
+
 @media (min-width: 48rem) {
   .feedback-cont {
     grid-template-columns: max-content;
@@ -163,9 +173,15 @@ header {
   #sidebar:popover-open {
     display: none;
   }
+  .subheader {
+    padding-inline-end: clamp(0.75rem, calc(0.511rem + 1.018vw), 1rem);
+  }
 }
 
 @media (min-width: 90rem) {
+  body {
+    flex-direction: row;
+  }
   header {
     flex-direction: column;
   }
