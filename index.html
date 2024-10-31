@@ -15,18 +15,31 @@
 
     <title>Frontend Mentor | Product feedback app</title>
   </head>
-  <body>
+  <body class="jost-regular">
     <header>
-      <nav>
-        <div>
-          <h1>Frontend Mentor Feedback Board</h1>
-          <p>Feedback Board</p>
-        </div>
-        <button popovertarget="sidbar">
+      <nav class="feedback-cont">
+        <picture>
+          <source
+            media="(min-width: 90rem)"
+            srcset="./assets/suggestions/desktop/background-header.png" />
+          <source
+            media="(min-width: 48rem)"
+            srcset="./assets/suggestions/tablet/background-header.png" />
           <img
-            src="./assets/shared/mobile/icon-hamburger.svg"
-            alt="icon-hamburger" />
-        </button>
+            src="./assets/suggestions/mobile/background-header.png"
+            alt="gradient background" />
+        </picture>
+        <div class="feedback-title-cont">
+          <div>
+            <h1>Frontend Mentor</h1>
+            <p>Feedback Board</p>
+          </div>
+          <button data-mobile-menu="" popovertarget="sidbar">
+            <img
+              src="./assets/shared/mobile/icon-hamburger.svg"
+              alt="icon-hamburger" />
+          </button>
+        </div>
       </nav>
       <div>
         <div>All</div>

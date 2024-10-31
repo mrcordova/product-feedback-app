@@ -41,3 +41,37 @@ body {
   min-height: 100%;
   transition: all 1s ease;
 }
+header {
+  /* display: flex; */
+}
+.feedback-cont {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+
+  & .feedback-title-cont {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    justify-content: space-between;
+    align-items: center;
+    grid-row: 1;
+    grid-column: -1 / 1;
+  }
+  & picture {
+    grid-row: 1;
+    grid-column: -1 / 1;
+    & img {
+      border-radius: 0.625rem;
+    }
+  }
+
+  & button[data-mobile-menu] {
+    /* margin-inline-start: auto; */
+    /* display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    grid-row: 1;
+    grid-column: -1 / 1; */
+  }
+}
