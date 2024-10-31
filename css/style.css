@@ -73,6 +73,25 @@ header {
 #sidebar:popover-open {
   padding: 0;
   border: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  overflow: hidden;
+  & .feedback-cont {
+    /* width: 100%; */
+  }
+
+  & .popover-cards {
+    width: 75%;
+    min-height: 100%;
+
+    margin-inline-start: auto;
+    background-color: rebeccapurple;
+  }
+  &::backdrop {
+    background-color: hsl(from black h s l / 0.5);
+  }
 }
 
 @media (min-width: 48rem) {
@@ -85,7 +104,6 @@ header {
     & picture {
       & img {
         border-radius: 0.625rem;
-        /* width: none; */
         object-fit: none;
       }
     }
