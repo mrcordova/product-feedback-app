@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+.jost-regular {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.jost-semibold {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.jost-bold {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --purple: #ad1fea;
+  --royal-blue: #4661e6;
+  --american-blue: #373f68;
+  --white: #ffffff;
+  --alice-blue: #f2f4ff;
+  --ghost-white: #f7f8fd;
+  --american-bluish: #3a4374;
+  --dark-blue-gray: #647196;
+  --vivid-targine: #f49f85;
+  --maya-blue: #62bcfa;
+}
