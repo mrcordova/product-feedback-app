@@ -6,6 +6,12 @@
   font-weight: 400;
   font-style: normal;
 }
+.jost-medium {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
 .jost-semibold {
   font-family: "Jost", sans-serif;
   font-optical-sizing: auto;
@@ -56,6 +62,22 @@ header {
     align-items: center;
     grid-row: 1;
     grid-column: 1 / -1;
+    color: var(--white);
+
+    padding-inline: clamp(1.5rem, calc(1.5rem + 0vw), 1.5rem)
+      clamp(1.617rem, calc(0.416rem + 5.122vw), 2.875rem);
+    padding-block: clamp(0rem, calc(1.954rem + -4.071vw), 1rem)
+      clamp(0.938rem, calc(0.401rem + 2.29vw), 1.5rem);
+
+    & .feedback-title {
+      font-size: clamp(0.938rem, calc(0.639rem + 1.272vw), 1.25rem);
+      letter-spacing: clamp(-0.012rem, calc(-0.008rem + -0.015vw), -0.016rem);
+      line-height: 1.46;
+    }
+
+    & .feedback-subtitle {
+      opacity: 75%;
+    }
   }
   & picture {
     grid-row: 1;
@@ -68,6 +90,8 @@ header {
   }
 
   & button[data-mobile-menu] {
+    min-width: 1.125rem;
+    min-height: 1.063rem;
   }
 }
 #sidebar:popover-open {
@@ -78,9 +102,6 @@ header {
   height: 100%;
   background-color: transparent;
   overflow: hidden;
-  & .feedback-cont {
-    /* width: 100%; */
-  }
 
   & .popover-cards {
     width: 75%;
@@ -100,6 +121,10 @@ header {
 
     & .feedback-title-cont {
       align-items: flex-end;
+
+      & .feedback-title {
+        line-height: 1.45;
+      }
     }
     & picture {
       & img {
@@ -107,5 +132,12 @@ header {
         object-fit: none;
       }
     }
+    & button[data-mobile-menu] {
+      display: none;
+    }
+  }
+
+  #sidebar:popover-open {
+    display: none;
   }
 }
