@@ -59,6 +59,7 @@ header {
   flex: 1;
 }
 .roadmap-cont {
+  display: flex;
   flex-direction: column;
   background-color: var(--white);
   border-radius: 0.625rem;
@@ -124,7 +125,7 @@ header {
   background-color: var(--maya-blue);
 }
 .tokens-cont {
-  /* display: flex; */
+  display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   background-color: var(--white);
@@ -217,9 +218,19 @@ header {
   & .popover-cards {
     width: 75%;
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* width: max-content; */
 
+    gap: 1.5rem;
+    padding: 1.5rem;
     margin-inline-start: auto;
     background-color: var(--ghost-white);
+
+    .tokens-cont,
+    .roadmap-cont {
+      flex: none;
+    }
   }
   &::backdrop {
     background-color: hsl(from black h s l / 0.5);
