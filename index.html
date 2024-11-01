@@ -71,25 +71,31 @@
         </label>
       </div>
       <div class="roadmap-cont hide-mobile">
-        <div>
-          <p>Roadmap</p>
-          <a href="">View</a>
+        <div class="roadmap-title">
+          <p class="jost-bold title">Roadmap</p>
+          <a class="jost-semibold view-link" href="">View</a>
         </div>
-        <div>
-          <div>
-            <div></div>
-            <p>Planned</p>
-            <span>2</span>
+        <div class="status-items-cont">
+          <div class="stage-post-cont">
+            <div class="status-cont">
+              <div data-status="planned" class="status-post-color"></div>
+              <p class="jost-regular">Planned</p>
+            </div>
+            <span class="jost-bold">2</span>
           </div>
-          <div>
-            <div></div>
-            <p>In-Progess</p>
-            <span>3</span>
+          <div class="stage-post-cont">
+            <div class="status-cont">
+              <div data-status="in-progress" class="status-post-color"></div>
+              <p class="jost-regular">In-Progess</p>
+            </div>
+            <span class="jost-bold">3</span>
           </div>
-          <div>
-            <div></div>
-            <p>Live</p>
-            <span>1</span>
+          <div class="stage-post-cont">
+            <div class="status-cont">
+              <div data-status="live" class="status-post-color"></div>
+              <p class="jost-regular">Live</p>
+            </div>
+            <span class="jost-bold">1</span>
           </div>
         </div>
       </div>
@@ -138,13 +144,31 @@
           </div>
         </nav>
         <div class="popover-cards">
-          <div>
-            <div>All</div>
-            <div>UI</div>
-            <div>UX</div>
-            <div>Enchancement</div>
-            <div>Bug</div>
-            <div>Feature</div>
+          <div class="tokens-cont jost-semibold">
+            <label>
+              All
+              <input type="radio" name="tokens" id="all" checked />
+            </label>
+            <label>
+              UI
+              <input type="radio" name="tokens" id="ui" />
+            </label>
+            <label>
+              UX
+              <input type="radio" name="tokens" id="ux" />
+            </label>
+            <label>
+              Enchancement
+              <input type="radio" name="tokens" id="enchancement" />
+            </label>
+            <label>
+              <input type="radio" name="tokens" id="bug" />
+              Bug
+            </label>
+            <label>
+              feature
+              <input type="radio" name="tokens" id="feature" />
+            </label>
           </div>
           <div>
             <div>

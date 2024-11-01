@@ -58,8 +58,73 @@ header {
 .roadmap-cont {
   flex: 1;
 }
+.roadmap-cont {
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: 0.625rem;
+  padding-inline: 1.5rem;
+  padding-block: 1.188rem 1.5rem;
+  gap: 1.5rem;
+  & .roadmap-title {
+    display: flex;
+    justify-content: space-between;
+
+    & .title {
+      color: var(--american-bluish);
+      font-size: 1.125rem;
+      line-height: 1.44;
+      letter-spacing: -0.015625rem;
+    }
+
+    & .view-link {
+      color: var(--royal-blue);
+      font-size: 0.8125rem;
+      line-height: 1.46;
+
+      &:hover {
+        color: var(--american-bluish);
+      }
+    }
+  }
+
+  & .stage-post-cont {
+    display: flex;
+    justify-content: space-between;
+    color: var(--dark-blue-gray);
+    font-size: 1rem;
+    line-height: 1.43;
+
+    & .status-cont {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    & .status-post-color {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+    }
+  }
+
+  & .status-items-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+[data-status="planned"] {
+  background-color: var(--vivid-targine);
+}
+[data-status="in-progress"] {
+  background-color: var(--purple);
+}
+[data-status="live"] {
+  background-color: var(--maya-blue);
+}
 .tokens-cont {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   gap: 0.5rem;
   background-color: var(--white);
@@ -154,7 +219,7 @@ header {
     min-height: 100%;
 
     margin-inline-start: auto;
-    background-color: rebeccapurple;
+    background-color: var(--ghost-white);
   }
   &::backdrop {
     background-color: hsl(from black h s l / 0.5);
