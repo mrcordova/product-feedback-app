@@ -55,6 +55,12 @@ header {
   display: flex;
   gap: 0.625rem;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, calc(2.477rem + -2.036vw), 2rem);
+}
 .tokens-cont,
 .roadmap-cont {
   flex: 1;
@@ -340,6 +346,23 @@ header {
   }
 }
 
+.posts {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1.5rem;
+
+  background-color: var(--white);
+  &:has(*) + .no-feedback-cont {
+    display: none;
+  }
+
+  & .post {
+    border-radius: 0.625rem;
+  }
+}
+.no-feedback-cont {
+  margin-inline: 1.5rem;
+}
 .subheader {
   gap: 2.375rem;
   display: flex;
@@ -390,6 +413,12 @@ header {
     display: none;
   }
 
+  .posts {
+    margin-inline: 0;
+  }
+  .no-feedback-cont {
+    margin-inline: 0;
+  }
   .subheader {
     padding-inline-end: clamp(0.75rem, calc(0.511rem + 1.018vw), 1rem);
     border-radius: 0.625rem;
