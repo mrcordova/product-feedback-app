@@ -456,6 +456,10 @@ main {
     clamp(1.5rem, calc(-5.358rem + 29.262vw), 8.688rem);
   padding-block: clamp(4.75rem, calc(2.722rem + 8.651vw), 6.875rem)
     clamp(4.75rem, calc(2.663rem + 8.906vw), 6.938rem);
+
+  & > img {
+    padding-block-end: clamp(2.438rem, calc(1.587rem + 3.628vw), 3.329rem);
+  }
   & .feedback-btn {
     margin-inline-start: 0;
   }
@@ -465,12 +469,14 @@ main {
     font-size: clamp(1.125rem, calc(0.767rem + 1.527vw), 1.5rem);
     letter-spacing: clamp(-0.021rem, calc(-0.011rem + -0.02vw), -0.016rem);
     line-height: 1.44;
+    padding-block-end: clamp(0.875rem, calc(0.756rem + 0.509vw), 1rem);
   }
 
   & .no-feedback-para {
     font-size: clamp(0.813rem, calc(0.634rem + 0.763vw), 1rem);
     color: var(--dark-blue-gray);
     line-height: 1.46;
+    padding-block-end: clamp(1.5rem, calc(0.069rem + 6.107vw), 3rem);
   }
 }
 .subheader {
