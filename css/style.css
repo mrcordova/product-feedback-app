@@ -386,12 +386,18 @@ main {
       letter-spacing: clamp(-0.016rem, calc(-0.007rem + -0.018vw), -0.011rem);
       line-height: 1.46;
       color: var(--american-bluish);
+      margin-block-end: clamp(0.25rem, calc(0.861rem + -1.272vw), 0.563rem);
     }
 
     & p {
       font-size: clamp(0.813rem, calc(0.634rem + 0.763vw), 1rem);
       line-height: 1.46;
       color: var(--dark-blue-gray);
+      margin-block-end: clamp(0.75rem, calc(1.239rem + -1.018vw), 1rem);
+    }
+
+    & div {
+      margin-block-end: 1rem;
     }
   }
 
@@ -504,6 +510,9 @@ main {
 
         & p {
           line-height: 1.4375;
+        }
+        & div {
+          margin-block-end: 0rem;
         }
       }
 
