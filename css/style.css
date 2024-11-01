@@ -288,6 +288,16 @@ header {
   }
   .subheader {
     padding-inline-end: clamp(0.75rem, calc(0.511rem + 1.018vw), 1rem);
+    border-radius: 0.625rem;
+  }
+
+  .suggestions-cont {
+    align-items: center;
+    gap: 1rem;
+    color: var(--white);
+    font-size: 1.125rem;
+    line-height: 1.44;
+    letter-spacing: -0.015625rem;
   }
 }
 
