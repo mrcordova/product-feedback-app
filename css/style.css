@@ -131,6 +131,15 @@ main {
 [data-status="live"] {
   background-color: var(--maya-blue);
 }
+.token {
+  background-color: var(--alice-blue);
+  width: max-content;
+  color: var(--royal-blue);
+  border-radius: 0.625rem;
+  padding-inline: 1rem;
+  padding-block: 0.313rem 0.375rem;
+  font-size: 0.813rem;
+}
 .tokens-cont {
   display: flex;
   flex-wrap: wrap;
@@ -357,7 +366,41 @@ main {
   }
 
   & .post {
+    display: grid;
     border-radius: 0.625rem;
+    grid-template-areas:
+      "info info"
+      "likes comments";
+
+    padding-inline: clamp(1.563rem, calc(1.622rem + -0.254vw), 1.5rem) 1.5rem;
+    padding-block: 1.5rem;
+    & .info-cont {
+      grid-area: info;
+      /* display: flex;
+      flex-direction: column;
+      gap: 0.5rem; */
+
+      & h2 {
+        font-size: clamp(0.813rem, calc(0.514rem + 1.272vw), 1.125rem);
+        letter-spacing: clamp(-0.016rem, calc(-0.007rem + -0.018vw), -0.011rem);
+        line-height: 1.46;
+        color: var(--american-bluish);
+      }
+
+      & p {
+        font-size: clamp(0.813rem, calc(0.634rem + 0.763vw), 1rem);
+        line-height: 1.46;
+        color: var(--dark-blue-gray);
+      }
+    }
+
+    & .likes-cont {
+      grid-area: likes;
+    }
+    & .comments-cont {
+      grid-area: comments;
+      justify-items: end;
+    }
   }
 }
 .no-feedback-cont {
@@ -415,6 +458,29 @@ main {
 
   .posts {
     margin-inline: 0;
+
+    & .post {
+      grid-template-areas:
+        "likes info comments"
+        ". info comments";
+      padding-inline: clamp(1.563rem, calc(1.063rem + 1.042vw), 2rem)
+        clamp(1.5rem, calc(0.929rem + 1.19vw), 2rem);
+      padding-block: clamp(1.5rem, calc(1.214rem + 0.595vw), 1.75rem);
+
+      & .info-cont {
+        & h2 {
+          line-height: 1.44;
+        }
+
+        & p {
+          line-height: 1.4375;
+        }
+      }
+
+      & .comments-cont {
+        align-self: center;
+      }
+    }
   }
   .no-feedback-cont {
     margin-inline: 0;
