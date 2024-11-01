@@ -66,7 +66,7 @@
           Bug
         </label>
         <label>
-          feature
+          Feature
           <input type="radio" name="tokens" id="feature" />
         </label>
       </div>
@@ -111,7 +111,7 @@
         </div>
         <div class="sort-cont">
           <span>Sort by : &ThinSpace;</span>
-          <button class="jost-bold">
+          <button class="jost-bold" data-show-dropdown="false">
             Most Upvotes
             <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -122,6 +122,36 @@
                 fill-rule="evenodd" />
             </svg>
           </button>
+          <menu class="dropdown-content">
+            <li>
+              <label>
+                Most Upvotes
+                <input type="radio" name="search-filters" id="most-upvotes" />
+                <img src="./assets/shared/icon-check.svg" alt="check mark" />
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="search-filters" id="least-upvotes" />
+                Least Upvotes
+                <img src="./assets/shared/icon-check.svg" alt="check mark" />
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="search-filters" id="most-comments" />
+                Most Comments
+                <img src="./assets/shared/icon-check.svg" alt="check mark" />
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="search-filters" id="least-upvotes" />
+                Least Upvotes
+                <img src="./assets/shared/icon-check.svg" alt="check mark" />
+              </label>
+            </li>
+          </menu>
         </div>
         <button class="feedback-btn jost-bold">
           <img src="./assets/shared/icon-plus.svg" alt="plus icon" />
@@ -179,7 +209,7 @@
               Bug
             </label>
             <label>
-              feature
+              Feature
               <input type="radio" name="tokens" id="feature" />
             </label>
           </div>

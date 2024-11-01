@@ -244,6 +244,8 @@ header {
   color: var(--alice-blue);
   font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
   line-height: 1.42;
+  position: relative;
+  /* overflow: visible; */
   & button {
     display: flex;
     align-items: center;
@@ -251,11 +253,69 @@ header {
 
     & svg {
       color: var(--white);
+      /* transform: rotate(0.5turn); */
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 75%;
     }
   }
-  &:hover {
+
+  & span:has(+ button:hover) {
     cursor: pointer;
     opacity: 75%;
+  }
+
+  & .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--white);
+    color: var(--dark-blue-gray);
+    border-radius: 0.625rem;
+    list-style: none;
+    top: 4.25rem;
+    padding: 0;
+    min-width: 255px;
+
+    box-shadow: 0 10px 40px -7px hsl(from var(--american-blue) h s l / 0.35);
+    & li {
+      border-top: 1px solid hsl(from var(--american-bluish) h s l / 0.15);
+      font-size: 1rem;
+      line-height: 1.4375;
+      &:is(:hover, label:hover) {
+        cursor: pointer;
+        color: var(--purple);
+        /* opacity: 100%; */
+      }
+      & label {
+        padding-inline: 1.5rem;
+        padding-block: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:has(input:checked) > img {
+          display: block;
+        }
+
+        & > img {
+          display: none;
+        }
+      }
+
+      & input[type="radio"] {
+        display: none;
+      }
+    }
+
+    /* overflow: visible; */
+  }
+
+  & .show-dropdown-content {
+    display: block;
   }
 }
 
