@@ -365,6 +365,9 @@ main {
   &:has(*) + .no-feedback-cont {
     display: none;
   }
+  &:not(:has(*)) {
+    display: none;
+  }
 }
 .post {
   display: grid;
