@@ -371,8 +371,8 @@ main {
 }
 .post {
   display: grid;
-  grid-template-columns: min-content;
-  gap: clamp(1rem, calc(-0.431rem + 6.107vw), 2.5rem);
+  grid-template-columns: min-content 1fr max-content;
+  /* gap: clamp(1rem, calc(-0.431rem + 6.107vw), 2.5rem); */
   background-color: var(--white);
   border-radius: 0.625rem;
   grid-template-areas:
@@ -382,7 +382,10 @@ main {
   align-items: center;
   padding-inline: clamp(1.563rem, calc(1.622rem + -0.254vw), 1.5rem) 1.5rem;
   padding-block: 1.5rem;
+
   & .info-cont {
+    padding-block-end: 1rem;
+
     grid-area: info;
     /* display: flex;
       flex-direction: column;
@@ -403,9 +406,13 @@ main {
       margin-block-end: clamp(0.75rem, calc(1.239rem + -1.018vw), 1rem);
     }
 
-    /* & div {
-      margin-block-end: 1rem;
-    } */
+    &:is(:hover, :has(+ .comments-cont:hover)) {
+      cursor: pointer;
+
+      & h2 {
+        color: var(--royal-blue);
+      }
+    }
   }
 
   & .likes-cont {
@@ -426,10 +433,24 @@ main {
 
     padding-block: clamp(0.375rem, calc(-0.102rem + 2.036vw), 0.875rem)
       clamp(0.438rem, calc(0.378rem + 0.254vw), 0.5rem);
+
+    &:hover {
+      cursor: pointer;
+      background-color: #cfd7ff;
+    }
+
+    & input[type="checkbox"] {
+      display: none;
+    }
+
+    &:has(input[type="checkbox"]:checked) {
+      background-color: var(--royal-blue);
+      color: var(--white);
+    }
   }
   & .comments-cont {
     grid-area: comments;
-    justify-items: end;
+    justify-content: flex-end;
     color: var(--american-bluish);
     font-size: clamp(0.813rem, calc(0.634rem + 0.763vw), 1rem);
     letter-spacing: clamp(-0.014rem, calc(-0.009rem + -0.01vw), -0.011rem);
@@ -437,10 +458,11 @@ main {
     align-items: center;
     gap: clamp(0.25rem, calc(0.011rem + 1.018vw), 0.5rem);
     line-height: 1.46;
-    width: max-content;
-    height: max-content;
+    /* width: max-content; */
+    /* height: max-content; */
+    height: 100%;
+    width: 100%;
     margin-inline-start: auto;
-
     &:hover {
       cursor: pointer;
     }
@@ -545,6 +567,8 @@ main {
       padding-block: clamp(1.5rem, calc(1.214rem + 0.595vw), 1.75rem);
 
       & .info-cont {
+        padding-inline-start: 2.5rem;
+        padding-block-end: 0;
         & h2 {
           line-height: 1.44;
         }
@@ -562,7 +586,7 @@ main {
       }
 
       & .comments-cont {
-        align-self: center;
+        /* align-self: center; */
         line-height: 1.4375;
       }
     }
