@@ -238,6 +238,21 @@ header {
   }
 }
 
+.sort-cont {
+  display: flex;
+  align-items: center;
+  color: var(--alice-blue);
+  & button {
+    display: flex;
+    align-items: center;
+    gap: 0.5625rem;
+
+    & svg {
+      color: var(--white);
+    }
+  }
+}
+
 .subheader {
   display: flex;
   justify-content: space-between;
@@ -286,6 +301,7 @@ header {
   #sidebar:popover-open {
     display: none;
   }
+
   .subheader {
     padding-inline-end: clamp(0.75rem, calc(0.511rem + 1.018vw), 1rem);
     border-radius: 0.625rem;
