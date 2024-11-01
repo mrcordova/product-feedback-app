@@ -242,16 +242,20 @@ header {
   display: flex;
   align-items: center;
   color: var(--alice-blue);
-  font-size: 0.875rem;
+  font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
   line-height: 1.42;
   & button {
     display: flex;
     align-items: center;
-    gap: 0.5625rem;
+    gap: clamp(0.5rem, calc(0.44rem + 0.254vw), 0.563rem);
 
     & svg {
       color: var(--white);
     }
+  }
+  &:hover {
+    cursor: pointer;
+    opacity: 75%;
   }
 }
 
