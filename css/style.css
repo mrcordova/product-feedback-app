@@ -359,14 +359,18 @@ main {
   display: flex;
   flex-direction: column;
   margin-inline: 1.5rem;
+  gap: 1rem;
+  min-width: min-content;
 
-  background-color: var(--white);
   &:has(*) + .no-feedback-cont {
     display: none;
   }
 }
 .post {
   display: grid;
+  grid-template-columns: min-content;
+  gap: clamp(1rem, calc(-0.431rem + 6.107vw), 2.5rem);
+  background-color: var(--white);
   border-radius: 0.625rem;
   grid-template-areas:
     "info info"
@@ -396,9 +400,9 @@ main {
       margin-block-end: clamp(0.75rem, calc(1.239rem + -1.018vw), 1rem);
     }
 
-    & div {
+    /* & div {
       margin-block-end: 1rem;
-    }
+    } */
   }
 
   & .likes-cont {
@@ -494,6 +498,7 @@ main {
 
   .posts {
     margin-inline: 0;
+    gap: clamp(1rem, calc(0.714rem + 0.595vw), 1.25rem);
 
     & .post {
       grid-template-areas:
@@ -511,9 +516,9 @@ main {
         & p {
           line-height: 1.4375;
         }
-        & div {
+        /* & div {
           margin-block-end: 0rem;
-        }
+        } */
       }
 
       & .likes-cont {
