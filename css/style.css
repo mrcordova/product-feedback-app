@@ -372,6 +372,7 @@ main {
       "info info"
       "likes comments";
 
+    align-items: center;
     padding-inline: clamp(1.563rem, calc(1.622rem + -0.254vw), 1.5rem) 1.5rem;
     padding-block: 1.5rem;
     & .info-cont {
@@ -403,6 +404,7 @@ main {
       height: max-content;
       border-radius: 0.625rem;
       font-size: 0.813rem;
+      letter-spacing: -0.011rem;
       line-height: 1.46;
       gap: clamp(0.5rem, calc(0.744rem + -0.509vw), 0.625rem);
       color: var(--american-bluish);
@@ -415,6 +417,20 @@ main {
     & .comments-cont {
       grid-area: comments;
       justify-items: end;
+      color: var(--american-bluish);
+      font-size: clamp(0.813rem, calc(0.634rem + 0.763vw), 1rem);
+      letter-spacing: clamp(-0.014rem, calc(-0.009rem + -0.01vw), -0.011rem);
+      display: flex;
+      align-items: center;
+      gap: clamp(0.25rem, calc(0.011rem + 1.018vw), 0.5rem);
+      line-height: 1.46;
+      width: max-content;
+      height: max-content;
+      margin-inline-start: auto;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -498,6 +514,7 @@ main {
 
       & .comments-cont {
         align-self: center;
+        line-height: 1.4375;
       }
     }
   }
