@@ -249,6 +249,11 @@ header {
 @media (min-width: 48rem) {
   body {
     gap: clamp(1.875rem, calc(3.214rem + -1.488vw), 2.5rem);
+    padding-inline: clamp(0rem, calc(5.223rem + -5.804vw), 2.438rem)
+      clamp(0rem, calc(5.357rem + -5.952vw), 2.5rem);
+
+    padding-block: clamp(3.5rem, calc(0.786rem + 5.655vw), 5.875rem)
+      clamp(7.063rem, calc(5.92rem + 2.381vw), 8.063rem);
   }
   .feedback-cont {
     grid-template-columns: max-content;
@@ -308,7 +313,7 @@ header {
     }
 
     & picture {
-      flex: 0;
+      /* flex: 0; */
       /* max-width: 255px; */
       /* max-height: 137px; */
     }
