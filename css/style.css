@@ -242,6 +242,8 @@ header {
   display: flex;
   align-items: center;
   color: var(--alice-blue);
+  font-size: 0.875rem;
+  line-height: 1.42;
   & button {
     display: flex;
     align-items: center;
@@ -253,7 +255,29 @@ header {
   }
 }
 
+.feedback-btn {
+  margin-inline-start: auto;
+  line-height: 1.46;
+  display: flex;
+  align-items: center;
+  background-color: var(--purple);
+  color: var(--white);
+  border-radius: 0.625rem;
+
+  font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+  padding-inline: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem)
+    clamp(1.063rem, calc(0.585rem + 2.036vw), 1.563rem);
+  padding-block: clamp(0.656rem, calc(0.537rem + 0.509vw), 0.781rem)
+    clamp(0.656rem, calc(0.597rem + 0.254vw), 0.719rem);
+
+  &:hover {
+    background-color: #c75af6;
+    cursor: pointer;
+  }
+}
+
 .subheader {
+  gap: 2.375rem;
   display: flex;
   justify-content: space-between;
   background-color: var(--american-blue);
