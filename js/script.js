@@ -1,10 +1,12 @@
 const body = document.querySelector("body");
+const popover = document.getElementById("sidebar");
 
 body.addEventListener("click", (e) => {
   e.preventDefault();
   const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
   const token = e.target.closest("[data-token]");
+  const popoverMenu = e.target.closest("[data-mobile-menu]");
 
   console.log("ere");
 
@@ -25,13 +27,13 @@ body.addEventListener("click", (e) => {
     );
     likesSpan.textContent = likesSpan.dataset.likes;
   } else if (token) {
-    // token.children[0].checked = true;
     const tokens = body.querySelectorAll(
       `[data-token='${token.dataset.token}']`
     );
     for (const token of tokens) {
       token.children[0].checked = true;
-      //   console.log(token.children);
     }
+  } else if (popoverMenu) {
+    popover.togglePopover();
   }
 });
