@@ -134,6 +134,7 @@ body {
     & .comment-cont {
       display: grid;
       row-gap: clamp(1rem, calc(0.94rem + 0.254vw), 1.063rem);
+      column-gap: clamp(1rem, calc(0.046rem + 4.071vw), 2rem);
 
       grid-template-columns: max-content 1fr max-content;
       grid-template-areas:
@@ -151,6 +152,7 @@ body {
       & .name-cont {
         grid-area: name;
         font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+
         & .name {
           color: var(--american-bluish);
           line-height: 1.46;
