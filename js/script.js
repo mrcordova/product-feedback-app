@@ -1,9 +1,10 @@
-const main = document.querySelector("body");
+const body = document.querySelector("body");
 
-main.addEventListener("click", (e) => {
+body.addEventListener("click", (e) => {
   e.preventDefault();
   const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
+  const token = e.target.closest("[data-token]");
 
   console.log("ere");
 
@@ -23,5 +24,14 @@ main.addEventListener("click", (e) => {
         : parseInt(likesSpan.dataset.likes) - 1
     );
     likesSpan.textContent = likesSpan.dataset.likes;
+  } else if (token) {
+    // token.children[0].checked = true;
+    const tokens = body.querySelectorAll(
+      `[data-token='${token.dataset.token}']`
+    );
+    for (const token of tokens) {
+      token.children[0].checked = true;
+      //   console.log(token.children);
+    }
   }
 });
