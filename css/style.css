@@ -367,8 +367,12 @@ main {
   &:has(> *:not(.hide)) + .no-feedback-cont {
     display: none;
   }
-  &:not(:has(*)) {
-    display: none;
+
+  &:has(> .hide) {
+    display: none; /* Hide if all children have the .hide class */
+  }
+  &:has(> *:not(.hide)) {
+    display: flex; /* Show if any child does NOT have the .hide class */
   }
   & .hide {
     display: none;
