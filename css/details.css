@@ -119,6 +119,73 @@ body {
     }
   }
 }
+
+.comments-cont {
+  background-color: var(--white);
+  border-radius: 0.625rem;
+  padding-inline: clamp(1.438rem, calc(0.901rem + 2.29vw), 2rem)
+    clamp(1.5rem, calc(1.023rem + 2.036vw), 2rem);
+  padding-block: 1.5rem clamp(1.5rem, calc(0.963rem + 2.29vw), 2.063rem);
+
+  & .comments-section {
+    display: flex;
+    flex-direction: column;
+
+    & .comment-cont {
+      display: grid;
+      row-gap: clamp(1rem, calc(0.94rem + 0.254vw), 1.063rem);
+
+      grid-template-columns: max-content 1fr max-content;
+      grid-template-areas:
+        "profile-img name reply"
+        "reply-para reply-para reply-para";
+      padding-block: clamp(1.5rem, calc(1.023rem + 2.036vw), 2rem);
+      border-bottom: 1px solid hsl(from #8c92b3 h s l / 0.25);
+
+      & .profile-img {
+        grid-area: profile-img;
+        width: 2.5rem;
+        border-radius: 50%;
+      }
+
+      & .name-cont {
+        grid-area: name;
+        font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+        & .name {
+          color: var(--american-bluish);
+          line-height: 1.46;
+          letter-spacing: clamp(
+            -0.012rem,
+            calc(-0.011rem + -0.003vw),
+            -0.011 rem
+          );
+        }
+
+        & .username {
+          color: var(--dark-blue-gray);
+        }
+      }
+      & .reply-btn {
+        grid-area: reply;
+        margin-inline-start: auto;
+        color: var(--royal-blue);
+        font-size: 0.813rem;
+        line-height: 1.46;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+      & .reply-para {
+        grid-area: reply-para;
+        color: var(--dark-blue-gray);
+        font-size: clamp(0.813rem, calc(0.693rem + 0.509vw), 0.938rem);
+        line-height: 1.46;
+      }
+    }
+  }
+}
 .feedback-btn {
   margin-inline-start: auto;
   line-height: 1.46;
@@ -276,6 +343,37 @@ body {
   .go-back-cont {
     & .go-back-btn {
       line-height: 1.43;
+    }
+  }
+
+  .comments-cont {
+    padding-block-end: clamp(2.063rem, calc(0.991rem + 2.232vw), 3rem);
+    & .comments-section {
+      display: flex;
+      flex-direction: column;
+
+      & .comment-cont {
+        display: grid;
+
+        grid-template-areas:
+          "profile-img name reply"
+          ". reply-para reply-para";
+
+        & .profile-img {
+        }
+
+        & .name-cont {
+          & .name {
+          }
+
+          & .username {
+          }
+        }
+        & .replay-btn {
+        }
+        & .reply-para {
+        }
+      }
     }
   }
 
