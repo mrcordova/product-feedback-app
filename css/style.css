@@ -283,6 +283,9 @@ main {
       transform: rotate(0.5turn);
     }
   }
+  & span[data-sort-by-name] {
+    text-transform: capitalize;
+  }
 
   & .dropdown-content {
     display: none;

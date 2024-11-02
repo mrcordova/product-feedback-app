@@ -43,6 +43,19 @@ body.addEventListener("click", (e) => {
     sortByInput.checked = !sortByInput.checked;
   } else if (labelSortByChoice) {
     const sortByChoiceInput = labelSortByChoice.querySelector("input");
+    const sortByInput = body.querySelector("#sortByInput");
+    const sortByName = sortByInput.parentElement.querySelector(
+      "[data-sort-by-name]"
+    );
+    sortByName.setAttribute(
+      "data-sort-by-name",
+      labelSortByChoice.dataset.sortByChoice
+    );
+    sortByName.textContent = labelSortByChoice.dataset.sortByChoice
+      .split("-")
+      .join(" ");
+
     sortByChoiceInput.checked = !sortByChoiceInput.checked;
+    sortByInput.checked = !sortByInput.checked;
   }
 });
