@@ -1,12 +1,15 @@
-const main = document.querySelector("main");
+const main = document.querySelector("body");
 
 main.addEventListener("click", (e) => {
   e.preventDefault();
   const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
 
+  console.log("ere");
+
   if (postEle) {
     console.log(postEle);
+    location.href = "feedback-detail.html";
   } else if (labelEle) {
     const input = labelEle.querySelector("input");
     const likesSpan = labelEle.querySelector("[data-likes]");
