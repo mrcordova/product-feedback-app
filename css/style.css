@@ -279,6 +279,9 @@ main {
     &:has(input[type="checkbox"]:checked) + .dropdown-content {
       display: block;
     }
+    &:has(input[type="checkbox"]:checked) > svg {
+      transform: rotate(0.5turn);
+    }
   }
 
   & .dropdown-content {

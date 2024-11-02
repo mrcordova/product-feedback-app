@@ -7,6 +7,7 @@ body.addEventListener("click", (e) => {
   const labelEle = e.target.closest("[data-checked]");
   const token = e.target.closest("[data-token]");
   const popoverMenu = e.target.closest("[data-mobile-menu]");
+  const labelSortBy = e.target.closest("[data-sort-by-dropdown]");
 
   console.log("ere");
 
@@ -35,5 +36,9 @@ body.addEventListener("click", (e) => {
     }
   } else if (popoverMenu) {
     popover.togglePopover();
+  } else if (labelSortBy) {
+    const sortByInput = labelSortBy.querySelector("input");
+
+    sortByInput.checked = !sortByInput.checked;
   }
 });
