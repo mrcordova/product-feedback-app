@@ -49,7 +49,6 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--ghost-white);
-  /* justify-content: center; */
 }
 header {
   display: flex;

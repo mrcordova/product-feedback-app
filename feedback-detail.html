@@ -9,13 +9,38 @@
       type="image/png"
       sizes="32x32"
       href="./assets/favicon-32x32.png" />
-
+    <script type="module" src="js/details.js"></script>
     <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/details.css" />
     <title>Frontend Mentor | Product feedback app</title>
   </head>
 
   <body>
     Go Back Edit Feedback
+
+    <div class="post">
+      <label class="likes-cont jost-bold" data-checked="false">
+        <input type="checkbox" name="likes" id="add-tags-for-solutions" />
+        <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M1 6l4-4 4 4"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            fill-rule="evenodd" />
+        </svg>
+        <span data-likes="112">112</span>
+      </label>
+      <div class="info-cont" data-post="">
+        <h2 class="jost-bold">Add tags for solutions</h2>
+        <p>Easier to search for solutions based on a specific stack.</p>
+        <div class="token jost-semibold">Enchancement</div>
+      </div>
+      <div class="comments-cont jost-bold" data-post="">
+        <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+        <span>2</span>
+      </div>
+    </div>
 
     <!-- Add upvotes -->
     <!-- Add title -->
@@ -29,6 +54,6 @@
     <!-- Add name -->
     <!-- Add username -->
     <!-- Add comment -->
-    Reply Add Comment Type your comment here 250 Characters left Post Comment
+    <!-- Reply Add Comment Type your comment here 250 Characters left Post Comment -->
   </body>
 </html>

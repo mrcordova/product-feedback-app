@@ -14,11 +14,20 @@ body.addEventListener("click", (e) => {
 
   if (postEle) {
     console.log(postEle);
+
     location.href = "feedback-detail.html";
+
+    localStorage.setItem("post", postEle.parentElement.outerHTML);
+    localStorage.setItem("post_id", 1);
+
+    // console.log(localStorage.getItem("post"));
+    // postEle.parentElement.parentElement.insertAdjacentHTML(
+    //   "beforeend",
+    //   localStorage.getItem("post")
+    // );
   } else if (labelEle) {
     const input = labelEle.querySelector("input");
     const likesSpan = labelEle.querySelector("[data-likes]");
-
     input.checked = !input.checked;
     labelEle.setAttribute("data-checked", input.checked);
     likesSpan.setAttribute(
