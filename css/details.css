@@ -56,6 +56,26 @@ body {
 
   gap: 1.5rem;
 }
+.feedback-btn {
+  margin-inline-start: auto;
+  line-height: 1.46;
+  display: flex;
+  align-items: center;
+  background-color: var(--royal-blue);
+  color: var(--white);
+  border-radius: 0.625rem;
+
+  font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+  padding-inline: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem)
+    clamp(1.063rem, calc(0.585rem + 2.036vw), 1.563rem);
+  padding-block: clamp(0.656rem, calc(0.537rem + 0.509vw), 0.781rem)
+    clamp(0.656rem, calc(0.597rem + 0.254vw), 0.719rem);
+
+  &:hover {
+    background-color: #7c91f9;
+    cursor: pointer;
+  }
+}
 .go-back-cont {
   display: flex;
   justify-content: space-between;
