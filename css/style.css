@@ -260,7 +260,6 @@ main {
   font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
   line-height: 1.42;
   position: relative;
-  /* overflow: visible; */
 
   & input[type="checkbox"] {
     display: none;
@@ -272,7 +271,6 @@ main {
 
     & svg {
       color: var(--white);
-      /* transform: rotate(0.5turn); */
     }
     &:hover {
       cursor: pointer;
@@ -282,11 +280,6 @@ main {
       display: block;
     }
   }
-
-  /* & span:has(+ button:hover) {
-    cursor: pointer;
-    opacity: 75%;
-  } */
 
   & .dropdown-content {
     display: none;
