@@ -364,10 +364,13 @@ main {
   gap: 1rem;
   min-width: min-content;
 
-  &:has(*) + .no-feedback-cont {
+  &:has(> *:not(.hide)) + .no-feedback-cont {
     display: none;
   }
   &:not(:has(*)) {
+    display: none;
+  }
+  & .hide {
     display: none;
   }
 }
