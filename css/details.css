@@ -53,7 +53,10 @@ body {
     clamp(1.5rem, calc(0.546rem + 4.071vw), 2.5rem);
   padding-block: clamp(1.5rem, calc(-0.408rem + 8.142vw), 3.5rem)
     clamp(5.5rem, calc(3.592rem + 8.142vw), 7.5rem);
-
+}
+main {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 .add-comment-cont {
