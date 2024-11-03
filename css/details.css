@@ -140,6 +140,7 @@ body {
       grid-template-areas:
         "profile-img name reply"
         "reply-para reply-para reply-para"
+        "add-comment add-comment add-comment"
         "reply-section reply-section reply-section";
       padding-block: clamp(1.5rem, calc(1.023rem + 2.036vw), 2rem);
       border-bottom: 1px solid hsl(from #8c92b3 h s l / 0.25);
@@ -150,8 +151,26 @@ body {
         grid-row: 3 / -1;
         height: 100%;
         width: 1px;
+        max-height: clamp(13.5rem, calc(10.458rem + 12.977vw), 16.688rem);
         background-color: hsl(from var(--dark-blue-gray) h s l / 0.1);
         /* display: none; */
+      }
+
+      & .reply-comment-cont {
+        grid-area: add-comment;
+        /* display: flex; */
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 0;
+
+        & textarea {
+          flex: 1;
+        }
+
+        & button {
+          background-color: var(--purple);
+        }
       }
 
       &:has(+ ul) {
@@ -212,6 +231,14 @@ body {
       grid-area: reply-section;
       & li {
         list-style: none;
+      }
+
+      & .comment-cont {
+        padding-block: 0 0;
+      }
+
+      & .reply-to {
+        color: var(--purple);
       }
     }
   }
@@ -388,6 +415,7 @@ body {
         grid-template-areas:
           "profile-img name reply"
           "reply-border reply-para reply-para"
+          "replay-border add-comment add-comment"
           "reply-section reply-section reply-section";
 
         & .reply-border {
