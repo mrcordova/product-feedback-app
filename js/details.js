@@ -128,6 +128,35 @@ main.addEventListener("click", (e) => {
   } else if (postCommentBtn) {
     if (addCommentTextArea.value.length > 250) {
       // console.log("too long");
+    } else {
+      const commentSection = document.querySelector(".comments-section");
+      commentSection.insertAdjacentHTML(
+        "beforeend",
+        `<div class="comment-cont" data-username="hexagon.bestagon">
+            <img
+              class="profile-img"
+              src="./assets/user-images/image-elijah.jpg"
+              alt="elijah " />
+            <div class="name-cont">
+              <p class="name jost-bold">Elijah Moss</p>
+              <p class="username">@hexagon.bestagon</p>
+            </div>
+            <button data-reply-show class="reply-btn jost-semibold">
+              Reply
+            </button>
+            <p class="reply-para">
+              Also, please allow styles to be applied based on system
+              preferences. I would love to be able to browse Frontend Mentor in
+              the evening after my device’s dark mode turns on without the
+              bright background it currently has.
+            </p>
+          
+            <ul class="reply-section"></ul>
+          </div>`
+      );
+
+      addCommentTextArea.value = "";
+      chararctLeftEle.textContent = `${CHAR_MAX} Characters left`;
     }
   }
 });
