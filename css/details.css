@@ -139,10 +139,27 @@ body {
       grid-template-columns: max-content 1fr max-content;
       grid-template-areas:
         "profile-img name reply"
-        "reply-para reply-para reply-para";
+        "reply-para reply-para reply-para"
+        "reply-section reply-section reply-section";
       padding-block: clamp(1.5rem, calc(1.023rem + 2.036vw), 2rem);
       border-bottom: 1px solid hsl(from #8c92b3 h s l / 0.25);
 
+      & .reply-border {
+        grid-area: reply-border;
+        grid-column: 1 / 1;
+        grid-row: 3 / -1;
+        height: 100%;
+        width: 1px;
+        background-color: hsl(from var(--dark-blue-gray) h s l / 0.1);
+        /* display: none; */
+      }
+
+      &:has(+ ul) {
+        border-bottom: 0;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
       & .profile-img {
         grid-area: profile-img;
         width: 2.5rem;
@@ -154,6 +171,7 @@ body {
         font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
 
         & .name {
+          text-transform: capitalize;
           color: var(--american-bluish);
           line-height: 1.46;
           letter-spacing: clamp(
@@ -184,6 +202,16 @@ body {
         color: var(--dark-blue-gray);
         font-size: clamp(0.813rem, calc(0.693rem + 0.509vw), 0.938rem);
         line-height: 1.46;
+        /* grid-column: 1 / -1; */
+      }
+    }
+
+    & .reply-section {
+      /* border-left: 1px solid hsl(from var(--dark-blue-gray) h s l / 0.1); */
+      padding-inline-start: clamp(1.438rem, calc(1.378rem + 0.254vw), 1.5rem);
+      grid-area: reply-section;
+      & li {
+        list-style: none;
       }
     }
   }
@@ -359,23 +387,21 @@ body {
 
         grid-template-areas:
           "profile-img name reply"
-          ". reply-para reply-para";
+          "reply-border reply-para reply-para"
+          "reply-section reply-section reply-section";
 
-        & .profile-img {
-        }
-
-        & .name-cont {
-          & .name {
-          }
-
-          & .username {
-          }
-        }
-        & .replay-btn {
-        }
-        & .reply-para {
+        & .reply-border {
+          /* grid-area: reply-border; */
+          grid-row: 2 / -1;
+          /* height: 100%; */
+          /* width: 1px; */
+          background-color: hsl(from var(--dark-blue-gray) h s l / 0.1);
+          justify-self: center;
         }
       }
+    }
+    & .reply-section {
+      margin-inline-start: 1.25rem;
     }
   }
 
