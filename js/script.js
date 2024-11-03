@@ -1,20 +1,6 @@
+import { updateLikesCounter } from "./event-delegation.js";
 const body = document.querySelector("body");
 const popover = document.getElementById("sidebar");
-
-export function updateLikesCounter(labelEle) {
-  // console.log("here");
-  const input = labelEle.querySelector("input");
-  const likesSpan = labelEle.querySelector("[data-likes]");
-  input.checked = !input.checked;
-  labelEle.setAttribute("data-checked", input.checked);
-  likesSpan.setAttribute(
-    "data-likes",
-    input.checked
-      ? parseInt(likesSpan.dataset.likes) + 1
-      : parseInt(likesSpan.dataset.likes) - 1
-  );
-  likesSpan.textContent = likesSpan.dataset.likes;
-}
 
 body.addEventListener("click", (e) => {
   e.preventDefault();
@@ -25,7 +11,7 @@ body.addEventListener("click", (e) => {
   const labelSortBy = e.target.closest("[data-sort-by-dropdown]");
   const labelSortByChoice = e.target.closest("[data-sort-by-choice]");
 
-  // console.log("ere");
+  // console.log(e.target);
 
   if (postEle) {
     console.log(postEle);
