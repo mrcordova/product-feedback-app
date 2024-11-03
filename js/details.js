@@ -3,11 +3,25 @@ import { updateLikesCounter } from "./event-delegation.js";
 const dataResponse = await fetch("data.json");
 const data = await dataResponse.json();
 const main = document.querySelector("main");
+const addCommentTextArea = document.querySelector("#add-comment");
+const chararctLeftEle = document.querySelector("[data-comment-count]");
+const CHAR_MAX = 250;
 
 console.log(data);
 
 const postWrapper = document.querySelector("[data-post-wrapper]");
 postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
+
+addCommentTextArea.addEventListener("input", (e) => {
+  // console.log(e.target.value);
+  const charLeft = CHAR_MAX - e.target.value.length;
+  chararctLeftEle.textContent = `${charLeft} Characters left`;
+  if (charLeft < 0) {
+    chararctLeftEle.setAttribute("style", "color: red");
+  } else {
+    chararctLeftEle.removeAttribute("style");
+  }
+});
 
 main.addEventListener("click", (e) => {
   e.preventDefault();
@@ -18,6 +32,7 @@ main.addEventListener("click", (e) => {
   const labelEle = e.target.closest("[data-checked]");
   const replyCont = e.target.closest("[data-reply-show ]");
   const replyToBtn = e.target.closest("[data-reply-to]");
+  const postCommentBtn = e.target.closest("[data-post-comment]");
   //   console.log(e.target);
   //   console.log(e.currentTarget);
   if (goBackBtn) {
@@ -30,7 +45,7 @@ main.addEventListener("click", (e) => {
     console.log(labelEle);
     updateLikesCounter(labelEle);
   } else if (replyCont) {
-    console.log(replyCont.parentElement);
+    // console.log(replyCont.parentElement);
     replyCont.parentElement.insertAdjacentHTML(
       "beforeend",
       `<div class="add-comment-cont reply-comment-cont">
@@ -110,5 +125,9 @@ main.addEventListener("click", (e) => {
     //   replyToBtn.parentElement
     // );
     // console.log(text);
+  } else if (postCommentBtn) {
+    if (addCommentTextArea.value.length > 250) {
+      // console.log("too long");
+    }
   }
 });
