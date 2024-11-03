@@ -77,6 +77,32 @@ main.addEventListener("click", (e) => {
                 </div>
               </li>`
       );
+    } else if (reply) {
+      const ulReplySection = reply.parentElement;
+      ulReplySection.insertAdjacentHTML(
+        "beforeend",
+        `<li>
+                <div class="comment-cont" data-username="annev1990">
+                  <img
+                    class="profile-img"
+                    src="./assets/user-images/image-anne.jpg"
+                    alt="james " />
+                  <div class="name-cont">
+                    <p class="name jost-bold">Anne Valentine</p>
+                    <p class="username">@annev1990</p>
+                  </div>
+                  <button class="reply-btn jost-semibold" data-reply-show>
+                    Reply
+                  </button>
+                  <p class="reply-para">
+                    <span class="reply-to jost-bold">@${replyToBtn.dataset.replyTo}</span>
+                    ${text}
+                  </p>
+                 
+                </div>
+              </li>`
+      );
+      replyCon.remove();
     }
     // replyToBtn.parentElement.remove();
     // replyToBtn.parentElement.parentElement.replaceChild(
