@@ -80,6 +80,35 @@ main {
     cursor: pointer;
   }
 } */
+
+.btns-cont {
+  color: #f2f4fe;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* justify-content: center; */
+  text-align: center;
+  align-items: center;
+  margin-block-start: clamp(2rem, calc(2.977rem + -2.036vw), 2.5rem);
+
+  & button {
+    padding-block: clamp(0.656rem, calc(0.537rem + 0.509vw), 0.781rem)
+      clamp(0.656rem, calc(0.597rem + 0.254vw), 0.719rem);
+    border-radius: 0.3125rem;
+    width: 100%;
+  }
+  & .delete-btn {
+    background-color: #d73737;
+  }
+
+  & .cancel-btn {
+    background-color: var(--american-bluish);
+  }
+
+  & .save-btn {
+    background-color: var(--purple);
+  }
+}
 .editing-cont {
   background-color: var(--white);
   position: relative;
@@ -100,6 +129,7 @@ main {
     font-size: clamp(1.125rem, calc(0.767rem + 1.527vw), 1.5rem);
     letter-spacing: clamp(-0.021rem, calc(-0.011rem + -0.02vw), -0.016rem);
     line-height: 1.44;
+    padding-block-end: clamp(1.5rem, calc(-1.542rem + 12.977vw), 4.688rem);
   }
 }
 .editing-form {
@@ -136,7 +166,12 @@ main {
     }
   }
 
-  & .header {
+  & textarea {
+    resize: none;
+    border: 0;
+    border-radius: 0.3125rem;
+    height: clamp(6rem, calc(8.931rem + -6.107vw), 7.5rem);
+    background-color: var(--ghost-white);
   }
 
   & .subheader {
@@ -145,6 +180,7 @@ main {
 }
 .dropdown-cont {
   /* margin-inline-end: auto; */
+  border-radius: 0.3125rem;
   padding-block: clamp(0.813rem, calc(1.057rem + -0.509vw), 0.938rem)
     clamp(0.813rem, calc(0.935rem + -0.254vw), 0.875rem);
   padding-inline: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem);
@@ -247,6 +283,22 @@ span[data-sort-by-name] {
     padding-inline: clamp(7.125rem, calc(-16.875rem + 50vw), 28.125rem);
   }
 
+  .btns-cont {
+    flex-direction: row-reverse;
+
+    & .delete-btn {
+      margin-inline-end: auto;
+    }
+
+    & .delete-btn,
+    .cancel-btn {
+      max-width: 5.8125rem;
+    }
+
+    & .save-btn {
+      max-width: 9rem;
+    }
+  }
   .editing-form {
     line-height: 1.43;
     & .header {
