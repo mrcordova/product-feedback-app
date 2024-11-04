@@ -88,11 +88,18 @@ main {
   padding-block: clamp(2.75rem, calc(2.273rem + 2.036vw), 3.25rem)
     clamp(1.5rem, calc(0.546rem + 4.071vw), 2.5rem);
 
+  color: var(--american-bluish);
   & .edit-img {
     position: absolute;
     top: clamp(-1.75rem, calc(-0.773rem + -2.036vw), -1.25rem);
     left: clamp(1.5rem, calc(0.427rem + 4.58vw), 2.625rem);
     width: clamp(2.5rem, calc(1.546rem + 4.071vw), 3.5rem);
+  }
+
+  & .feedback-title {
+    font-size: clamp(1.125rem, calc(0.767rem + 1.527vw), 1.5rem);
+    letter-spacing: clamp(-0.021rem, calc(-0.011rem + -0.02vw), -0.016rem);
+    line-height: 1.44;
   }
 }
 .editing-form {
@@ -223,5 +230,11 @@ span[data-sort-by-name] {
 @media (min-width: 48rem) {
   body {
     padding-inline: clamp(7.125rem, calc(-16.875rem + 50vw), 28.125rem);
+  }
+
+  .editing-cont {
+    & .feedback-title {
+      line-height: 1.46;
+    }
   }
 }
