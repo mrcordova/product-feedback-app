@@ -96,7 +96,7 @@ main {
     width: clamp(2.5rem, calc(1.546rem + 4.071vw), 3.5rem);
   }
 
-  & .feedback-title {
+  & .title {
     font-size: clamp(1.125rem, calc(0.767rem + 1.527vw), 1.5rem);
     letter-spacing: clamp(-0.021rem, calc(-0.011rem + -0.02vw), -0.016rem);
     line-height: 1.44;
@@ -105,13 +105,42 @@ main {
 .editing-form {
   display: grid;
 
+  gap: 1.5rem;
   & label {
     display: grid;
     /* gap: 1rem; */
+    font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+    letter-spacing: clamp(-0.012rem, calc(-0.011rem + -0.003vw), -0.011rem);
+    line-height: 1.46;
 
+    &:has(input[type="checkbox"]:checked) + .dropdown-content {
+      display: block;
+    }
     & input[type="checkbox"] {
       display: none;
     }
+
+    & input[type="text"] {
+      text-indent: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem);
+      border: 0;
+      background-color: var(--ghost-white);
+      font-size: clamp(0.813rem, calc(0.693rem + 0.509vw), 0.938rem);
+      color: var(--american-bluish);
+      padding-block: clamp(0.813rem, calc(1.057rem + -0.509vw), 0.938rem)
+        clamp(0.813rem, calc(0.935rem + -0.254vw), 0.875rem);
+
+      border-radius: 0.3125rem;
+      &::placeholder {
+        color: var(--american-bluish);
+      }
+    }
+  }
+
+  & .header {
+  }
+
+  & .subheader {
+    color: var(--dark-blue-gray);
   }
 }
 .dropdown-cont {
@@ -119,7 +148,7 @@ main {
   position: relative;
   background-color: var(--ghost-white);
   padding-inline: 1rem;
-  &:has(input:checked) {
+  &:has(+ input:checked) {
     &::after {
       content: url("../assets/shared/icon-arrow-up.svg");
     }
@@ -138,25 +167,7 @@ main {
 input[type="checkbox"] {
   display: none;
 }
-label {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.5rem, calc(0.44rem + 0.254vw), 0.563rem);
 
-  & svg {
-    color: var(--white);
-  }
-  &:hover {
-    cursor: pointer;
-    opacity: 75%;
-  }
-  &:has(input[type="checkbox"]:checked) + .dropdown-content {
-    display: block;
-  }
-  &:has(input[type="checkbox"]:checked) > svg {
-    transform: rotate(0.5turn);
-  }
-}
 span[data-sort-by-name] {
   text-transform: capitalize;
 }
@@ -232,6 +243,11 @@ span[data-sort-by-name] {
     padding-inline: clamp(7.125rem, calc(-16.875rem + 50vw), 28.125rem);
   }
 
+  .editing-form {
+    line-height: 1.43;
+    & .header {
+    }
+  }
   .editing-cont {
     & .feedback-title {
       line-height: 1.46;
