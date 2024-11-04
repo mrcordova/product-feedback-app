@@ -60,26 +60,6 @@ main {
   flex-direction: column;
   gap: clamp(3.438rem, calc(2.662rem + 3.308vw), 4.25rem);
 }
-/* .feedback-btn {
-  margin-inline-start: auto;
-  line-height: 1.46;
-  display: flex;
-  align-items: center;
-  background-color: var(--royal-blue);
-  color: var(--white);
-  border-radius: 0.625rem;
-
-  font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
-  padding-inline: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem)
-    clamp(1.063rem, calc(0.585rem + 2.036vw), 1.563rem);
-  padding-block: clamp(0.656rem, calc(0.537rem + 0.509vw), 0.781rem)
-    clamp(0.656rem, calc(0.597rem + 0.254vw), 0.719rem);
-
-  &:hover {
-    background-color: #7c91f9;
-    cursor: pointer;
-  }
-} */
 
 .btns-cont {
   color: #f2f4fe;
@@ -204,7 +184,6 @@ main {
   }
 }
 .dropdown-cont {
-  /* margin-inline-end: auto; */
   margin-block-start: 1rem;
   border-radius: 0.3125rem;
   padding-block: clamp(0.813rem, calc(1.057rem + -0.509vw), 0.938rem)
@@ -263,7 +242,6 @@ span[data-sort-by-name] {
     &:is(:hover, label:hover) {
       cursor: pointer;
       color: var(--purple);
-      /* opacity: 100%; */
     }
     & label {
       padding-inline: 1.5rem;
@@ -332,8 +310,6 @@ span[data-sort-by-name] {
   }
   .editing-form {
     line-height: 1.43;
-    & .header {
-    }
   }
   .editing-cont {
     & .feedback-title {

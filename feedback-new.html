@@ -1,35 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <title>Frontend Mentor | Product feedback app</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/edit.css" />
+    <script type="module" src="js/edit.js"></script>
+  </head>
 
-  <title>Frontend Mentor | Product feedback app</title>
-</head>
+  <body class="jost-regular">
+    <main>
+      <div class="go-back-cont">
+        <button class="go-back-btn jost-bold" data-go-back>
+          <img src="./assets/shared/icon-arrow-left.svg" alt="arrow left" />
+          Go Back
+        </button>
+      </div>
+      <div class="editing-cont">
+        <img
+          class="edit-img"
+          src="./assets/shared/icon-new-feedback.svg"
+          alt="plus" />
+        <h1 class="title jost-bold">Create New Feedback</h1>
+        <form class="editing-form">
+          <label>
+            <span class="header jost-bold">Feedback Title</span>
+            <span class="subheader">Add a short, descriptive headline</span>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Please add a dark theme option" />
+          </label>
+          <div class="dropdown-div">
+            <label>
+              <span class="header jost-bold">Category</span>
+              <span class="subheader">Choose a category for your feedback</span>
+              <span class="dropdown-cont">Feature</span>
+              <input type="checkbox" name="category" id="category" />
+            </label>
+            <menu class="dropdown-content">
+              <li>
+                <label data-sort-by-choice="feature">
+                  <input type="radio" name="categories" id="feature" checked />
+                  Feature
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="UI">
+                  <input type="radio" name="categories" id="UI" />
+                  UI
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="UX">
+                  <input type="radio" name="categories" id="UX" />
+                  UX
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="Enchancement">
+                  <input type="radio" name="categories" id="Enchancement" />
+                  Enchancement
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="Bug">
+                  <input type="radio" name="categories" id="Bug" />
+                  Bug
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+            </menu>
+          </div>
 
-<body>
-  Go Back
-
-  Create New Feedback
-
-  Feedback Title
-  Add a short, descriptive headline
-
-  Category
-  Choose a category for your feedback
-  Feature
-  UI
-  UX
-  Enhancement
-  Bug
-
-  Feedback Detail
-  Include any specific comments on what should be improved, added, etc.
-
-  Cancel
-  Add Feedback
-</body>
-<html
+          <label>
+            <span class="header jost-bold">Feedback Detail</span>
+            <span class="subheader">
+              Include any specific comments on what should be improved, added
+              etc
+            </span>
+            <textarea name="detail" id="detail"></textarea>
+          </label>
+        </form>
+        <div class="btns-cont jost-bold">
+          <button class="save-btn">Add Feedback</button>
+          <button class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
