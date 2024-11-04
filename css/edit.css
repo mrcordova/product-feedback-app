@@ -145,6 +145,9 @@ main {
 }
 .dropdown-cont {
   /* margin-inline-end: auto; */
+  padding-block: clamp(0.813rem, calc(1.057rem + -0.509vw), 0.938rem)
+    clamp(0.813rem, calc(0.935rem + -0.254vw), 0.875rem);
+  padding-inline: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem);
   position: relative;
   background-color: var(--ghost-white);
   padding-inline: 1rem;
@@ -176,11 +179,12 @@ span[data-sort-by-name] {
   z-index: 99;
   display: none;
   position: absolute;
+  width: 100%;
   background-color: var(--white);
   color: var(--dark-blue-gray);
   border-radius: 0.625rem;
   list-style: none;
-  top: 4.25rem;
+  top: 6.375rem;
   padding: 0;
   min-width: 255px;
 
