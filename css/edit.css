@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+.jost-regular {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.jost-medium {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.jost-semibold {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.jost-bold {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --purple: #ad1fea;
+  --royal-blue: #4661e6;
+  --american-blue: #373f68;
+  --white: #ffffff;
+  --alice-blue: #f2f4ff;
+  --ghost-white: #f7f8fd;
+  --american-bluish: #3a4374;
+  --dark-blue-gray: #647196;
+  --vivid-targine: #f49f85;
+  --maya-blue: #62bcfa;
+}
+html {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 90rem;
+}
+
+body {
+  min-height: 100%;
+  transition: all 1s ease;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ghost-white);
+  padding-inline: clamp(1.5rem, calc(0.605rem + 3.817vw), 2.438rem)
+    clamp(1.5rem, calc(0.546rem + 4.071vw), 2.5rem);
+  padding-block: clamp(1.5rem, calc(-0.408rem + 8.142vw), 3.5rem)
+    clamp(5.5rem, calc(3.592rem + 8.142vw), 7.5rem);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* .feedback-btn {
+  margin-inline-start: auto;
+  line-height: 1.46;
+  display: flex;
+  align-items: center;
+  background-color: var(--royal-blue);
+  color: var(--white);
+  border-radius: 0.625rem;
+
+  font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+  padding-inline: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem)
+    clamp(1.063rem, calc(0.585rem + 2.036vw), 1.563rem);
+  padding-block: clamp(0.656rem, calc(0.537rem + 0.509vw), 0.781rem)
+    clamp(0.656rem, calc(0.597rem + 0.254vw), 0.719rem);
+
+  &:hover {
+    background-color: #7c91f9;
+    cursor: pointer;
+  }
+} */
+.editing-cont {
+  background-color: var(--white);
+}
+.editing-form {
+  display: grid;
+
+  & label {
+    display: grid;
+    /* gap: 1rem; */
+
+    & input[type="checkbox"] {
+      display: none;
+    }
+  }
+}
+.go-back-cont {
+  display: flex;
+  justify-content: space-between;
+
+  & .go-back-btn {
+    color: var(--dark-blue-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.979rem;
+    font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+    line-height: 1.46;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}

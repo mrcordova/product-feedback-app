@@ -12,3 +12,7 @@ export function updateLikesCounter(labelEle) {
   );
   likesSpan.textContent = likesSpan.dataset.likes;
 }
+
+export function goBack() {
+  history.back();
+}

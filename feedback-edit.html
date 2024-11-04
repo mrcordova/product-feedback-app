@@ -1,21 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <title>Frontend Mentor | Product feedback app</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/edit.css" />
+    <script type="module" src="js/edit.js"></script>
+  </head>
 
-  <title>Frontend Mentor | Product feedback app</title>
-</head>
+  <body>
+    <main>
+      <div class="go-back-cont">
+        <button class="go-back-btn jost-bold" data-go-back>
+          <img src="./assets/shared/icon-arrow-left.svg" alt="arrow left" />
+          Go Back
+        </button>
 
-<body>
-  Go Back
+        <!-- <button data-edit class="feedback-btn jost-bold">Edit Feedback</button> -->
+      </div>
+      <div class="editing-cont">
+        <img src="./assets/shared/icon-edit-feedback.svg" alt="pen" />
+        <h1>Editing 'Add a dark theme option'</h1>
+        <div class="editing-form">
+          <label>
+            <span>
+              Feedback Title
+              <br />
+              <span>Add a short, descriptive headline</span>
+            </span>
 
-  Editing <!-- Add title -->
+            <input type="text" name="title" id="title" />
+          </label>
+          <label>
+            <span>
+              Category
+              <span>Choose a category for your feedback</span>
+            </span>
+            <input type="checkbox" name="category" id="category" />
+          </label>
+          <label>
+            <span>Update Status</span>
+            <span>Change feature state</span>
+            <input type="checkbox" name="status" id="status" />
+          </label>
+          <label>
+            <span>Feedback Detail</span>
+            <span>
+              Include any specific comments on what should be improved, added
+              etc
+            </span>
+            <textarea name="detail" id="detail"></textarea>
+          </label>
+        </div>
+      </div>
+    </main>
+    <!-- Go Back
 
-  Feedback Title
+  Editing  -->
+
+    <!-- Feedback Title
   Add a short, descriptive headline
   
   Category
@@ -38,6 +89,6 @@
   
   Delete
   Cancel
-  Save Changes
-</body>
-<html
+  Save Changes -->
+  </body>
+</html>

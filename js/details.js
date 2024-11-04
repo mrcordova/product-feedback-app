@@ -1,5 +1,5 @@
 // console.log(localStorage.getItem("post"));
-import { updateLikesCounter } from "./event-delegation.js";
+import { goBack, updateLikesCounter } from "./event-delegation.js";
 const dataResponse = await fetch("data.json");
 const data = await dataResponse.json();
 const main = document.querySelector("main");
@@ -38,7 +38,8 @@ main.addEventListener("click", (e) => {
   //   console.log(e.target);
   //   console.log(e.currentTarget);
   if (goBackBtn) {
-    history.back();
+    // history.back();
+    goBack();
   } else if (goEditFeedbackBtn) {
     location.href = "feedback-edit.html";
     // } else if (postEle) {
@@ -61,6 +62,7 @@ main.addEventListener("click", (e) => {
     const text = replyCon.querySelector("textarea").value;
     const reply = replyToBtn.closest("li");
     if (text.length > CHAR_MAX || text.length < 1) {
+      alert(`${CHAR_MAX} Characters left`);
       return;
     }
     if (!reply) {
