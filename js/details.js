@@ -5,6 +5,7 @@ const data = await dataResponse.json();
 const main = document.querySelector("main");
 const addCommentTextArea = document.querySelector("#add-comment");
 const chararctLeftEle = document.querySelector("[data-comment-count]");
+const totalCommentCount = document.querySelector("[data-total-comment]");
 const CHAR_MAX = 250;
 
 console.log(data);
@@ -123,12 +124,12 @@ main.addEventListener("click", (e) => {
       );
       replyCon.remove();
     }
-    // replyToBtn.parentElement.remove();
-    // replyToBtn.parentElement.parentElement.replaceChild(
-    //   replyBorderDiv,
-    //   replyToBtn.parentElement
-    // );
-    // console.log(text);
+
+    totalCommentCount.setAttribute(
+      "data-total-comment",
+      parseInt(totalCommentCount.dataset.totalComment) + 1
+    );
+    totalCommentCount.textContent = `${totalCommentCount.dataset.totalComment} Comments`;
   } else if (postCommentBtn) {
     if (
       addCommentTextArea.value.length > CHAR_MAX ||
@@ -161,6 +162,11 @@ main.addEventListener("click", (e) => {
 
       addCommentTextArea.value = "";
       chararctLeftEle.textContent = `${CHAR_MAX} Characters left`;
+      totalCommentCount.setAttribute(
+        "data-total-comment",
+        parseInt(totalCommentCount.dataset.totalComment) + 1
+      );
+      totalCommentCount.textContent = `${totalCommentCount.dataset.totalComment} Comments`;
     }
   }
 });
