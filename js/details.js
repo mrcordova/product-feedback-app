@@ -12,6 +12,7 @@ console.log(data);
 const postWrapper = document.querySelector("[data-post-wrapper]");
 postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
 
+function checkTextAreaLength(value) {}
 addCommentTextArea.addEventListener("input", (e) => {
   // console.log(e.target.value);
   const charLeft = CHAR_MAX - e.target.value.length;
@@ -28,7 +29,7 @@ main.addEventListener("click", (e) => {
   //   e.stopImmediatePropagation();
   const goBackBtn = e.target.closest("[data-go-back]");
   const goEditFeedbackBtn = e.target.closest("[data-edit]");
-  const postEle = e.target.closest("[data-post]");
+  // const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
   const replyCont = e.target.closest("[data-reply-show ]");
   const replyToBtn = e.target.closest("[data-reply-to]");
@@ -39,10 +40,10 @@ main.addEventListener("click", (e) => {
     history.back();
   } else if (goEditFeedbackBtn) {
     location.href = "feedback-edit.html";
-  } else if (postEle) {
-    e.stopImmediatePropagation();
+    // } else if (postEle) {
+    // e.stopImmediatePropagation();
   } else if (labelEle) {
-    console.log(labelEle);
+    // console.log(labelEle);
     updateLikesCounter(labelEle);
   } else if (replyCont) {
     // console.log(replyCont.parentElement);
@@ -58,6 +59,9 @@ main.addEventListener("click", (e) => {
     const replyCon = replyToBtn.parentElement;
     const text = replyCon.querySelector("textarea").value;
     const reply = replyToBtn.closest("li");
+    if (text.length > CHAR_MAX || text.length < 1) {
+      return;
+    }
     if (!reply) {
       const replySection =
         replyCon.parentElement.querySelector(".reply-section");
@@ -126,7 +130,10 @@ main.addEventListener("click", (e) => {
     // );
     // console.log(text);
   } else if (postCommentBtn) {
-    if (addCommentTextArea.value.length > 250) {
+    if (
+      addCommentTextArea.value.length > CHAR_MAX ||
+      addCommentTextArea.value.length < 1
+    ) {
       // console.log("too long");
     } else {
       const commentSection = document.querySelector(".comments-section");
@@ -145,10 +152,7 @@ main.addEventListener("click", (e) => {
               Reply
             </button>
             <p class="reply-para">
-              Also, please allow styles to be applied based on system
-              preferences. I would love to be able to browse Frontend Mentor in
-              the evening after my device’s dark mode turns on without the
-              bright background it currently has.
+             ${addCommentTextArea.value}
             </p>
           
             <ul class="reply-section"></ul>
