@@ -16,7 +16,7 @@
     <script type="module" src="js/edit.js"></script>
   </head>
 
-  <body>
+  <body class="jost-regular">
     <main>
       <div class="go-back-cont">
         <button class="go-back-btn jost-bold" data-go-back>
@@ -31,29 +31,93 @@
         <h1>Editing 'Add a dark theme option'</h1>
         <div class="editing-form">
           <label>
-            <span>
-              Feedback Title
-              <br />
-              <span>Add a short, descriptive headline</span>
-            </span>
-
+            <span>Feedback Title</span>
+            <span>Add a short, descriptive headline</span>
             <input type="text" name="title" id="title" />
           </label>
-          <label>
-            <span>
-              Category
+          <div class="dropdown-div">
+            <label>
+              <span>Category</span>
               <span>Choose a category for your feedback</span>
-            </span>
-            <span class="dropdown-cont">
-              Feature
+              <span class="dropdown-cont">Feature</span>
               <input type="checkbox" name="category" id="category" />
-            </span>
-          </label>
-          <label>
-            <span>Update Status</span>
-            <span>Change feature state</span>
-            <input type="checkbox" name="status" id="status" />
-          </label>
+            </label>
+            <menu class="dropdown-content">
+              <li>
+                <label data-sort-by-choice="feature">
+                  <input type="radio" name="categories" id="feature" checked />
+                  Feature
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="UI">
+                  <input type="radio" name="categories" id="UI" />
+                  UI
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="UX">
+                  <input type="radio" name="categories" id="UX" />
+                  UX
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="Enchancement">
+                  <input type="radio" name="categories" id="Enchancement" />
+                  Enchancement
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="Bug">
+                  <input type="radio" name="categories" id="Bug" />
+                  Bug
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+            </menu>
+          </div>
+          <div class="dropdown-div">
+            <label>
+              <span>Update Status</span>
+              <span>Change feature state</span>
+              <span class="dropdown-cont">Planned</span>
+              <input type="checkbox" name="status" id="status" />
+            </label>
+            <menu class="dropdown-content">
+              <li>
+                <label data-sort-by-choice="Suggestion">
+                  <input type="radio" name="status" id="Suggestion" checked />
+                  Suggestion
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="Planned">
+                  <input type="radio" name="status" id="Planned" />
+                  Planned
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="In-Progess">
+                  <input type="radio" name="status" id="In-Progess" />
+                  In-Progess
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+              <li>
+                <label data-sort-by-choice="Live">
+                  <input type="radio" name="status" id="Live" />
+                  Live
+                  <img src="./assets/shared/icon-check.svg" alt="check mark" />
+                </label>
+              </li>
+            </menu>
+          </div>
           <label>
             <span>Feedback Detail</span>
             <span>
