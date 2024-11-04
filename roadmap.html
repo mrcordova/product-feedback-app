@@ -1,29 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/roadmap.css" />
+    <!-- <script type="module" src="js/script.js"></script> -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <title>Frontend Mentor | Product feedback app</title>
+  </head>
+  <body class="jost-regular">
+    <main>
+      <div class="subheader">
+        <div class="roadmap-title-cont">
+          <button class="go-back-btn jost-bold" data-go-back>
+            <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M6 9L2 5l4-4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd" />
+            </svg>
+            Go Back
+          </button>
+          <h1>Roadmap</h1>
+        </div>
+        <button class="feedback-btn jost-bold" data-go-new>
+          <img src="./assets/shared/icon-plus.svg" alt="plus icon" />
+          Add Feedback
+        </button>
+      </div>
+      <div id="sidebar" popover>
+        <nav class="feedback-cont">
+          <picture>
+            <source
+              media="(min-width: 90rem)"
+              srcset="./assets/suggestions/desktop/background-header.png" />
+            <source
+              media="(min-width: 48rem)"
+              srcset="./assets/suggestions/tablet/background-header.png" />
+            <img
+              src="./assets/suggestions/mobile/background-header.png"
+              alt="gradient background" />
+          </picture>
+          <div class="feedback-title-cont">
+            <div>
+              <p class="feedback-title jost-bold">Frontend Mentor</p>
+              <p class="jost-medium feedback-subtitle">Feedback Board</p>
+            </div>
+            <button
+              data-mobile-menu="close"
+              popovertarget="sidebar"
+              popovertargetaction="hide">
+              <img
+                src="./assets/shared/mobile/icon-close.svg"
+                alt="icon-close" />
+            </button>
+          </div>
+        </nav>
+        <div class="popover-cards">
+          <div class="tokens-cont jost-semibold">
+            <label data-token="all">
+              All
+              <input
+                type="radio"
+                name="mobile-tokens"
+                id="mobile-all"
+                checked />
+            </label>
+            <label data-token="ui">
+              UI
+              <input type="radio" name="mobile-tokens" id="mobile-ui" />
+            </label>
+            <label data-token="ux">
+              UX
+              <input type="radio" name="mobile-tokens" id="mobile-ux" />
+            </label>
+            <label data-token="enchancement">
+              Enchancement
+              <input
+                type="radio"
+                name="mobile-tokens"
+                id="mobile-enchancement" />
+            </label>
+            <label data-token="bug">
+              <input type="radio" name="mobile-tokens" id="mobile-bug" />
+              Bug
+            </label>
+            <label data-token="feature">
+              Feature
+              <input type="radio" name="mobile-tokens" id="feature" />
+            </label>
+          </div>
+          <div class="roadmap-cont">
+            <div class="roadmap-title">
+              <p class="jost-bold title">Roadmap</p>
+              <a class="jost-semibold view-link" data-go-roadmap href="#">
+                View
+              </a>
+            </div>
+            <div class="status-items-cont">
+              <div class="stage-post-cont">
+                <div class="status-cont">
+                  <div data-status="planned" class="status-post-color"></div>
+                  <p class="jost-regular">Planned</p>
+                </div>
+                <span class="jost-bold">2</span>
+              </div>
+              <div class="stage-post-cont">
+                <div class="status-cont">
+                  <div
+                    data-status="in-progress"
+                    class="status-post-color"></div>
+                  <p class="jost-regular">In-Progess</p>
+                </div>
+                <span class="jost-bold">3</span>
+              </div>
+              <div class="stage-post-cont">
+                <div class="status-cont">
+                  <div data-status="live" class="status-post-color"></div>
+                  <p class="jost-regular">Live</p>
+                </div>
+                <span class="jost-bold">1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <title>Frontend Mentor | Product feedback app</title>
-</head>
+      <div class="posts">
+        <div class="post">
+          <label class="likes-cont jost-bold" data-checked="false">
+            <input type="checkbox" name="likes" id="add-tags-for-solutions" />
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 6l4-4 4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd" />
+            </svg>
+            <span data-likes="112">112</span>
+          </label>
+          <div class="info-cont" data-post="">
+            <h2 class="jost-bold">Add tags for solutions</h2>
+            <p>Easier to search for solutions based on a specific stack.</p>
+            <div class="token jost-semibold">Enchancement</div>
+          </div>
+          <div class="comments-cont jost-bold" data-post="">
+            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+            <span>2</span>
+          </div>
+        </div>
+        <div class="post">
+          <label class="likes-cont jost-bold" data-checked="false">
+            <input type="checkbox" name="likes" id="add-a-dark-them-option" />
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 6l4-4 4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd" />
+            </svg>
+            <span data-likes="99">99</span>
+          </label>
+          <div class="info-cont" data-post="">
+            <h2 class="jost-bold">Add a dark theme option</h2>
+            <p>
+              It would help people with light sensitivities and who prefer dark
+              mode.
+            </p>
+            <div class="token jost-semibold">Feature</div>
+          </div>
 
-<body>
-  Go back
-  Roadmap
-
-  Add Feedback
-
-  Planned <!-- Add number here -->
-  Ideas prioritized for research
-
-  In-Progress <!-- Add number here -->
-  Currently being developed
-
-  Live <!-- Add number here -->
-  Released features
-
-</body>
-<html
+          <div class="comments-cont jost-bold" data-post="">
+            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+            <span>4</span>
+          </div>
+        </div>
+      </div>
+      <div class="no-feedback-cont">
+        <img
+          src="./assets/suggestions/illustration-empty.svg"
+          alt="no feedback yet img" />
+        <p class="no-feedback-title jost-bold">There is no feedback yet.</p>
+        <p class="no-feedback-para">
+          <!-- No feedback -->
+          Got a suggestion? Found a bug that needs to be squashed? We love
+          hearing about new ideas to improve our app.
+          <!-- No feedback end -->
+        </p>
+        <button class="feedback-btn jost-bold">
+          <img src="./assets/shared/icon-plus.svg" alt="plus icon" />
+          Add Feedback
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

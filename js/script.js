@@ -10,6 +10,8 @@ body.addEventListener("click", (e) => {
   const popoverMenu = e.target.closest("[data-mobile-menu]");
   const labelSortBy = e.target.closest("[data-sort-by-dropdown]");
   const labelSortByChoice = e.target.closest("[data-sort-by-choice]");
+  const newFeedbackBtn = e.target.closest("[data-go-new]");
+  const goRoadmap = e.target.closest("[data-go-roadmap]");
 
   // console.log(e.target);
 
@@ -28,6 +30,10 @@ body.addEventListener("click", (e) => {
     // );
   } else if (labelEle) {
     updateLikesCounter(labelEle);
+  } else if (newFeedbackBtn) {
+    location.href = "feedback-new.html";
+  } else if (goRoadmap) {
+    location.href = "roadmap.html";
   } else if (token) {
     const tokens = body.querySelectorAll(
       `[data-token='${token.dataset.token}']`
