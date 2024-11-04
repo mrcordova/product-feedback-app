@@ -151,6 +151,7 @@ main {
     }
 
     & input[type="text"] {
+      margin-block-start: 1rem;
       text-indent: clamp(1rem, calc(0.523rem + 2.036vw), 1.5rem);
       border: 0;
       background-color: var(--ghost-white);
@@ -172,6 +173,7 @@ main {
     border-radius: 0.3125rem;
     height: clamp(6rem, calc(8.931rem + -6.107vw), 7.5rem);
     background-color: var(--ghost-white);
+    margin-block-start: 1rem;
   }
 
   & .subheader {
@@ -180,6 +182,7 @@ main {
 }
 .dropdown-cont {
   /* margin-inline-end: auto; */
+  margin-block-start: 1rem;
   border-radius: 0.3125rem;
   padding-block: clamp(0.813rem, calc(1.057rem + -0.509vw), 0.938rem)
     clamp(0.813rem, calc(0.935rem + -0.254vw), 0.875rem);
@@ -220,7 +223,7 @@ span[data-sort-by-name] {
   color: var(--dark-blue-gray);
   border-radius: 0.625rem;
   list-style: none;
-  top: 6.375rem;
+  top: 7.375rem;
   padding: 0;
   min-width: 255px;
 
