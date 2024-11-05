@@ -124,7 +124,7 @@ body.addEventListener("click", (e) => {
       post.classList.toggle(
         "hide",
         postCategory.textContent.trim().toLowerCase() !==
-          search.category.toLowerCase()
+          search.category.toLowerCase() && !(search.category === "all")
       );
     }
   } else if (popoverMenu) {
