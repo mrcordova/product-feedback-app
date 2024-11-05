@@ -4,7 +4,9 @@ import {
   updateLikesCounter,
   data,
   getPost,
+  currentUser,
 } from "./event-delegation.js";
+console.log(currentUser);
 // const dataResponse = await fetch("data.json");
 // const data = await dataResponse.json();
 const main = document.querySelector("main");
@@ -51,7 +53,7 @@ post["comments"]?.forEach((comment) => {
   const replySection =
     commentsSection.lastChild.querySelector(".reply-section");
   for (const reply of replies) {
-    console.log(reply);
+    // console.log(reply);
     const { user } = reply;
     replySection.insertAdjacentHTML(
       "beforeend",
@@ -144,14 +146,14 @@ main.addEventListener("click", (e) => {
       replySection.insertAdjacentHTML(
         "beforeend",
         `<li>
-                <div class="comment-cont" data-username="annev1990">
+                <div class="comment-cont" data-username="${currentUser.username}">
                   <img
                     class="profile-img"
-                    src="./assets/user-images/image-anne.jpg"
-                    alt="james " />
+                    src="${currentUser.image}"
+                    alt="${currentUser.name}" />
                   <div class="name-cont">
-                    <p class="name jost-bold">Anne Valentine</p>
-                    <p class="username">@annev1990</p>
+                    <p class="name jost-bold">${currentUser.name}</p>
+                    <p class="username">@${currentUser.username}</p>
                   </div>
                   <button class="reply-btn jost-semibold" data-reply-show>
                     Reply
@@ -169,14 +171,14 @@ main.addEventListener("click", (e) => {
       ulReplySection.insertAdjacentHTML(
         "beforeend",
         `<li>
-                <div class="comment-cont" data-username="annev1990">
+                <div class="comment-cont" data-username="${currentUser.username}">
                   <img
                     class="profile-img"
-                    src="./assets/user-images/image-anne.jpg"
-                    alt="james " />
+                    src="${currentUser.image}"
+                    alt="${currentUser.name}" />
                   <div class="name-cont">
-                    <p class="name jost-bold">Anne Valentine</p>
-                    <p class="username">@annev1990</p>
+                    <p class="name jost-bold">${currentUser.name}/p>
+                    <p class="username">@${currentUser.username}</p>
                   </div>
                   <button class="reply-btn jost-semibold" data-reply-show>
                     Reply
@@ -207,14 +209,14 @@ main.addEventListener("click", (e) => {
       const commentSection = document.querySelector(".comments-section");
       commentSection.insertAdjacentHTML(
         "beforeend",
-        `<div class="comment-cont" data-username="hexagon.bestagon">
+        `<div class="comment-cont" data-username="${currentUser.username}">
             <img
               class="profile-img"
-              src="./assets/user-images/image-elijah.jpg"
-              alt="elijah " />
+              src="${currentUser.image}"
+              alt="${currentUser.name}" />
             <div class="name-cont">
-              <p class="name jost-bold">Elijah Moss</p>
-              <p class="username">@hexagon.bestagon</p>
+              <p class="name jost-bold">${currentUser.name}</p>
+              <p class="username">@${currentUser.username}</p>
             </div>
             <button data-reply-show class="reply-btn jost-semibold">
               Reply
