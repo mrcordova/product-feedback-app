@@ -328,6 +328,26 @@ main {
     grid-column: 1 / -1;
     display: none;
     flex-direction: column;
+    padding-block-start: clamp(1.5rem, calc(1.023rem + 2.036vw), 2rem);
+    row-gap: 1.5rem;
+
+    & .post-header-cont {
+      display: flex;
+      flex-direction: column;
+
+      & .post-header {
+        font-size: clamp(0.875rem, calc(1.364rem + -1.018vw), 1.125rem);
+        letter-spacing: clamp(-0.016rem, calc(-0.019rem + 0.015vw), -0.012rem);
+        color: var(--american-bluish);
+        line-height: 1.44;
+      }
+
+      & .post-subheader {
+        font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem);
+        line-height: 1.46;
+        color: var(--dark-blue-gray);
+      }
+    }
   }
 }
 
@@ -353,6 +373,9 @@ main {
     padding-block: 1.25rem 1.03125rem;
     flex: 1;
     border-bottom: 4px solid transparent;
+    font-size: 0.813rem;
+    letter-spacing: -0.011rem;
+
     & input[type="radio"] {
       display: none;
     }
@@ -407,10 +430,6 @@ main {
 
 @media (min-width: 48rem) {
   body {
-    /* gap: clamp(1.875rem, calc(3.214rem + -1.488vw), 2.5rem); */
-    /* padding-inline: clamp(0rem, calc(5.223rem + -5.804vw), 2.438rem)
-      clamp(0rem, calc(5.357rem + -5.952vw), 2.5rem); */
-
     padding-block: clamp(3.5rem, calc(1.929rem + 3.274vw), 4.875rem)
       clamp(5.938rem, calc(-0.062rem + 12.5vw), 11.188rem);
 
@@ -424,7 +443,8 @@ main {
 
   .posts {
     margin-inline: 0;
-    gap: clamp(1rem, calc(0.714rem + 0.595vw), 1.25rem);
+    /* gap: clamp(1rem, calc(0.714rem + 0.595vw), 1.25rem); */
+    gap: clamp(1rem, calc(0.429rem + 1.19vw), 1.5rem);
 
     & .post {
       padding-inline: clamp(1.563rem, calc(1.063rem + 1.042vw), 2rem)
@@ -455,9 +475,31 @@ main {
   .post-grid {
     grid-template-columns: 1fr 1fr 1fr;
     margin-inline: 0;
+    column-gap: clamp(0.625rem, calc(-0.804rem + 2.976vw), 1.875rem);
 
     & .posts-col {
       display: flex;
+      padding-block-start: clamp(2rem, calc(0.857rem + 2.381vw), 3rem);
+      row-gap: clamp(1.5rem, calc(0.929rem + 1.19vw), 2rem);
+
+      & .post-header-cont {
+        & .post-header {
+          font-size: clamp(0.875rem, calc(0.589rem + 0.595vw), 1.125rem);
+          letter-spacing: clamp(
+            -0.016rem,
+            calc(-0.008rem + -0.015vw),
+            -0.012rem
+          );
+
+          line-height: 1.43;
+        }
+
+        & .post-subheader {
+          /* font-size: clamp(0.813rem, calc(0.753rem + 0.254vw), 0.875rem); */
+          font-size: clamp(0.875rem, calc(0.756rem + 0.509vw), 1rem);
+          line-height: 1.43;
+        }
+      }
     }
 
     & .planned-col {
