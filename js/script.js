@@ -9,7 +9,10 @@ const body = document.querySelector("body");
 const popover = document.getElementById("sidebar");
 const posts = document.querySelector(".posts");
 const suggestions = getStatusArray("suggestion");
-
+const search = {
+  category: "all",
+  sortBy: "most-upvotes",
+};
 for (const suggestion of suggestions) {
   posts.insertAdjacentHTML(
     "beforeend",
@@ -61,9 +64,6 @@ body.addEventListener("click", (e) => {
   const goRoadmap = e.target.closest("[data-go-roadmap]");
 
   if (postEle) {
-    // console.log(postEle.parentElement.dataset.id);
-    // console.log(getPost(postEle.parentElement.dataset.id));
-
     const post = getPost(postEle.parentElement.dataset.id);
 
     localStorage.setItem(
@@ -114,6 +114,18 @@ body.addEventListener("click", (e) => {
     );
     for (const token of tokens) {
       token.children[0].checked = true;
+    }
+    // console.log(token.dataset.token);
+    search.category = token.dataset.token;
+    // console.log(token.dataset.token);
+    for (const post of posts.children) {
+      const postCategory = post.querySelector(".token");
+
+      post.classList.toggle(
+        "hide",
+        postCategory.textContent.trim().toLowerCase() !==
+          search.category.toLowerCase()
+      );
     }
   } else if (popoverMenu) {
     popover.togglePopover();
