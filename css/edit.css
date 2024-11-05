@@ -177,10 +177,21 @@ main {
     padding-inline: clamp(1rem, calc(0.583rem + 1.781vw), 1.438rem);
     padding-block: 1rem;
     color: var(--american-bluish);
+
+    &:not(:has(+ .hide)) {
+      outline: 1px solid red;
+    }
   }
 
   & .subheader {
     color: var(--dark-blue-gray);
+  }
+  & .error {
+    color: red;
+  }
+
+  & .hide {
+    display: none;
   }
 }
 .dropdown-cont {
