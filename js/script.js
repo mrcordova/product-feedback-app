@@ -13,6 +13,45 @@ const search = {
   category: "all",
   sortBy: "most-upvotes",
 };
+const sortFuncs = {
+  "most-upvotes": sortByMostVotes,
+  "least-upvotes": sortByLeastVotes,
+  "most-comments": sortByMostComments,
+  "least-comments": sortByLeastComments,
+};
+function sortByMostVotes(a, b) {
+  const aLikes = parseInt(a.querySelector("[data-likes]").dataset.likes);
+  const bLikes = parseInt(b.querySelector("[data-likes]").dataset.likes);
+
+  return bLikes - aLikes;
+}
+function sortByLeastVotes(a, b) {
+  const aLikes = parseInt(a.querySelector("[data-likes]").dataset.likes);
+  const bLikes = parseInt(b.querySelector("[data-likes]").dataset.likes);
+
+  return aLikes - bLikes;
+}
+function sortByMostComments(a, b) {
+  const aComments = parseInt(
+    a.querySelector("[data-comments]").dataset.comments
+  );
+  const bComments = parseInt(
+    b.querySelector("[data-comments]").dataset.comments
+  );
+
+  return bComments - aComments;
+}
+function sortByLeastComments(a, b) {
+  const aComments = parseInt(
+    a.querySelector("[data-comments]").dataset.comments
+  );
+  const bComments = parseInt(
+    b.querySelector("[data-comments]").dataset.comments
+  );
+
+  return aComments - bComments;
+}
+
 for (const suggestion of suggestions) {
   posts.insertAdjacentHTML(
     "beforeend",
@@ -46,7 +85,9 @@ for (const suggestion of suggestions) {
           </div>
           <div class="comments-cont jost-bold" data-post="">
             <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
-            <span>${suggestion["comments"]?.length ?? 0}</span>
+            <span data-comments="${suggestion["comments"]?.length ?? 0}">${
+      suggestion["comments"]?.length ?? 0
+    }</span>
           </div>
         </div>`
   );
@@ -115,9 +156,7 @@ body.addEventListener("click", (e) => {
     for (const token of tokens) {
       token.children[0].checked = true;
     }
-    // console.log(token.dataset.token);
     search.category = token.dataset.token;
-    // console.log(token.dataset.token);
     for (const post of posts.children) {
       const postCategory = post.querySelector(".token");
 
@@ -134,6 +173,9 @@ body.addEventListener("click", (e) => {
 
     sortByInput.checked = !sortByInput.checked;
   } else if (labelSortByChoice) {
+    // console.log(labelSortByChoice);
+    search.sortBy = labelSortByChoice.dataset.sortByChoice;
+    // console.log(search.sortBy);
     const sortByChoiceInput = labelSortByChoice.querySelector("input");
     const sortByInput = body.querySelector("#sortByInput");
     const sortByName = sortByInput.parentElement.querySelector(
@@ -149,5 +191,10 @@ body.addEventListener("click", (e) => {
 
     sortByChoiceInput.checked = !sortByChoiceInput.checked;
     sortByInput.checked = !sortByInput.checked;
+
+    // console.log(sortFuncs[search.sortBy]);
+    [...posts.children]
+      .sort(sortFuncs[search.sortBy])
+      .forEach((node) => posts.appendChild(node));
   }
 });
