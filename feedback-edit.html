@@ -29,7 +29,9 @@
           class="edit-img"
           src="./assets/shared/icon-edit-feedback.svg"
           alt="pen" />
-        <h1 class="title jost-bold">Editing 'Add a dark theme option'</h1>
+        <h1 class="title jost-bold" data-header>
+          Editing 'Add a dark theme option'
+        </h1>
         <form class="editing-form">
           <label>
             <span class="header jost-bold">Feedback Title</span>
@@ -44,7 +46,7 @@
             <label>
               <span class="header jost-bold">Category</span>
               <span class="subheader">Choose a category for your feedback</span>
-              <span class="dropdown-cont">Feature</span>
+              <span data-category class="dropdown-cont">Feature</span>
               <input type="checkbox" name="category" id="category" />
             </label>
             <menu class="dropdown-content">
@@ -89,7 +91,7 @@
             <label>
               <span class="header jost-bold">Update Status</span>
               <span class="subheader">Change feature state</span>
-              <span class="dropdown-cont">Planned</span>
+              <span data-status class="dropdown-cont">Planned</span>
               <input type="checkbox" name="status" id="status" />
             </label>
             <menu class="dropdown-content">
@@ -130,6 +132,7 @@
               etc
             </span>
             <textarea name="detail" id="detail"></textarea>
+            <span class="error hide">Can't be empty</span>
           </label>
         </form>
         <div class="btns-cont jost-bold">

@@ -195,6 +195,7 @@ main {
   }
 }
 .dropdown-cont {
+  text-transform: capitalize;
   margin-block-start: 1rem;
   border-radius: 0.3125rem;
   padding-block: clamp(0.813rem, calc(1.057rem + -0.509vw), 0.938rem)

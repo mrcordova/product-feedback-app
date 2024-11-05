@@ -6,7 +6,7 @@ import {
   getPost,
   currentUser,
 } from "./event-delegation.js";
-console.log(currentUser);
+// console.log(currentUser);
 // const dataResponse = await fetch("data.json");
 // const data = await dataResponse.json();
 const main = document.querySelector("main");
@@ -99,6 +99,8 @@ addCommentTextArea.addEventListener("input", (e) => {
   }
 });
 
+// console.log(post);
+
 main.addEventListener("click", (e) => {
   e.preventDefault();
   //   e.stopImmediatePropagation();
@@ -114,6 +116,7 @@ main.addEventListener("click", (e) => {
     // history.back();
     goBack();
   } else if (goEditFeedbackBtn) {
+    localStorage.setItem("post_id", post.id);
     location.href = "feedback-edit.html";
     // } else if (postEle) {
     // e.stopImmediatePropagation();
