@@ -9,6 +9,13 @@ const body = document.querySelector("body");
 const popover = document.getElementById("sidebar");
 const posts = document.querySelector(".posts");
 const suggestions = getStatusArray("suggestion");
+const statusPosts = document.querySelectorAll(".stage-post-cont");
+const statuses = {
+  planned: getStatusArray("planned"),
+  "in-progress": getStatusArray("in-progress"),
+  live: getStatusArray("live"),
+};
+// console.log(status);
 const search = {
   category: "all",
   sortBy: "most-upvotes",
@@ -50,6 +57,14 @@ function sortByLeastComments(a, b) {
   );
 
   return aComments - bComments;
+}
+
+for (const statusPost of statusPosts) {
+  const postStatus = statusPost.querySelector("[data-status]");
+  // console.log(statuses[postStatus.dataset.status]);
+  statusPost.children[1].textContent = `${
+    statuses[postStatus.dataset.status].length
+  }`;
 }
 
 for (const suggestion of suggestions) {
@@ -192,7 +207,6 @@ body.addEventListener("click", (e) => {
     sortByChoiceInput.checked = !sortByChoiceInput.checked;
     sortByInput.checked = !sortByInput.checked;
 
-    // console.log(sortFuncs[search.sortBy]);
     [...posts.children]
       .sort(sortFuncs[search.sortBy])
       .forEach((node) => posts.appendChild(node));
