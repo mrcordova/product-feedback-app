@@ -1,17 +1,83 @@
 // console.log(localStorage.getItem("post"));
-import { goBack, updateLikesCounter } from "./event-delegation.js";
-const dataResponse = await fetch("data.json");
-const data = await dataResponse.json();
+import {
+  goBack,
+  updateLikesCounter,
+  data,
+  getPost,
+} from "./event-delegation.js";
+// const dataResponse = await fetch("data.json");
+// const data = await dataResponse.json();
 const main = document.querySelector("main");
 const addCommentTextArea = document.querySelector("#add-comment");
 const chararctLeftEle = document.querySelector("[data-comment-count]");
 const totalCommentCount = document.querySelector("[data-total-comment]");
+const commentsSection = document.querySelector(".comments-section");
+
 const CHAR_MAX = 250;
 
-console.log(data);
+// console.log(data);
 
 const postWrapper = document.querySelector("[data-post-wrapper]");
 postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
+const post = getPost(localStorage.getItem("post_id"));
+
+// console.log(post);
+post["comments"]?.forEach((comment) => {
+  // console.log(comment);
+  const replies = comment["replies"] ?? [];
+  commentsSection.insertAdjacentHTML(
+    "beforeend",
+    `<div class="comment-cont" data-username="hexagon.bestagon" data-user-id="${
+      comment.id
+    }">
+            <img
+              class="profile-img"
+              src="${comment.user.image}"
+              alt="${comment.user.name} " />
+            <div class="name-cont">
+              <p class="name jost-bold">${comment.user.name}</p>
+              <p class="username">@${comment.user.username}/p>
+            </div>
+            <button data-reply-show class="reply-btn jost-semibold">
+              Reply
+            </button>
+            <p class="reply-para">
+              ${comment.content}
+            </p>
+            ${replies.length > 0 ? '<div class="reply-border"></div>' : ""}
+            <ul class="reply-section"></ul>
+          </div>`
+  );
+  const replySection =
+    commentsSection.lastChild.querySelector(".reply-section");
+  for (const reply of replies) {
+    console.log(reply);
+    const { user } = reply;
+    replySection.insertAdjacentHTML(
+      "beforeend",
+      `<li>
+                <div class="comment-cont" data-username="${user.username}">
+                  <img
+                    class="profile-img"
+                    src="${user.image}"
+                    alt="${user.name} " />
+                  <div class="name-cont">
+                    <p class="name jost-bold">${user.name}</p>
+                    <p class="username">@${user.username}</p>
+                  </div>
+                  <button class="reply-btn jost-semibold" data-reply-show>
+                    Reply
+                  </button>
+                  <p class="reply-para">
+                    <span class="reply-to jost-bold">@${reply.replyingTo}</span>
+                    ${reply.content}
+                  </p>
+                 
+                </div>
+              </li>`
+    );
+  }
+});
 
 function checkTextAreaLength(value) {}
 addCommentTextArea.addEventListener("input", (e) => {
@@ -35,8 +101,7 @@ main.addEventListener("click", (e) => {
   const replyCont = e.target.closest("[data-reply-show ]");
   const replyToBtn = e.target.closest("[data-reply-to]");
   const postCommentBtn = e.target.closest("[data-post-comment]");
-  //   console.log(e.target);
-  //   console.log(e.currentTarget);
+
   if (goBackBtn) {
     // history.back();
     goBack();
