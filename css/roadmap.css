@@ -57,7 +57,7 @@ main {
   /* gap: clamp(1.5rem, calc(2.477rem + -2.036vw), 2rem); */
 }
 
-.roadmap-cont {
+/* .roadmap-cont {
   display: flex;
   flex-direction: column;
   background-color: var(--white);
@@ -112,7 +112,7 @@ main {
     flex-direction: column;
     gap: 0.5rem;
   }
-}
+} */
 
 [data-status="planned"] {
   background-color: var(--vivid-targine);
@@ -221,8 +221,10 @@ main {
     "likes comments";
 
   align-items: center;
-  padding-inline: clamp(1.563rem, calc(1.622rem + -0.254vw), 1.5rem) 1.5rem;
-  padding-block: 1.5rem;
+  padding-inline: clamp(1.25rem, calc(1.739rem + -1.018vw), 1.5rem);
+  padding-block: clamp(1.25rem, calc(1.494rem + -0.509vw), 1.375rem) 1.5rem;
+  /* padding-inline: clamp(1.563rem, calc(1.622rem + -0.254vw), 1.5rem) 1.5rem; */
+  /* padding-block: 1.5rem; */
 
   &:has([data-status="planned"]) {
     border-top: 6px solid var(--vivid-targine);
@@ -240,18 +242,28 @@ main {
     grid-area: info;
 
     & h2 {
-      font-size: clamp(0.813rem, calc(0.514rem + 1.272vw), 1.125rem);
+      /* font-size: clamp(0.813rem, calc(0.514rem + 1.272vw), 1.125rem); */
+      font-size: 0.813rem;
+
+      letter-spacing: -0.011rem;
+      line-height: 1.46;
+
       letter-spacing: clamp(-0.016rem, calc(-0.007rem + -0.018vw), -0.011rem);
       line-height: 1.46;
       color: var(--american-bluish);
-      margin-block-end: clamp(0.25rem, calc(0.861rem + -1.272vw), 0.563rem);
+      /* margin-block-end: clamp(0.25rem, calc(0.861rem + -1.272vw), 0.563rem); */
+      margin-block-end: 0.563rem;
+      /* tablet to desktop */
+      /* margin-block-end: clamp(0.563rem, calc(0.92rem + -0.744vw), 0.25rem); */
     }
 
     & p {
-      font-size: clamp(0.813rem, calc(0.634rem + 0.763vw), 1rem);
+      /* font-size: clamp(0.813rem, calc(0.634rem + 0.763vw), 1rem); */
+      font-size: 0.813rem;
       line-height: 1.46;
       color: var(--dark-blue-gray);
-      margin-block-end: clamp(0.75rem, calc(1.239rem + -1.018vw), 1rem);
+      /* margin-block-end: clamp(0.75rem, calc(1.239rem + -1.018vw), 1rem); */
+      margin-block-end: clamp(0.5rem, calc(-0.454rem + 4.071vw), 1.5rem);
     }
 
     &:is(:hover, :has(+ .comments-cont:hover)) {
@@ -276,11 +288,14 @@ main {
     line-height: 1.46;
     gap: clamp(0.5rem, calc(0.744rem + -0.509vw), 0.625rem);
     color: var(--american-bluish);
-    padding-inline: clamp(0.719rem, calc(1.268rem + -1.145vw), 1rem)
-      clamp(0.719rem, calc(0.902rem + -0.382vw), 0.813rem);
+    /* padding-inline: clamp(0.719rem, calc(1.268rem + -1.145vw), 1rem)
+      clamp(0.719rem, calc(0.902rem + -0.382vw), 0.813rem); */
 
-    padding-block: clamp(0.375rem, calc(-0.102rem + 2.036vw), 0.875rem)
-      clamp(0.438rem, calc(0.378rem + 0.254vw), 0.5rem);
+    padding-inline: 1rem clamp(0.813rem, calc(0.663rem + 0.636vw), 0.969rem);
+    padding-block: 0.375rem 0.438rem;
+
+    /* padding-block: clamp(0.375rem, calc(-0.102rem + 2.036vw), 0.875rem)
+      clamp(0.438rem, calc(0.378rem + 0.254vw), 0.5rem); */
 
     &:hover {
       cursor: pointer;
@@ -398,8 +413,11 @@ main {
 .status-cont {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.5rem, calc(0.023rem + 2.036vw), 1rem);
   grid-area: status;
+  font-size: 0.813rem;
+  color: var(--dark-blue-gray);
+  margin-block-end: clamp(0.875rem, calc(1.119rem + -0.509vw), 1rem);
 }
 
 .status-post-color {
@@ -447,24 +465,38 @@ main {
     gap: clamp(1rem, calc(0.429rem + 1.19vw), 1.5rem);
 
     & .post {
-      padding-inline: clamp(1.563rem, calc(1.063rem + 1.042vw), 2rem)
+      /* padding-inline: clamp(1.563rem, calc(1.063rem + 1.042vw), 2rem)
         clamp(1.5rem, calc(0.929rem + 1.19vw), 2rem);
-      padding-block: clamp(1.5rem, calc(1.214rem + 0.595vw), 1.75rem);
+      padding-block: clamp(1.5rem, calc(1.214rem + 0.595vw), 1.75rem); */
+      padding-inline: clamp(1.25rem, calc(0.393rem + 1.786vw), 2rem);
 
+      padding-block: clamp(1.25rem, calc(0.893rem + 0.744vw), 1.563rem)
+        clamp(1.5rem, calc(1.023rem + 2.036vw), 2rem);
       & .info-cont {
         /* padding-inline-start: 2.5rem; */
-        padding-block-end: 0;
+        /* padding-block-end: 0; */
         & h2 {
           line-height: 1.44;
+          font-size: clamp(0.813rem, calc(0.455rem + 0.744vw), 1.125rem);
+          letter-spacing: clamp(
+            -0.016rem,
+            calc(-0.006rem + -0.01vw),
+            -0.011rem
+          );
+          margin-block-end: clamp(0.25rem, calc(0.92rem + -0.744vw), 0.563rem);
         }
 
         & p {
           line-height: 1.4375;
+          margin-block-end: clamp(1.5rem, calc(2.071rem + -1.19vw), 1rem);
+          font-size: clamp(0.813rem, calc(0.598rem + 0.446vw), 1rem);
         }
       }
 
       & .likes-cont {
         /* flex-direction: column; */
+        padding-block: clamp(0.375rem, calc(0.018rem + 0.744vw), 0.688rem)
+          clamp(0.438rem, calc(0.223rem + 0.446vw), 0.625rem);
       }
 
       & .comments-cont {
@@ -513,7 +545,10 @@ main {
       grid-column: 3 / span 1;
     }
   }
-
+  .status-cont {
+    font-size: clamp(0.813rem, calc(0.598rem + 0.446vw), 1rem);
+    margin-block-end: clamp(0.5rem, calc(1.304rem + -0.893vw), 0.875rem);
+  }
   .status-tabs-cont {
     display: none;
   }
@@ -524,13 +559,4 @@ main {
 }
 
 @media (min-width: 90rem) {
-  /* .post {
-    grid-template-areas:
-      "likes info comments"
-      ". info comments";
-  } */
-  /* body {
-    flex-direction: row;
-    justify-content: center;
-  } */
 }
