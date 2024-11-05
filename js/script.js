@@ -10,10 +10,12 @@ const popover = document.getElementById("sidebar");
 const posts = document.querySelector(".posts");
 const suggestions = getStatusArray("suggestion");
 const statusPosts = document.querySelectorAll(".stage-post-cont");
+const suggestionHeader = document.querySelector(".suggestions-cont");
 const statuses = {
   planned: getStatusArray("planned"),
   "in-progress": getStatusArray("in-progress"),
   live: getStatusArray("live"),
+  suggestion: getStatusArray("suggestion"),
 };
 // console.log(status);
 const search = {
@@ -58,6 +60,8 @@ function sortByLeastComments(a, b) {
 
   return aComments - bComments;
 }
+
+suggestionHeader.children[1].textContent = `${statuses["suggestion"].length} Suggestions`;
 
 for (const statusPost of statusPosts) {
   const postStatus = statusPost.querySelector("[data-status]");
