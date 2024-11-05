@@ -2,6 +2,7 @@ import {
   updateLikesCounter,
   data,
   getStatusArray,
+  getPost,
 } from "./event-delegation.js";
 console.log(data);
 const body = document.querySelector("body");
@@ -12,11 +13,13 @@ const suggestions = getStatusArray("suggestion");
 for (const suggestion of suggestions) {
   posts.insertAdjacentHTML(
     "beforeend",
-    `<div class="post">
-          <label class="likes-cont jost-bold" data-checked="false">
-            <input type="checkbox" name="likes" id="add-tags-for-solutions-${
-              suggestion.id
-            }" />
+    `<div class="post" data-id="${suggestion.id}">
+           <label class="likes-cont jost-bold" data-checked="${
+             suggestion.liked ?? false
+           }"  >
+            <input type="checkbox" name="likes" id="${suggestion.title}-${
+      suggestion.id
+    }"  ${suggestion.liked ? "checked" : ""}/>
             <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M1 6l4-4 4 4"
@@ -58,18 +61,47 @@ body.addEventListener("click", (e) => {
   const goRoadmap = e.target.closest("[data-go-roadmap]");
 
   if (postEle) {
-    console.log(postEle);
+    // console.log(postEle.parentElement.dataset.id);
+    // console.log(getPost(postEle.parentElement.dataset.id));
 
+    const post = getPost(postEle.parentElement.dataset.id);
+
+    localStorage.setItem(
+      "post",
+      `<div class="post" data-id="${post.id}">
+          <label class="likes-cont jost-bold" data-checked="${
+            post.liked ?? false
+          }"  >
+            <input type="checkbox" name="likes" id="add-tags-for-solutions-${
+              post.id
+            }"  ${post.liked ? "checked" : ""}/>
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 6l4-4 4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd" />
+            </svg>
+            <span data-likes="${post.upvotes}">${post.upvotes}</span>
+          </label>
+          <div class="info-cont" data-post="">
+            <h2 class="jost-bold">${post.title}</h2>
+            <p>${post.description}</p>
+            <div class="token jost-semibold">${
+              post.category.length == 2
+                ? post.category.toUpperCase()
+                : post.category
+            }</div>
+          </div>
+          <div class="comments-cont jost-bold" data-post="">
+            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+            <span>${post["comments"]?.length ?? 0}</span>
+          </div>
+        </div>`
+    );
+    localStorage.setItem("post_id", postEle.parentElement.dataset.id);
     location.href = "feedback-detail.html";
-
-    localStorage.setItem("post", postEle.parentElement.outerHTML);
-    localStorage.setItem("post_id", 1);
-
-    // console.log(localStorage.getItem("post"));
-    // postEle.parentElement.parentElement.insertAdjacentHTML(
-    //   "beforeend",
-    //   localStorage.getItem("post")
-    // );
   } else if (labelEle) {
     updateLikesCounter(labelEle);
   } else if (newFeedbackBtn) {
