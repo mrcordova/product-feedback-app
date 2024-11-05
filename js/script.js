@@ -1,6 +1,50 @@
-import { updateLikesCounter } from "./event-delegation.js";
+import {
+  updateLikesCounter,
+  data,
+  getStatusArray,
+} from "./event-delegation.js";
+console.log(data);
 const body = document.querySelector("body");
 const popover = document.getElementById("sidebar");
+const posts = document.querySelector(".posts");
+const suggestions = getStatusArray("suggestion");
+
+for (const suggestion of suggestions) {
+  posts.insertAdjacentHTML(
+    "beforeend",
+    `<div class="post">
+          <label class="likes-cont jost-bold" data-checked="false">
+            <input type="checkbox" name="likes" id="add-tags-for-solutions-${
+              suggestion.id
+            }" />
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 6l4-4 4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd" />
+            </svg>
+            <span data-likes="${suggestion.upvotes}">${
+      suggestion.upvotes
+    }</span>
+          </label>
+          <div class="info-cont" data-post="">
+            <h2 class="jost-bold">${suggestion.title}</h2>
+            <p>${suggestion.description}</p>
+            <div class="token jost-semibold">${
+              suggestion.category.length == 2
+                ? suggestion.category.toUpperCase()
+                : suggestion.category
+            }</div>
+          </div>
+          <div class="comments-cont jost-bold" data-post="">
+            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+            <span>${suggestion["comments"]?.length ?? 0}</span>
+          </div>
+        </div>`
+  );
+}
 
 body.addEventListener("click", (e) => {
   e.preventDefault();
@@ -12,8 +56,6 @@ body.addEventListener("click", (e) => {
   const labelSortByChoice = e.target.closest("[data-sort-by-choice]");
   const newFeedbackBtn = e.target.closest("[data-go-new]");
   const goRoadmap = e.target.closest("[data-go-roadmap]");
-
-  // console.log(e.target);
 
   if (postEle) {
     console.log(postEle);

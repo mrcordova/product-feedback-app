@@ -1,3 +1,21 @@
+export const data = await (await fetch("data.json")).json();
+
+// console.log(data);
+
+export function getStatusArray(status = "suggestion") {
+  // console.log(data);
+  const productRequests = data["productRequests"];
+  const results = [];
+
+  for (const productRequest of productRequests) {
+    if (productRequest.status === status) {
+      results.push(productRequest);
+    }
+  }
+  console.log(results);
+  return results;
+}
+
 export function updateLikesCounter(labelEle) {
   // console.log("here");
   const input = labelEle.querySelector("input");

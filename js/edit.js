@@ -1,3 +1,5 @@
+import { goBack } from "./event-delegation";
+
 const main = document.querySelector("main");
 
 main.addEventListener("click", (e) => {
@@ -5,6 +7,6 @@ main.addEventListener("click", (e) => {
   const goBackBtn = e.target.closest("[data-go-back]");
 
   if (goBackBtn) {
-    history.back();
+    goBack();
   }
 });
