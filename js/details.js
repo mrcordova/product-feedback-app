@@ -14,7 +14,7 @@ const addCommentTextArea = document.querySelector("#add-comment");
 const chararctLeftEle = document.querySelector("[data-comment-count]");
 const totalCommentCount = document.querySelector("[data-total-comment]");
 const commentsSection = document.querySelector(".comments-section");
-
+const totalComments = document.querySelector("[data-total-comment]");
 const CHAR_MAX = 250;
 
 // console.log(data);
@@ -23,10 +23,13 @@ const postWrapper = document.querySelector("[data-post-wrapper]");
 postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
 const post = getPost(localStorage.getItem("post_id"));
 
+let totalCommentsCount = 0;
 // console.log(post);
 post["comments"]?.forEach((comment) => {
   // console.log(comment);
+  totalCommentsCount += 1;
   const replies = comment["replies"] ?? [];
+  totalCommentsCount += replies.length;
   commentsSection.insertAdjacentHTML(
     "beforeend",
     `<div class="comment-cont" data-username="hexagon.bestagon" data-user-id="${
@@ -38,7 +41,7 @@ post["comments"]?.forEach((comment) => {
               alt="${comment.user.name} " />
             <div class="name-cont">
               <p class="name jost-bold">${comment.user.name}</p>
-              <p class="username">@${comment.user.username}/p>
+              <p class="username">@${comment.user.username}</p>
             </div>
             <button data-reply-show class="reply-btn jost-semibold">
               Reply
@@ -80,6 +83,9 @@ post["comments"]?.forEach((comment) => {
     );
   }
 });
+
+totalComments.setAttribute("data-total-comment", totalCommentsCount);
+totalComments.textContent = `${totalComments.dataset.totalComment} Comments`;
 
 function checkTextAreaLength(value) {}
 addCommentTextArea.addEventListener("input", (e) => {
