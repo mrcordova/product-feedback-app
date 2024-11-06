@@ -13,6 +13,7 @@
     <title>Frontend Mentor | Product feedback app</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/edit.css" />
+    <script type="module" src="js/new.js"></script>
     <!-- <script type="module" src="js/edit.js"></script> -->
   </head>
 
@@ -34,17 +35,13 @@
           <label>
             <span class="header jost-bold">Feedback Title</span>
             <span class="subheader">Add a short, descriptive headline</span>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Please add a dark theme option" />
+            <input type="text" name="title" id="title" placeholder="" />
           </label>
           <div class="dropdown-div">
             <label>
               <span class="header jost-bold">Category</span>
               <span class="subheader">Choose a category for your feedback</span>
-              <span class="dropdown-cont">Feature</span>
+              <span class="dropdown-cont" data-category>Feature</span>
               <input type="checkbox" name="category" id="category" />
             </label>
             <menu class="dropdown-content">
