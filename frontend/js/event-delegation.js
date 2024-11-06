@@ -1,4 +1,4 @@
-export const data = await (await fetch("data.json")).json();
+export const data = await (await fetch("../data.json")).json();
 export const currentUser = data["currentUser"];
 
 // console.log(data);

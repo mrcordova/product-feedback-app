@@ -79,6 +79,7 @@ for (const col of cols) {
 
 // console.log(plannedCol);
 main.addEventListener("click", (e) => {
+  e.preventDefault();
   const goBackBtn = e.target.closest("[data-go-back]");
   const addNewFeedbackBtn = e.target.closest("[data-go-new]");
   const postEle = e.target.closest("[data-post]");
