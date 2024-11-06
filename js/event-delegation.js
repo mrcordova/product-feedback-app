@@ -50,6 +50,39 @@ export function updateLikesCounter(labelEle) {
   post["upvotes"] = likesSpan.dataset.likes;
 }
 
+export function sortByMostVotes(a, b) {
+  const aLikes = parseInt(a.querySelector("[data-likes]").dataset.likes);
+  const bLikes = parseInt(b.querySelector("[data-likes]").dataset.likes);
+
+  return bLikes - aLikes;
+}
+export function sortByLeastVotes(a, b) {
+  const aLikes = parseInt(a.querySelector("[data-likes]").dataset.likes);
+  const bLikes = parseInt(b.querySelector("[data-likes]").dataset.likes);
+
+  return aLikes - bLikes;
+}
+export function sortByMostComments(a, b) {
+  const aComments = parseInt(
+    a.querySelector("[data-comments]").dataset.comments
+  );
+  const bComments = parseInt(
+    b.querySelector("[data-comments]").dataset.comments
+  );
+
+  return bComments - aComments;
+}
+export function sortByLeastComments(a, b) {
+  const aComments = parseInt(
+    a.querySelector("[data-comments]").dataset.comments
+  );
+  const bComments = parseInt(
+    b.querySelector("[data-comments]").dataset.comments
+  );
+
+  return aComments - bComments;
+}
+
 export function goBack() {
   history.back();
 }

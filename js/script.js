@@ -3,6 +3,10 @@ import {
   data,
   getStatusArray,
   getPost,
+  sortByMostVotes,
+  sortByLeastVotes,
+  sortByMostComments,
+  sortByLeastComments,
 } from "./event-delegation.js";
 console.log(data);
 const body = document.querySelector("body");
@@ -28,38 +32,6 @@ const sortFuncs = {
   "most-comments": sortByMostComments,
   "least-comments": sortByLeastComments,
 };
-function sortByMostVotes(a, b) {
-  const aLikes = parseInt(a.querySelector("[data-likes]").dataset.likes);
-  const bLikes = parseInt(b.querySelector("[data-likes]").dataset.likes);
-
-  return bLikes - aLikes;
-}
-function sortByLeastVotes(a, b) {
-  const aLikes = parseInt(a.querySelector("[data-likes]").dataset.likes);
-  const bLikes = parseInt(b.querySelector("[data-likes]").dataset.likes);
-
-  return aLikes - bLikes;
-}
-function sortByMostComments(a, b) {
-  const aComments = parseInt(
-    a.querySelector("[data-comments]").dataset.comments
-  );
-  const bComments = parseInt(
-    b.querySelector("[data-comments]").dataset.comments
-  );
-
-  return bComments - aComments;
-}
-function sortByLeastComments(a, b) {
-  const aComments = parseInt(
-    a.querySelector("[data-comments]").dataset.comments
-  );
-  const bComments = parseInt(
-    b.querySelector("[data-comments]").dataset.comments
-  );
-
-  return aComments - bComments;
-}
 
 suggestionHeader.children[1].textContent = `${statuses["suggestion"].length} Suggestions`;
 

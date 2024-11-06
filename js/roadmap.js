@@ -1,4 +1,9 @@
-import { goBack, getStatusArray, getPost } from "./event-delegation.js";
+import {
+  goBack,
+  getStatusArray,
+  getPost,
+  sortByMostVotes,
+} from "./event-delegation.js";
 const main = document.querySelector("main");
 
 // const planned = getStatusArray("planned");
@@ -65,6 +70,10 @@ for (const col of cols) {
             </div>`
     );
   }
+
+  [...posts.children]
+    .sort(sortByMostVotes)
+    .forEach((node) => posts.appendChild(node));
 }
 
 // console.log(plannedCol);
