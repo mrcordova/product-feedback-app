@@ -41,7 +41,7 @@ const corsOptions = {
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
-app.use(corsOptions);
+app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.use(express.urlencoded({ extended: true }));
