@@ -162,11 +162,13 @@ body.addEventListener("click", (e) => {
     );
     localStorage.setItem("post_id", postEle.parentElement.dataset.id);
     location.href = "feedback-detail.html";
+    // console.log("here");
   } else if (labelEle) {
     updateLikesCounter(labelEle);
   } else if (newFeedbackBtn) {
     location.href = "feedback-new.html";
   } else if (goRoadmap) {
+    // console.log("here");
     location.href = "roadmap.html";
   } else if (token) {
     const tokens = body.querySelectorAll(

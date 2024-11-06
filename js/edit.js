@@ -32,7 +32,6 @@ main.addEventListener("click", (e) => {
   if (goBackBtn) {
     goBack();
   } else if (choice) {
-    // console.log(choice);
     const inputChoice = choice.querySelector('input[type="radio"]');
     const categoryDisplay = choice
       .closest("menu")

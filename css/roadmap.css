@@ -124,6 +124,7 @@ main {
   background-color: var(--maya-blue);
 }
 .token {
+  text-transform: capitalize;
   background-color: var(--alice-blue);
   width: max-content;
   color: var(--royal-blue);
@@ -351,6 +352,7 @@ main {
       flex-direction: column;
 
       & .post-header {
+        text-transform: capitalize;
         font-size: clamp(0.875rem, calc(1.364rem + -1.018vw), 1.125rem);
         letter-spacing: clamp(-0.016rem, calc(-0.019rem + 0.015vw), -0.012rem);
         color: var(--american-bluish);
@@ -411,6 +413,7 @@ main {
   }
 }
 .status-cont {
+  text-transform: capitalize;
   display: flex;
   align-items: center;
   gap: clamp(0.5rem, calc(0.023rem + 2.036vw), 1rem);
