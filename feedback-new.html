@@ -36,12 +36,14 @@
             <span class="header jost-bold">Feedback Title</span>
             <span class="subheader">Add a short, descriptive headline</span>
             <input type="text" name="title" id="title" placeholder="" />
+            <span class="error hide">Can't be empty</span>
           </label>
           <div class="dropdown-div">
             <label>
               <span class="header jost-bold">Category</span>
               <span class="subheader">Choose a category for your feedback</span>
               <span class="dropdown-cont" data-category>Feature</span>
+              <span class="error hide">Can't be empty</span>
               <input type="checkbox" name="category" id="category" />
             </label>
             <menu class="dropdown-content">
@@ -95,7 +97,7 @@
         </form>
         <div class="btns-cont jost-bold">
           <button class="save-btn" data-add-feedback>Add Feedback</button>
-          <button class="cancel-btn">Cancel</button>
+          <button class="cancel-btn" data-cancel>Cancel</button>
         </div>
       </div>
     </main>
