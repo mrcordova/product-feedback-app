@@ -66,8 +66,11 @@ for (const col of cols) {
 // console.log(plannedCol);
 main.addEventListener("click", (e) => {
   const goBackBtn = e.target.closest("[data-go-back]");
+  const addNewFeedbackBtn = e.target.closest("[data-go-new]");
 
   if (goBackBtn) {
     goBack();
+  } else if (addNewFeedbackBtn) {
+    location.href = "feedback-new.html";
   }
 });
