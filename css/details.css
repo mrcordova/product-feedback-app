@@ -383,6 +383,7 @@ main {
   }
 }
 .token {
+  text-transform: capitalize;
   background-color: var(--alice-blue);
   width: max-content;
   color: var(--royal-blue);

@@ -1,4 +1,4 @@
-import { goBack, getStatusArray } from "./event-delegation.js";
+import { goBack, getStatusArray, getPost } from "./event-delegation.js";
 const main = document.querySelector("main");
 
 // const planned = getStatusArray("planned");
@@ -23,7 +23,7 @@ for (const col of cols) {
     // console.log(post);
     posts.insertAdjacentHTML(
       "beforeend",
-      ` <div class="post">
+      ` <div class="post" data-id="${post.id}">
               <div class="status-cont">
                 <div data-status="${
                   post.status
@@ -67,10 +67,50 @@ for (const col of cols) {
 main.addEventListener("click", (e) => {
   const goBackBtn = e.target.closest("[data-go-back]");
   const addNewFeedbackBtn = e.target.closest("[data-go-new]");
+  const postEle = e.target.closest("[data-post]");
 
   if (goBackBtn) {
     goBack();
   } else if (addNewFeedbackBtn) {
     location.href = "feedback-new.html";
+  } else if (postEle) {
+    const post = getPost(postEle.parentElement.dataset.id);
+
+    localStorage.setItem(
+      "post",
+      `<div class="post" data-id="${post.id}">
+          <label class="likes-cont jost-bold" data-checked="${
+            post.liked ?? false
+          }"  >
+            <input type="checkbox" name="likes" id="add-tags-for-solutions-${
+              post.id
+            }"  ${post.liked ? "checked" : ""}/>
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 6l4-4 4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd" />
+            </svg>
+            <span data-likes="${post.upvotes}">${post.upvotes}</span>
+          </label>
+          <div class="info-cont" data-post="">
+            <h2 class="jost-bold">${post.title}</h2>
+            <p>${post.description}</p>
+            <div class="token jost-semibold">${
+              post.category.length == 2
+                ? post.category.toUpperCase()
+                : post.category
+            }</div>
+          </div>
+          <div class="comments-cont jost-bold" data-post="">
+            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+            <span>${post["comments"]?.length ?? 0}</span>
+          </div>
+        </div>`
+    );
+    localStorage.setItem("post_id", postEle.parentElement.dataset.id);
+    location.href = "feedback-detail.html";
   }
 });
