@@ -37,6 +37,7 @@
             <span class="header jost-bold">Feedback Title</span>
             <span class="subheader">Add a short, descriptive headline</span>
             <input type="text" name="title" id="title" placeholder="" />
+            <span class="error hide">Can't be empty</span>
           </label>
           <div class="dropdown-div">
             <label>
@@ -132,9 +133,9 @@
           </label>
         </form>
         <div class="btns-cont jost-bold">
-          <button class="save-btn">Save Changes</button>
-          <button class="cancel-btn">Cancel</button>
-          <button class="delete-btn">Delete</button>
+          <button class="save-btn" data-save>Save Changes</button>
+          <button class="cancel-btn" data-cancel>Cancel</button>
+          <button class="delete-btn" data-delete>Delete</button>
         </div>
       </div>
     </main>

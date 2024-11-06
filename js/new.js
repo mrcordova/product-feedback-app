@@ -40,15 +40,15 @@ main.addEventListener("click", (e) => {
   } else if (dropdownCate) {
     showDropdown(dropdownCate);
   } else if (addFeedbackbtn) {
-    // console.log(addFeedbackbtn);
-    // console.log(title.value);
-    // console.log(category.textContent);
-    // console.log(details.value);
     title.nextElementSibling.classList.toggle("hide", title.value.length !== 0);
     details.nextElementSibling.classList.toggle(
       "hide",
       details.value.length !== 0
     );
+
+    if (title.value.length == 0 || details.value.length == 0) {
+      return;
+    }
 
     const newPost = {
       title: title.value,
