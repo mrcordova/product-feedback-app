@@ -3,6 +3,7 @@ import {
   getStatusArray,
   getPost,
   sortByMostVotes,
+  updateLikesCounter,
 } from "./event-delegation.js";
 const main = document.querySelector("main");
 
@@ -81,6 +82,7 @@ main.addEventListener("click", (e) => {
   const goBackBtn = e.target.closest("[data-go-back]");
   const addNewFeedbackBtn = e.target.closest("[data-go-new]");
   const postEle = e.target.closest("[data-post]");
+  const labelEle = e.target.closest("[data-checked]");
 
   if (goBackBtn) {
     goBack();
@@ -125,5 +127,7 @@ main.addEventListener("click", (e) => {
     );
     localStorage.setItem("post_id", postEle.parentElement.dataset.id);
     location.href = "feedback-detail.html";
+  } else if (labelEle) {
+    updateLikesCounter(labelEle);
   }
 });
