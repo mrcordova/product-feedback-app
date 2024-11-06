@@ -10,12 +10,21 @@ function showDropdown(dropdown) {
   checkboxEle.checked = !checkboxEle.checked;
 }
 
+title.addEventListener("input", (e) => {
+  title.nextElementSibling.classList.toggle("hide", title.value.length > 0);
+});
+
+details.addEventListener("input", (e) => {
+  details.nextElementSibling.classList.toggle("hide", details.value.length > 0);
+});
+
 main.addEventListener("click", (e) => {
   e.preventDefault();
   const goBackBtn = e.target.closest("[data-go-back]");
   const choice = e.target.closest("[data-sort-by-choice]");
   const dropdownCate = e.target.closest("[data-category]");
   const addFeedbackbtn = e.target.closest("[data-add-feedback]");
+  const cancelBtn = e.target.closest("[data-cancel]");
 
   if (goBackBtn) {
     goBack();
@@ -32,9 +41,14 @@ main.addEventListener("click", (e) => {
     showDropdown(dropdownCate);
   } else if (addFeedbackbtn) {
     // console.log(addFeedbackbtn);
-    console.log(title.value);
-    console.log(category.textContent);
-    console.log(details.value);
+    // console.log(title.value);
+    // console.log(category.textContent);
+    // console.log(details.value);
+    title.nextElementSibling.classList.toggle("hide", title.value.length !== 0);
+    details.nextElementSibling.classList.toggle(
+      "hide",
+      details.value.length !== 0
+    );
 
     const newPost = {
       title: title.value,
@@ -43,5 +57,7 @@ main.addEventListener("click", (e) => {
       status: "suggestion",
       upvotes: 0,
     };
+  } else if (cancelBtn) {
+    goBack();
   }
 });
