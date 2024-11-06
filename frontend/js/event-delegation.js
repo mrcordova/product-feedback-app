@@ -1,4 +1,4 @@
-export const data = await (await fetch("../data.json")).json();
+export const data = await (await fetch("../../backend/data.json")).json();
 export const currentUser = data["currentUser"];
 
 // console.log(data);
@@ -37,7 +37,7 @@ export function updateLikesCounter(labelEle) {
   const likesSpan = labelEle.querySelector("[data-likes]");
 
   post["liked"] = !input.checked;
-  console.log(post);
+  // console.log(post);
   input.checked = !input.checked;
   labelEle.setAttribute("data-checked", input.checked);
   likesSpan.setAttribute(
