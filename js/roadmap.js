@@ -50,7 +50,11 @@ for (const col of cols) {
               <div class="info-cont" data-post="">
                 <h2 class="jost-bold">${post.title}</h2>
                 <p>${post.description}</p>
-                <div class="token jost-semibold">${post.category}</div>
+                <div class="token jost-semibold">${
+                  post.category.length == 2
+                    ? post.category.toUpperCase()
+                    : post.category
+                }</div>
               </div>
               <div class="comments-cont jost-bold" data-post="">
                 <img
