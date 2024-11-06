@@ -217,6 +217,10 @@ main {
   & button[data-mobile-menu] {
     min-width: 1.125rem;
     min-height: 1.063rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 .hide-mobile {
@@ -264,6 +268,7 @@ main {
   & input[type="checkbox"] {
     display: none;
   }
+
   & label {
     display: flex;
     align-items: center;
@@ -512,7 +517,7 @@ main {
   }
 }
 .subheader {
-  gap: 2.375rem;
+  gap: clamp(0rem, calc(-2.266rem + 9.669vw), 2.375rem);
   display: flex;
   justify-content: space-between;
   background-color: var(--american-blue);
