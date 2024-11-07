@@ -1,4 +1,9 @@
-import { getPost, goBack, URL, showDropdown } from "./event-delegation.js";
+import {
+  getPost,
+  goBack,
+  showDropdown,
+  BACKEND_URL,
+} from "./event-delegation.js";
 var perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
@@ -12,7 +17,8 @@ const categoryDisplay = document.querySelector("[data-category]");
 const statusDisplay = document.querySelector("[data-status]");
 const feedbackDetail = document.querySelector("#detail");
 
-const post = getPost(localStorage.getItem("post_id"));
+const parsedUrl = new URL(window.location.href);
+const post = getPost(parsedUrl.searchParams.get("id"));
 
 header.textContent = `Editing '${post.title}'`;
 feedbackTitle.value = post.title;
@@ -82,7 +88,7 @@ main.addEventListener("click", async (e) => {
       liked: post.liked,
       upvotes: post.upvotes,
     };
-    const response = await fetch(`${URL}/updatePost/${post.id}`, {
+    const response = await fetch(`${BACKEND_URL}/updatePost/${post.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatePost),
@@ -92,7 +98,7 @@ main.addEventListener("click", async (e) => {
   } else if (deleteBtn) {
     // delete btn
     //remove post
-    const response = await fetch(`${URL}/deletePost/${post.id}`, {
+    const response = await fetch(`${BACKEND_URL}/deletePost/${post.id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });

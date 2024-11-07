@@ -1,4 +1,4 @@
-import { goBack, URL, showDropdown } from "./event-delegation.js";
+import { goBack, BACKEND_URL, showDropdown } from "./event-delegation.js";
 var perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
@@ -58,7 +58,7 @@ main.addEventListener("click", async (e) => {
       liked: false,
     };
 
-    const response = await fetch(`${URL}/addPost`, {
+    const response = await fetch(`${BACKEND_URL}/addPost`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPost),

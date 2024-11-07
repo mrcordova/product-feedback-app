@@ -3,7 +3,7 @@ import {
   updateLikesCounter,
   getPost,
   currentUser,
-  URL,
+  BACKEND_URL,
   getNewCommentId,
 } from "./event-delegation.js";
 const perfEntries = performance.getEntriesByType("navigation");
@@ -11,7 +11,7 @@ const perfEntries = performance.getEntriesByType("navigation");
 if (perfEntries[0].type === "back_forward") {
   location.reload();
 }
-
+const parsedUrl = new URL(window.location.href);
 const main = document.querySelector("main");
 const addCommentTextArea = document.querySelector("#add-comment");
 const chararctLeftEle = document.querySelector("[data-comment-count]");
@@ -21,7 +21,8 @@ const totalComments = document.querySelector("[data-total-comment]");
 const CHAR_MAX = 250;
 
 const postWrapper = document.querySelector("[data-post-wrapper]");
-const post = getPost(localStorage.getItem("post_id"));
+
+const post = getPost(parsedUrl.searchParams.get("id"));
 postWrapper.insertAdjacentHTML(
   "beforeend",
   `<div class="post" data-id="${post.id}">
@@ -140,8 +141,9 @@ main.addEventListener("click", async (e) => {
   if (goBackBtn) {
     goBack();
   } else if (goEditFeedbackBtn) {
-    localStorage.setItem("post_id", post.id);
-    location.href = "feedback-edit.html";
+    // localStorage.setItem("post_id", post.id);
+    location.href = `feedback-edit.html?id=${parsedUrl.searchParams.get("id")}`;
+    // location.href = "feedback-edit.html";
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
   } else if (replyCont) {
@@ -238,7 +240,7 @@ main.addEventListener("click", async (e) => {
       }
     });
 
-    const response = await fetch(`${URL}/updatePost/${post.id}`, {
+    const response = await fetch(`${BACKEND_URL}/updatePost/${post.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(post),
@@ -292,7 +294,7 @@ main.addEventListener("click", async (e) => {
         post.comments = [newComment];
       }
 
-      const response = await fetch(`${URL}/updatePost/${post.id}`, {
+      const response = await fetch(`${BACKEND_URL}/updatePost/${post.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(post),

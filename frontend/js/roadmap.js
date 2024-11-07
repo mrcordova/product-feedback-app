@@ -90,8 +90,8 @@ main.addEventListener("click", async (e) => {
   } else if (addNewFeedbackBtn) {
     location.href = "feedback-new.html";
   } else if (postEle) {
-    localStorage.setItem("post_id", postEle.parentElement.dataset.id);
-    location.href = "feedback-detail.html";
+    // localStorage.setItem("post_id", postEle.parentElement.dataset.id);
+    location.href = `feedback-detail.html?id=${postEle.parentElement.dataset.id}`;
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
   }

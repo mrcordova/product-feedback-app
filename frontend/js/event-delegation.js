@@ -1,5 +1,5 @@
-export const URL = "http://127.0.0.1:3000";
-export const data = await (await fetch(`${URL}/data`)).json();
+export const BACKEND_URL = "http://127.0.0.1:3000";
+export const data = await (await fetch(`${BACKEND_URL}/data`)).json();
 export const currentUser = data["currentUser"];
 
 // console.log(data);
@@ -61,7 +61,7 @@ export async function updateLikesCounter(labelEle) {
   );
   likesSpan.textContent = likesSpan.dataset.likes;
   post["upvotes"] = likesSpan.dataset.likes;
-  const response = await fetch(`${URL}/updateLike/${post.id}`, {
+  const response = await fetch(`${BACKEND_URL}/updateLike/${post.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(post),
