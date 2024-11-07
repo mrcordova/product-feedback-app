@@ -7,15 +7,12 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const usersTable = "users";
-const productRequestsTable = "product_requests";
 
 let connection = mysql.createConnection({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
   typeCast: function (field, next) {
     if (field.type == "NEWDECIMAL") {
       return parseFloat(field.string());
@@ -45,7 +42,7 @@ app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.join({ type: "*/*" }));
+app.use(express.json({ type: "*/*" }));
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
