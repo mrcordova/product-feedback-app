@@ -42,6 +42,7 @@ for (const col of cols) {
                 <input
                   type="checkbox"
                   name="likes"
+                  ${post.liked ? "checked" : ""}
                   id="${post.title}" />
                 <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -86,47 +87,49 @@ main.addEventListener("click", async (e) => {
   const labelEle = e.target.closest("[data-checked]");
 
   if (goBackBtn) {
-    // goBack();
+    goBack();
   } else if (addNewFeedbackBtn) {
+    localStorage.setItem("back", "roadmap.html");
     location.href = "feedback-new.html";
   } else if (postEle) {
-    const post = await getPost(postEle.parentElement.dataset.id);
+    // const post = await getPost(postEle.parentElement.dataset.id);
 
-    localStorage.setItem(
-      "post",
-      `<div class="post" data-id="${post.id}">
-          <label class="likes-cont jost-bold" data-checked="${
-            post.liked ?? false
-          }"  >
-            <input type="checkbox" name="likes" id="add-tags-for-solutions-${
-              post.id
-            }"  ${post.liked ? "checked" : ""}/>
-            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M1 6l4-4 4 4"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                fill-rule="evenodd" />
-            </svg>
-            <span data-likes="${post.upvotes}">${post.upvotes}</span>
-          </label>
-          <div class="info-cont" data-post="">
-            <h2 class="jost-bold">${post.title}</h2>
-            <p>${post.description}</p>
-            <div class="token jost-semibold">${
-              post.category.length == 2
-                ? post.category.toUpperCase()
-                : post.category
-            }</div>
-          </div>
-          <div class="comments-cont jost-bold" data-post="">
-            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
-            <span>${post["comments"]?.length ?? 0}</span>
-          </div>
-        </div>`
-    );
+    // localStorage.setItem(
+    //   "post",
+    //   `<div class="post" data-id="${post.id}">
+    //       <label class="likes-cont jost-bold" data-checked="${
+    //         post.liked ?? false
+    //       }"  >
+    //         <input type="checkbox" name="likes" id="add-tags-for-solutions-${
+    //           post.id
+    //         }"  ${post.liked ? "checked" : ""}/>
+    //         <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+    //           <path
+    //             d="M1 6l4-4 4 4"
+    //             stroke="currentColor"
+    //             stroke-width="2"
+    //             fill="none"
+    //             fill-rule="evenodd" />
+    //         </svg>
+    //         <span data-likes="${post.upvotes}">${post.upvotes}</span>
+    //       </label>
+    //       <div class="info-cont" data-post="">
+    //         <h2 class="jost-bold">${post.title}</h2>
+    //         <p>${post.description}</p>
+    //         <div class="token jost-semibold">${
+    //           post.category.length == 2
+    //             ? post.category.toUpperCase()
+    //             : post.category
+    //         }</div>
+    //       </div>
+    //       <div class="comments-cont jost-bold" data-post="">
+    //         <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+    //         <span>${post["comments"]?.length ?? 0}</span>
+    //       </div>
+    //     </div>`
+    // );
     localStorage.setItem("post_id", postEle.parentElement.dataset.id);
+    // localStorage.setItem("back", "roadmap.html");
     location.href = "feedback-detail.html";
   } else if (labelEle) {
     updateLikesCounter(labelEle);

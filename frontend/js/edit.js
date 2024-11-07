@@ -1,4 +1,4 @@
-import { getPost, goBack } from "./event-delegation.js";
+import { getPost, goBack, URL } from "./event-delegation.js";
 
 const main = document.querySelector("main");
 const header = document.querySelector("[data-header]");
@@ -7,7 +7,7 @@ const categoryDisplay = document.querySelector("[data-category]");
 const statusDisplay = document.querySelector("[data-status]");
 const feedbackDetail = document.querySelector("#detail");
 
-const post = getPost(localStorage.getItem("post_id"));
+const post = await getPost(localStorage.getItem("post_id"));
 
 header.textContent = `Editing '${post.title}'`;
 feedbackTitle.value = post.title;
@@ -21,14 +21,20 @@ function showDropdown(dropdown) {
 }
 
 feedbackTitle.addEventListener("change", (e) => {
-  feedbackTitle.classList.toggle("hide", feedbackTitle.value.length > 0);
+  feedbackTitle.nextElementSibling.classList.toggle(
+    "hide",
+    feedbackTitle.value.length > 0
+  );
 });
 
 feedbackDetail.addEventListener("change", (e) => {
-  feedbackDetail.classList.toggle("hide", feedbackDetail.value.length > 0);
+  feedbackDetail.nextElementSibling.classList.toggle(
+    "hide",
+    feedbackDetail.value.length > 0
+  );
 });
 
-main.addEventListener("click", (e) => {
+main.addEventListener("click", async (e) => {
   e.preventDefault();
   const goBackBtn = e.target.closest("[data-go-back]");
   const choice = e.target.closest("[data-sort-by-choice]");
@@ -38,8 +44,10 @@ main.addEventListener("click", (e) => {
   const cancelBtn = e.target.closest("[data-cancel]");
   const deleteBtn = e.target.closest("[data-delete]");
 
-  if (goBackBtn) {
+  if (goBackBtn || cancelBtn) {
     goBack();
+    // location.href = localStorage.getItem("back");
+    // location.href = "feedback-detail.html";
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
     const categoryDisplay = choice
@@ -53,15 +61,33 @@ main.addEventListener("click", (e) => {
     showDropdown(dropdownCate ?? dropdownStat);
   } else if (saveBtn) {
     // save btn
-    feedbackTitle.classList.toggle("hide", feedbackTitle.value.length !== 0);
-    feedbackDetail.classList.toggle("hide", feedbackDetail.value.length !== 0);
+    feedbackTitle.nextElementSibling.classList.toggle(
+      "hide",
+      feedbackTitle.value.length !== 0
+    );
+    feedbackDetail.nextElementSibling.classList.toggle(
+      "hide",
+      feedbackDetail.value.length !== 0
+    );
 
     if (feedbackDetail.value.length == 0 || feedbackTitle.value.length == 0) {
       return;
     }
     //update post
-  } else if (cancelBtn) {
-    goBack();
+    const updatePost = {
+      title: feedbackTitle.value,
+      category: categoryDisplay.textContent.toLowerCase(),
+      status: statusDisplay.textContent.toLowerCase(),
+      description: feedbackDetail.value,
+    };
+    const response = await fetch(`${URL}/updatePost/${post.id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatePost),
+    });
+    // console.log();
+    const result = await response.json();
+    alert(`Changes saved: ${result.success}`);
   } else if (deleteBtn) {
     // delete btn
     //remove post

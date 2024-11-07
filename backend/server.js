@@ -105,6 +105,17 @@ app.get("/getPost/:id", async (req, res) => {
   res.json({ post: posts[0] });
 });
 
+app.post("/updatePost/:id", async (req, res) => {
+  const id = req.params.id;
+  const { title, category, status, description } = req.body;
+  const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET title = ?, category = ?, status = ?, description = ? WHERE id = ?`;
+  const [result, error] = await connection.promise().execute({
+    sql: updateQuery,
+    values: [title, category, status, description, id],
+  });
+  res.json({ success: true });
+});
+
 app.put("/updateLike/:id", async (req, res) => {
   const id = req.params.id;
   const { upvotes, liked } = req.body;

@@ -18,7 +18,7 @@ export function getStatusArray(status = "suggestion") {
   return results;
 }
 export async function getPost(id) {
-  const productRequests = data["productRequests"];
+  // const productRequests = data["productRequests"];
   const response = await fetch(`${URL}/getPost/${id}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -60,6 +60,7 @@ export async function updateLikesCounter(labelEle) {
     body: JSON.stringify(post),
   });
   console.log(await response.json());
+  return post;
 }
 
 export function sortByMostVotes(a, b) {

@@ -26,8 +26,9 @@ main.addEventListener("click", (e) => {
   const addFeedbackbtn = e.target.closest("[data-add-feedback]");
   const cancelBtn = e.target.closest("[data-cancel]");
 
-  if (goBackBtn) {
+  if (goBackBtn || cancelBtn) {
     goBack();
+    // location.href = localStorage.getItem("back");
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
     const categoryDisplay = choice
@@ -57,7 +58,5 @@ main.addEventListener("click", (e) => {
       status: "suggestion",
       upvotes: 0,
     };
-  } else if (cancelBtn) {
-    goBack();
   }
 });

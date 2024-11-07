@@ -20,8 +20,42 @@ const CHAR_MAX = 250;
 // console.log(data);
 
 const postWrapper = document.querySelector("[data-post-wrapper]");
-postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
+// postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
 const post = await getPost(localStorage.getItem("post_id"));
+postWrapper.insertAdjacentHTML(
+  "beforeend",
+  `<div class="post" data-id="${post.id}">
+          <label class="likes-cont jost-bold" data-checked="${
+            post.liked ?? false
+          }"  >
+            <input type="checkbox" name="likes" id="add-tags-for-solutions-${
+              post.id
+            }"  ${post.liked ? "checked" : ""}/>
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 6l4-4 4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd" />
+            </svg>
+            <span data-likes="${post.upvotes}">${post.upvotes}</span>
+          </label>
+          <div class="info-cont" data-post="">
+            <h2 class="jost-bold">${post.title}</h2>
+            <p>${post.description}</p>
+            <div class="token jost-semibold">${
+              post.category.length == 2
+                ? post.category.toUpperCase()
+                : post.category
+            }</div>
+          </div>
+          <div class="comments-cont jost-bold" data-post="">
+            <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
+            <span>${post["comments"]?.length ?? 0}</span>
+          </div>
+        </div>`
+);
 
 let totalCommentsCount = 0;
 // console.log(post);
@@ -101,7 +135,7 @@ addCommentTextArea.addEventListener("input", (e) => {
 
 // console.log(post);
 
-main.addEventListener("click", (e) => {
+main.addEventListener("click", async (e) => {
   e.preventDefault();
   //   e.stopImmediatePropagation();
   const goBackBtn = e.target.closest("[data-go-back]");
@@ -113,18 +147,19 @@ main.addEventListener("click", (e) => {
   const postCommentBtn = e.target.closest("[data-post-comment]");
 
   if (goBackBtn) {
-    // history.back();
-    // goBack();
-    // console.log(localStorage);
-    location.href = localStorage.getItem("back");
+    // location.href = localStorage.getItem("back");
+    // location = "index.html";
+    // await history.go(-1);
+    goBack();
   } else if (goEditFeedbackBtn) {
     localStorage.setItem("post_id", post.id);
+    localStorage.setItem("back", "feedback-detail.html");
     location.href = "feedback-edit.html";
     // } else if (postEle) {
     // e.stopImmediatePropagation();
   } else if (labelEle) {
     // console.log(labelEle);
-    updateLikesCounter(labelEle);
+    await updateLikesCounter(labelEle);
   } else if (replyCont) {
     // console.log(replyCont.parentElement);
     replyCont.parentElement.insertAdjacentHTML(
