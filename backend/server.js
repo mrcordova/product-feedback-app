@@ -95,6 +95,16 @@ app.get("/data", async (req, res) => {
   res.json({ productRequests: rows, currentUser: user[0] });
 });
 
+app.get("/getPost/:id", async (req, res) => {
+  const id = req.params.id;
+  const postQuery = `SELECT * FROM ${process.env.DB_PRODUCT_NAME} WHERE id = ? LIMIT 1`;
+
+  const [posts] = await connection
+    .promise()
+    .execute({ sql: postQuery, values: [id] });
+  res.json({ post: posts[0] });
+});
+
 app.put("/updateLike/:id", async (req, res) => {
   const id = req.params.id;
   const { upvotes, liked } = req.body;
@@ -103,7 +113,7 @@ app.put("/updateLike/:id", async (req, res) => {
     sql: updateQuery,
     values: [upvotes, liked, id],
   });
-  res.json({ success: true });
+  res.json({ success: true, results });
 });
 
 app.listen(PORT, () => {

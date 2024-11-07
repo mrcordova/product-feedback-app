@@ -22,6 +22,7 @@ const statuses = {
   suggestion: getStatusArray("suggestion"),
 };
 // console.log(status);
+// console.log(await getPost(localStorage.getItem("post_id")));
 const search = {
   category: "all",
   sortBy: "most-upvotes",
@@ -84,7 +85,7 @@ for (const suggestion of suggestions) {
   );
 }
 
-body.addEventListener("click", (e) => {
+body.addEventListener("click", async (e) => {
   e.preventDefault();
   const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
@@ -96,7 +97,7 @@ body.addEventListener("click", (e) => {
   const goRoadmap = e.target.closest("[data-go-roadmap]");
 
   if (postEle) {
-    const post = getPost(postEle.parentElement.dataset.id);
+    const post = await getPost(postEle.parentElement.dataset.id);
 
     localStorage.setItem(
       "post",
@@ -133,6 +134,8 @@ body.addEventListener("click", (e) => {
         </div>`
     );
     localStorage.setItem("post_id", postEle.parentElement.dataset.id);
+    localStorage.setItem("back", "index.html");
+    // console.log(localStorage);
     location.href = "feedback-detail.html";
     // console.log("here");
   } else if (labelEle) {

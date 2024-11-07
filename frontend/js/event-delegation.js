@@ -17,23 +17,28 @@ export function getStatusArray(status = "suggestion") {
   // console.log(results);
   return results;
 }
-export function getPost(id) {
+export async function getPost(id) {
   const productRequests = data["productRequests"];
-  const post_id = parseInt(id);
-  let post;
-  for (const productRequest of productRequests) {
-    // console.log(productRequest.id === post_id);
-    if (productRequest.id === post_id) {
-      // console.log(productRequest);
-      post = productRequest;
-    }
-  }
+  const response = await fetch(`${URL}/getPost/${id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
 
+  // const post_id = parseInt(id);
+  // let post;
+  // for (const productRequest of productRequests) {
+  //   if (productRequest.id === post_id) {
+  //     post = productRequest;
+  //   }
+  // }
+  const postResponse = await response.json();
+  const post = postResponse.post;
+  // console.log(post);
   return post;
 }
 export async function updateLikesCounter(labelEle) {
   // console.log(labelEle.parentElement);
-  const post = getPost(labelEle.parentElement.dataset.id);
+  const post = await getPost(labelEle.parentElement.dataset.id);
   const input = labelEle.querySelector("input");
   const likesSpan = labelEle.querySelector("[data-likes]");
 

@@ -21,7 +21,7 @@ const CHAR_MAX = 250;
 
 const postWrapper = document.querySelector("[data-post-wrapper]");
 postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
-const post = getPost(localStorage.getItem("post_id"));
+const post = await getPost(localStorage.getItem("post_id"));
 
 let totalCommentsCount = 0;
 // console.log(post);
@@ -114,7 +114,9 @@ main.addEventListener("click", (e) => {
 
   if (goBackBtn) {
     // history.back();
-    goBack();
+    // goBack();
+    // console.log(localStorage);
+    location.href = localStorage.getItem("back");
   } else if (goEditFeedbackBtn) {
     localStorage.setItem("post_id", post.id);
     location.href = "feedback-edit.html";

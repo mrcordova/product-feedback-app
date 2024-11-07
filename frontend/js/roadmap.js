@@ -78,7 +78,7 @@ for (const col of cols) {
 }
 
 // console.log(plannedCol);
-main.addEventListener("click", (e) => {
+main.addEventListener("click", async (e) => {
   e.preventDefault();
   const goBackBtn = e.target.closest("[data-go-back]");
   const addNewFeedbackBtn = e.target.closest("[data-go-new]");
@@ -86,11 +86,11 @@ main.addEventListener("click", (e) => {
   const labelEle = e.target.closest("[data-checked]");
 
   if (goBackBtn) {
-    goBack();
+    // goBack();
   } else if (addNewFeedbackBtn) {
     location.href = "feedback-new.html";
   } else if (postEle) {
-    const post = getPost(postEle.parentElement.dataset.id);
+    const post = await getPost(postEle.parentElement.dataset.id);
 
     localStorage.setItem(
       "post",
