@@ -100,14 +100,7 @@ body.addEventListener("click", async (e) => {
   const goRoadmap = e.target.closest("[data-go-roadmap]");
 
   if (postEle) {
-    // localStorage.setItem("post_id", postEle.parentElement.dataset.id);
-
-    // const url = new URL(`${location.URL}/feedback-detail.html`);
-    // const searchParam = new URLSearchParams(`id=${postEle.parentElement.dataset.id}`)
-    // url.pathname = `id=${postEle.parentElement.dataset.id}`;
-    // console.log(url);
     location.href = `feedback-detail.html?id=${postEle.parentElement.dataset.id}`;
-    // location.pathname = `id=${postEle.parentElement.dataset.id}`;
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
   } else if (newFeedbackBtn) {

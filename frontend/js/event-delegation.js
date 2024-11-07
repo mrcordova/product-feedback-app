@@ -2,8 +2,6 @@ export const BACKEND_URL = "http://127.0.0.1:3000";
 export const data = await (await fetch(`${BACKEND_URL}/data`)).json();
 export const currentUser = data["currentUser"];
 
-// console.log(data);
-
 export function getStatusArray(status = "suggestion") {
   // console.log(data);
 
@@ -40,17 +38,14 @@ export function getPost(id) {
   }
   // const postResponse = await response.json();
   // const post = postResponse.post;
-  // console.log(post);
   return post;
 }
 export async function updateLikesCounter(labelEle) {
-  // console.log(labelEle.parentElement);
   const post = await getPost(labelEle.parentElement.dataset.id);
   const input = labelEle.querySelector("input");
   const likesSpan = labelEle.querySelector("[data-likes]");
 
   post["liked"] = !input.checked;
-  // console.log(post);
   input.checked = !input.checked;
   labelEle.setAttribute("data-checked", input.checked);
   likesSpan.setAttribute(
@@ -69,9 +64,6 @@ export async function updateLikesCounter(labelEle) {
 }
 
 export function getNewCommentId() {
-  // const productRequest =
-  //   data["productRequests"][data["productRequests"].length - 1];
-  // let lastComment = [{ id: -1 }];
   let latestId = -1;
   for (const productRequest of data["productRequests"]) {
     if (productRequest.comments) {
@@ -80,17 +72,9 @@ export function getNewCommentId() {
       }
     }
   }
-  // console.log(latestId);
   return parseInt(latestId) + 1;
-  // console.log(productRequest);
-  // if (productRequest.comments !== undefined) {
-  //   return productRequest.comments[productRequest.comments.length - 1].id + 1;
-  // }
-
-  // return productRequest.id + 1;
 }
 export function getCommentAmount(comments) {
-  // console.log(comments);
   const tempComments = comments ?? [];
   let amount = tempComments.length ?? 0;
   for (const comment of tempComments) {
@@ -146,7 +130,5 @@ export function sortByLeastComments(a, b) {
 }
 
 export function goBack() {
-  // location.reload();
-  // location.href = document.referrer;
   history.back();
 }
