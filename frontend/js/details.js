@@ -5,6 +5,7 @@ import {
   currentUser,
   BACKEND_URL,
   getNewCommentId,
+  getCommentAmount,
 } from "./event-delegation.js";
 const perfEntries = performance.getEntriesByType("navigation");
 
@@ -53,7 +54,9 @@ postWrapper.insertAdjacentHTML(
           </div>
           <div class="comments-cont jost-bold" data-post="">
             <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
-            <span>${post["comments"]?.length ?? 0}</span>
+            <span data-comment-amount>${
+              getCommentAmount(post.comments) ?? 0
+            }</span>
           </div>
         </div>`
 );
@@ -246,6 +249,9 @@ main.addEventListener("click", async (e) => {
       body: JSON.stringify(post),
     });
 
+    const commentAmountSpan = main.querySelector("[data-comment-amount]");
+    commentAmountSpan.textContent = `${getCommentAmount(post.comments)}`;
+
     totalCommentCount.setAttribute(
       "data-total-comment",
       parseInt(totalCommentCount.dataset.totalComment) + 1
@@ -302,6 +308,8 @@ main.addEventListener("click", async (e) => {
 
       addCommentTextArea.value = "";
       chararctLeftEle.textContent = `${CHAR_MAX} Characters left`;
+      const commentAmountSpan = main.querySelector("[data-comment-amount]");
+      commentAmountSpan.textContent = `${getCommentAmount(post.comments)}`;
       totalCommentCount.setAttribute(
         "data-total-comment",
         parseInt(totalCommentCount.dataset.totalComment) + 1

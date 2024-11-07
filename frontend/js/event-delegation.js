@@ -89,6 +89,15 @@ export function getNewCommentId() {
 
   // return productRequest.id + 1;
 }
+export function getCommentAmount(comments) {
+  // console.log(comments);
+  const tempComments = comments ?? [];
+  let amount = comments?.length ?? 0;
+  for (const comment of tempComments) {
+    amount += comment.replies?.length ?? 0;
+  }
+  return amount;
+}
 
 export function getNewPostId() {
   let latestId = -1;

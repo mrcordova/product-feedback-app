@@ -3,6 +3,7 @@ import {
   getStatusArray,
   sortByMostVotes,
   updateLikesCounter,
+  getCommentAmount,
 } from "./event-delegation.js";
 var perfEntries = performance.getEntriesByType("navigation");
 
@@ -67,7 +68,7 @@ for (const col of cols) {
                 <img
                   src="./assets/shared/icon-comments.svg"
                   alt="comment icon" />
-                <span>${post.comments?.length ?? 0}</span>
+                <span>${getCommentAmount(post.comments) ?? 0}</span>
               </div>
             </div>`
     );
