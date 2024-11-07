@@ -31,7 +31,7 @@ export function getPost(id) {
 
   return post;
 }
-export function updateLikesCounter(labelEle) {
+export async function updateLikesCounter(labelEle) {
   // console.log(labelEle.parentElement);
   const post = getPost(labelEle.parentElement.dataset.id);
   const input = labelEle.querySelector("input");
@@ -49,6 +49,12 @@ export function updateLikesCounter(labelEle) {
   );
   likesSpan.textContent = likesSpan.dataset.likes;
   post["upvotes"] = likesSpan.dataset.likes;
+  const response = await fetch(`${URL}/updateLike/${post.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(post),
+  });
+  console.log(await response.json());
 }
 
 export function sortByMostVotes(a, b) {

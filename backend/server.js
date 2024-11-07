@@ -95,6 +95,17 @@ app.get("/data", async (req, res) => {
   res.json({ productRequests: rows, currentUser: user[0] });
 });
 
+app.put("/updateLike/:id", async (req, res) => {
+  const id = req.params.id;
+  const { upvotes, liked } = req.body;
+  const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET upvotes = ?, liked = ? WHERE id = ?`;
+  const [results, error] = await connection.promise().execute({
+    sql: updateQuery,
+    values: [upvotes, liked, id],
+  });
+  res.json({ success: true });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
