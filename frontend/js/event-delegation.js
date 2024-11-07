@@ -66,8 +66,36 @@ export async function updateLikesCounter(labelEle) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(post),
   });
-  // console.log(await response.json());
-  // return post;
+}
+
+export function getNewCommentId() {
+  // const productRequest =
+  //   data["productRequests"][data["productRequests"].length - 1];
+  // let lastComment = [{ id: -1 }];
+  let latestId = -1;
+  for (const productRequest of data["productRequests"]) {
+    if (productRequest.comments) {
+      for (const comment of productRequest.comments) {
+        latestId = Math.max(latestId, comment.id);
+      }
+    }
+  }
+  // console.log(latestId);
+  return parseInt(latestId) + 1;
+  // console.log(productRequest);
+  // if (productRequest.comments !== undefined) {
+  //   return productRequest.comments[productRequest.comments.length - 1].id + 1;
+  // }
+
+  // return productRequest.id + 1;
+}
+
+export function getNewPostId() {
+  let latestId = -1;
+  for (const productRequest of data["productRequests"]) {
+    latestId = Math.max(latestId, productRequest.id);
+  }
+  return parseInt(latestId) + 1;
 }
 
 export function sortByMostVotes(a, b) {

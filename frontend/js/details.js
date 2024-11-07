@@ -5,6 +5,7 @@ import {
   getPost,
   currentUser,
   URL,
+  getNewCommentId,
 } from "./event-delegation.js";
 // console.log(currentUser);
 const perfEntries = performance.getEntriesByType("navigation");
@@ -255,7 +256,7 @@ main.addEventListener("click", async (e) => {
 
     post.comments.forEach((comment) => {
       if (comment.id === commentId) {
-        console.log("here");
+        // console.log("here");
         if (comment.replies) {
           comment.replies.push(newReply);
         } else {
@@ -288,7 +289,9 @@ main.addEventListener("click", async (e) => {
       const commentSection = document.querySelector(".comments-section");
       commentSection.insertAdjacentHTML(
         "beforeend",
-        `<div class="comment-cont" data-username="${currentUser.username}">
+        `<div class="comment-cont" data-username="${
+          currentUser.username
+        }" data-user-id="${getNewCommentId()}">
             <img
               class="profile-img"
               src="${currentUser.image}"
@@ -308,19 +311,23 @@ main.addEventListener("click", async (e) => {
           </div>`
       );
 
-      const id = post.comments[post.comments.length - 1]?.id + 1 ?? 0;
+      // const id = post.comments[(post.comments?.length ?? 1) - 1]?.id + 1 ?? 0;
+      // console.log(getNewCommentId());
       const newComment = {
-        id: id,
+        id: getNewCommentId(),
         user: currentUser,
         content: addCommentTextArea.value,
       };
 
       if (post.comments) {
-        post.comments?.push(newComment);
+        post.comments.push(newComment);
       } else {
         post.comments = [newComment];
       }
 
+      // console.log(post);
+
+      // console.log(getNewCommentId());
       const response = await fetch(`${URL}/updatePost/${post.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
