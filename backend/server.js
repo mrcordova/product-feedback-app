@@ -34,7 +34,6 @@ connection.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
-// console.log(connection);
 // async function setUsers() {
 //   const { image, name, username } = data["currentUser"];
 //   await connection.promise().query(`USE ${process.env.DB_NAME}`);
@@ -90,7 +89,6 @@ app.get("/data", async (req, res) => {
   const userQuery = "Select * from users LIMIT 1";
   const [rows] = await connection.promise().execute(dataQuery);
   const [user] = await connection.promise().execute(userQuery);
-  //   console.log(user);
 
   res.json({ productRequests: rows, currentUser: user[0] });
 });
@@ -136,8 +134,7 @@ app.post("/updatePost/:id", async (req, res) => {
   const id = req.params.id;
   const { title, category, status, description, upvotes, comments, liked } =
     req.body;
-  // console.log(title, category, status, description, upvotes, comments, liked);
-  // console.log(comments);
+
   const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET title = ?, category = ?, status = ?, description = ?, upvotes = ?, comments= ?, liked = ? WHERE id = ?`;
   const [result, error] = await connection.promise().execute({
     sql: updateQuery,
