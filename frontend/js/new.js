@@ -69,6 +69,14 @@ main.addEventListener("click", async (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPost),
     });
-    console.log(await response.json());
+    // console.log(await response.json());
+    title.value = "";
+    details.value = "";
+    category.textContent = "feature";
+    const dropdownMem =
+      category.parentElement.nextElementSibling.querySelector("#feature");
+    dropdownMem.checked = true;
+    const { success } = await response.json();
+    alert(`Post added: ${success}`);
   }
 });

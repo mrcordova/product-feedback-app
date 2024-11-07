@@ -118,7 +118,7 @@ app.post("/addPost", async (req, res) => {
     req.body;
   const query =
     "INSERT INTO `product_requests`(title, category, upvotes, status, description, comments, liked) VALUES ( ?, ?, ?,?,?,?, ? )";
-  cosnt[results] = await connection.promise().execute({
+  const [results] = await connection.promise().execute({
     sql: query,
     values: [
       title,
