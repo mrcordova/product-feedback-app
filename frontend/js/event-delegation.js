@@ -92,7 +92,7 @@ export function getNewCommentId() {
 export function getCommentAmount(comments) {
   // console.log(comments);
   const tempComments = comments ?? [];
-  let amount = comments?.length ?? 0;
+  let amount = tempComments.length ?? 0;
   for (const comment of tempComments) {
     amount += comment.replies?.length ?? 0;
   }

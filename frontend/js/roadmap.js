@@ -68,7 +68,7 @@ for (const col of cols) {
                 <img
                   src="./assets/shared/icon-comments.svg"
                   alt="comment icon" />
-                <span>${getCommentAmount(post.comments) ?? 0}</span>
+                <span>${getCommentAmount(post.comments)}</span>
               </div>
             </div>`
     );

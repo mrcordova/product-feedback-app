@@ -49,7 +49,7 @@ for (const statusPost of statusPosts) {
 }
 
 for (const suggestion of suggestions) {
-  const commentAmount = getCommentAmount(suggestion["comments"] ?? []);
+  const commentAmount = getCommentAmount(suggestion["comments"]);
   posts.insertAdjacentHTML(
     "beforeend",
     `<div class="post" data-id="${suggestion.id}">
@@ -82,9 +82,7 @@ for (const suggestion of suggestions) {
           </div>
           <div class="comments-cont jost-bold" data-post="">
             <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
-            <span data-comments="${commentAmount ?? 0}">${
-      commentAmount ?? 0
-    }</span>
+            <span data-comments="${commentAmount}">${commentAmount}</span>
           </div>
         </div>`
   );

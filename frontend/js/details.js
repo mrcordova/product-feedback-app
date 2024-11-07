@@ -54,9 +54,7 @@ postWrapper.insertAdjacentHTML(
           </div>
           <div class="comments-cont jost-bold" data-post="">
             <img src="./assets/shared/icon-comments.svg" alt="comment icon" />
-            <span data-comment-amount>${
-              getCommentAmount(post.comments) ?? 0
-            }</span>
+            <span data-comment-amount>${getCommentAmount(post.comments)}</span>
           </div>
         </div>`
 );
