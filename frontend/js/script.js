@@ -7,7 +7,6 @@ import {
   sortByLeastComments,
   getCommentAmount,
 } from "./event-delegation.js";
-// console.log(data);
 let perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
@@ -25,8 +24,7 @@ const statuses = {
   live: getStatusArray("live"),
   suggestion: getStatusArray("suggestion"),
 };
-// console.log(status);
-// console.log(getPost(localStorage.getItem("post_id")));
+
 const search = {
   category: "all",
   sortBy: "most-upvotes",
@@ -42,7 +40,6 @@ suggestionHeader.children[1].textContent = `${statuses["suggestion"].length} Sug
 
 for (const statusPost of statusPosts) {
   const postStatus = statusPost.querySelector("[data-status]");
-  // console.log(statuses[postStatus.dataset.status]);
   statusPost.children[1].textContent = `${
     statuses[postStatus.dataset.status].length
   }`;
