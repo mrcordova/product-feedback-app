@@ -1,4 +1,9 @@
 import { getPost, goBack, URL } from "./event-delegation.js";
+var perfEntries = performance.getEntriesByType("navigation");
+
+if (perfEntries[0].type === "back_forward") {
+  location.reload();
+}
 
 const main = document.querySelector("main");
 const header = document.querySelector("[data-header]");

@@ -7,6 +7,11 @@ import {
   currentUser,
 } from "./event-delegation.js";
 // console.log(currentUser);
+var perfEntries = performance.getEntriesByType("navigation");
+
+if (perfEntries[0].type === "back_forward") {
+  location.reload();
+}
 // const dataResponse = await fetch("data.json");
 // const data = await dataResponse.json();
 const main = document.querySelector("main");

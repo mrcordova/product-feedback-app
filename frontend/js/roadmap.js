@@ -5,16 +5,21 @@ import {
   sortByMostVotes,
   updateLikesCounter,
 } from "./event-delegation.js";
+var perfEntries = performance.getEntriesByType("navigation");
+
+if (perfEntries[0].type === "back_forward") {
+  location.reload();
+}
 const main = document.querySelector("main");
 
 // const planned = getStatusArray("planned");
 // const inProgress = getStatusArray("in-progress");
 // const live = getStatusArray("live");
 const statuses = {
-  planned: getStatusArray("planned"),
-  "in-progress": getStatusArray("in-progress"),
-  live: getStatusArray("live"),
-  suggestion: getStatusArray("suggestion"),
+  planned: await getStatusArray("planned"),
+  "in-progress": await getStatusArray("in-progress"),
+  live: await getStatusArray("live"),
+  suggestion: await getStatusArray("suggestion"),
 };
 const cols = document.querySelectorAll(
   ".planned-col, .in-progress-col, .live-col"
@@ -132,6 +137,6 @@ main.addEventListener("click", async (e) => {
     // localStorage.setItem("back", "roadmap.html");
     location.href = "feedback-detail.html";
   } else if (labelEle) {
-    updateLikesCounter(labelEle);
+    await updateLikesCounter(labelEle);
   }
 });

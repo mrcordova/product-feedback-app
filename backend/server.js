@@ -105,6 +105,15 @@ app.get("/getPost/:id", async (req, res) => {
   res.json({ post: posts[0] });
 });
 
+app.get("/getPosts/:status", async (req, res) => {
+  const status = req.params.status;
+  const postsQuery = `SELECT * FROM ${process.env.DB_PRODUCT_NAME} WHERE status = ?`;
+  const [posts] = await connection
+    .promise()
+    .execute({ sql: postsQuery, values: [status] });
+  res.json({ posts });
+});
+
 app.post("/updatePost/:id", async (req, res) => {
   const id = req.params.id;
   const { title, category, status, description } = req.body;

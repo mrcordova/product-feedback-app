@@ -4,18 +4,24 @@ export const currentUser = data["currentUser"];
 
 // console.log(data);
 
-export function getStatusArray(status = "suggestion") {
+export async function getStatusArray(status = "suggestion") {
   // console.log(data);
-  const productRequests = data["productRequests"];
-  const results = [];
 
-  for (const productRequest of productRequests) {
-    if (productRequest.status === status) {
-      results.push(productRequest);
-    }
-  }
+  const postsResponse = await fetch(`${URL}/getPosts/${status}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  // const productRequests = data["productRequests"];
+  const results = await postsResponse.json();
+
+  // for (const productRequest of productRequests) {
+  //   if (productRequest.status === status) {
+  //     results.push(productRequest);
+  //   }
+  // }
   // console.log(results);
-  return results;
+
+  return results.posts;
 }
 export async function getPost(id) {
   // const productRequests = data["productRequests"];
@@ -59,7 +65,7 @@ export async function updateLikesCounter(labelEle) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(post),
   });
-  console.log(await response.json());
+  // console.log(await response.json());
   return post;
 }
 
@@ -97,5 +103,7 @@ export function sortByLeastComments(a, b) {
 }
 
 export function goBack() {
+  // location.reload();
+  // location.href = document.referrer;
   history.back();
 }
