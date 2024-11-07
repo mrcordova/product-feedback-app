@@ -118,6 +118,7 @@ app.post("/updatePost/:id", async (req, res) => {
   const id = req.params.id;
   const { title, category, status, description, upvotes, comments, liked } =
     req.body;
+  // console.log(title, category, status, description, upvotes, comments, liked);
   const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET title = ?, category = ?, status = ?, description = ?, upvotes = ?, comments= ?, liked = ? WHERE id = ?`;
   const [result, error] = await connection.promise().execute({
     sql: updateQuery,
