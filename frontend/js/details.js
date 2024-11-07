@@ -142,9 +142,7 @@ main.addEventListener("click", async (e) => {
   if (goBackBtn) {
     goBack();
   } else if (goEditFeedbackBtn) {
-    // localStorage.setItem("post_id", post.id);
     location.href = `feedback-edit.html?id=${parsedUrl.searchParams.get("id")}`;
-    // location.href = "feedback-edit.html";
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
   } else if (replyCont) {
