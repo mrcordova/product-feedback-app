@@ -71,9 +71,9 @@ post["comments"]?.forEach((comment) => {
   totalCommentsCount += replies.length;
   commentsSection.insertAdjacentHTML(
     "beforeend",
-    `<div class="comment-cont" data-username="hexagon.bestagon" data-user-id="${
-      comment.id
-    }">
+    `<div class="comment-cont" data-username="${
+      comment.user.username
+    }" data-user-id="${comment.id}">
             <img
               class="profile-img"
               src="${comment.user.image}"
@@ -175,9 +175,10 @@ main.addEventListener("click", async (e) => {
         </div>`
     );
   } else if (replyToBtn) {
-    // console.log(replyToBtn);
     const replyCon = replyToBtn.parentElement;
+    // console.log(replyCon.parentElement);
     const text = replyCon.querySelector("textarea").value;
+    const commentId = parseInt(replyCon.parentElement.dataset.userId);
     const reply = replyToBtn.closest("li");
     if (text.length > CHAR_MAX || text.length < 1) {
       alert(`${CHAR_MAX} Characters left`);
@@ -245,6 +246,33 @@ main.addEventListener("click", async (e) => {
       replyCon.remove();
     }
 
+    // const id = post.comments.replies[post.comments.replies.length - 1]?.id + 1 ?? 0;
+    const newReply = {
+      content: text,
+      replyingTo: replyToBtn.dataset.replyTo,
+      user: currentUser,
+    };
+
+    post.comments.forEach((comment) => {
+      if (comment.id === commentId) {
+        console.log("here");
+        if (comment.replies) {
+          comment.replies.push(newReply);
+        } else {
+          comment.replies = [newReply];
+        }
+      }
+    });
+    // console.log(newReply);
+
+    // console.log(post.comments);
+    const response = await fetch(`${URL}/updatePost/${post.id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(post),
+    });
+
+    // console.log(await response.json());
     totalCommentCount.setAttribute(
       "data-total-comment",
       parseInt(totalCommentCount.dataset.totalComment) + 1
@@ -280,15 +308,6 @@ main.addEventListener("click", async (e) => {
           </div>`
       );
 
-      //  {
-      //     "id": 1,
-      //     "content": "Awesome idea! Trying to find framework-specific projects within the hubs can be tedious",
-      //     "user": {
-      //       "image": "./assets/user-images/image-suzanne.jpg",
-      //       "name": "Suzanne Chang",
-      //       "username": "upbeat1811"
-      //     }
-      //   }
       const id = post.comments[post.comments.length - 1]?.id + 1 ?? 0;
       const newComment = {
         id: id,
@@ -302,7 +321,6 @@ main.addEventListener("click", async (e) => {
         post.comments = [newComment];
       }
 
-      // console.log(post.comments);
       const response = await fetch(`${URL}/updatePost/${post.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
