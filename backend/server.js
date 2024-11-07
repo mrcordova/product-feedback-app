@@ -166,6 +166,16 @@ app.put("/updateLike/:id", async (req, res) => {
   res.json({ success: true, results });
 });
 
+app.delete("/deletePost/:id", async (req, res) => {
+  const id = req.params.id;
+  const deleteQuery = `DELETE FROM \`${process.env.DB_PRODUCT_NAME}\` WHERE id = ? LIMIT 1`;
+  const [results, error] = await connection
+    .promise()
+    .execute({ sql: deleteQuery, values: [id] });
+
+  res.json({ success: true });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });

@@ -95,5 +95,30 @@ main.addEventListener("click", async (e) => {
   } else if (deleteBtn) {
     // delete btn
     //remove post
+    const response = await fetch(`${URL}/deletePost/${post.id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    const result = await response.json();
+    feedbackTitle.value = "";
+    feedbackDetail.value = "";
+
+    categoryDisplay.textContent = "feature";
+    const dropdownCateMem =
+      categoryDisplay.parentElement.nextElementSibling.querySelector(
+        "#feature"
+      );
+    dropdownCateMem.checked = true;
+
+    statusDisplay.textContent = "Suggestion";
+    const dropdownStatMem =
+      statusDisplay.parentElement.nextElementSibling.querySelector(
+        "#Suggestion"
+      );
+    dropdownStatMem.checked = true;
+
+    location.href = "index.html";
+
+    alert(`Post deleted: ${result.success}`);
   }
 });
