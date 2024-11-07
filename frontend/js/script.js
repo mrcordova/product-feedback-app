@@ -9,7 +9,7 @@ import {
   sortByLeastComments,
 } from "./event-delegation.js";
 console.log(data);
-var perfEntries = performance.getEntriesByType("navigation");
+let perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
   location.reload();
@@ -17,17 +17,17 @@ if (perfEntries[0].type === "back_forward") {
 const body = document.querySelector("body");
 const popover = document.getElementById("sidebar");
 const posts = document.querySelector(".posts");
-const suggestions = await getStatusArray("suggestion");
+const suggestions = getStatusArray("suggestion");
 const statusPosts = document.querySelectorAll(".stage-post-cont");
 const suggestionHeader = document.querySelector(".suggestions-cont");
 const statuses = {
-  planned: await getStatusArray("planned"),
-  "in-progress": await getStatusArray("in-progress"),
-  live: await getStatusArray("live"),
-  suggestion: await getStatusArray("suggestion"),
+  planned: getStatusArray("planned"),
+  "in-progress": getStatusArray("in-progress"),
+  live: getStatusArray("live"),
+  suggestion: getStatusArray("suggestion"),
 };
 // console.log(status);
-console.log(await getPost(localStorage.getItem("post_id")));
+// console.log(getPost(localStorage.getItem("post_id")));
 const search = {
   category: "all",
   sortBy: "most-upvotes",

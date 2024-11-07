@@ -4,41 +4,42 @@ export const currentUser = data["currentUser"];
 
 // console.log(data);
 
-export async function getStatusArray(status = "suggestion") {
+export function getStatusArray(status = "suggestion") {
   // console.log(data);
 
-  const postsResponse = await fetch(`${URL}/getPosts/${status}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  // const productRequests = data["productRequests"];
-  const results = await postsResponse.json();
+  // const postsResponse = await fetch(`${URL}/getPosts/${status}`, {
+  //   method: "GET",
+  //   headers: { "Content-Type": "application/json" },
+  // });
+  const productRequests = data["productRequests"];
+  // const results = await postsResponse.json();
+  const results = [];
 
-  // for (const productRequest of productRequests) {
-  //   if (productRequest.status === status) {
-  //     results.push(productRequest);
-  //   }
-  // }
+  for (const productRequest of productRequests) {
+    if (productRequest.status === status) {
+      results.push(productRequest);
+    }
+  }
   // console.log(results);
 
-  return results.posts;
+  return results;
 }
-export async function getPost(id) {
-  // const productRequests = data["productRequests"];
-  const response = await fetch(`${URL}/getPost/${id}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
+export function getPost(id) {
+  const productRequests = data["productRequests"];
+  // const response = await fetch(`${URL}/getPost/${id}`, {
+  //   method: "GET",
+  //   headers: { "Content-Type": "application/json" },
+  // });
 
-  // const post_id = parseInt(id);
-  // let post;
-  // for (const productRequest of productRequests) {
-  //   if (productRequest.id === post_id) {
-  //     post = productRequest;
-  //   }
-  // }
-  const postResponse = await response.json();
-  const post = postResponse.post;
+  const post_id = parseInt(id);
+  let post;
+  for (const productRequest of productRequests) {
+    if (productRequest.id === post_id) {
+      post = productRequest;
+    }
+  }
+  // const postResponse = await response.json();
+  // const post = postResponse.post;
   // console.log(post);
   return post;
 }
@@ -66,7 +67,7 @@ export async function updateLikesCounter(labelEle) {
     body: JSON.stringify(post),
   });
   // console.log(await response.json());
-  return post;
+  // return post;
 }
 
 export function sortByMostVotes(a, b) {

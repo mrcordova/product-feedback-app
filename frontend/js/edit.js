@@ -12,7 +12,7 @@ const categoryDisplay = document.querySelector("[data-category]");
 const statusDisplay = document.querySelector("[data-status]");
 const feedbackDetail = document.querySelector("#detail");
 
-const post = await getPost(localStorage.getItem("post_id"));
+const post = getPost(localStorage.getItem("post_id"));
 
 header.textContent = `Editing '${post.title}'`;
 feedbackTitle.value = post.title;

@@ -26,7 +26,7 @@ const CHAR_MAX = 250;
 
 const postWrapper = document.querySelector("[data-post-wrapper]");
 // postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
-const post = await getPost(localStorage.getItem("post_id"));
+const post = getPost(localStorage.getItem("post_id"));
 postWrapper.insertAdjacentHTML(
   "beforeend",
   `<div class="post" data-id="${post.id}">
