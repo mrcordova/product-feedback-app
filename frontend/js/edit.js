@@ -51,8 +51,6 @@ main.addEventListener("click", async (e) => {
 
   if (goBackBtn || cancelBtn) {
     goBack();
-    // location.href = localStorage.getItem("back");
-    // location.href = "feedback-detail.html";
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
     const categoryDisplay = choice
@@ -65,7 +63,6 @@ main.addEventListener("click", async (e) => {
   } else if (dropdownCate || dropdownStat) {
     showDropdown(dropdownCate ?? dropdownStat);
   } else if (saveBtn) {
-    // save btn
     feedbackTitle.nextElementSibling.classList.toggle(
       "hide",
       feedbackTitle.value.length !== 0
@@ -78,7 +75,6 @@ main.addEventListener("click", async (e) => {
     if (feedbackDetail.value.length == 0 || feedbackTitle.value.length == 0) {
       return;
     }
-    // console.log(post);
     //update post
     const updatePost = {
       title: feedbackTitle.value,
@@ -89,13 +85,11 @@ main.addEventListener("click", async (e) => {
       liked: post.liked,
       upvotes: post.upvotes,
     };
-    // console.log(updatePost);
     const response = await fetch(`${URL}/updatePost/${post.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatePost),
     });
-    // console.log();
     const result = await response.json();
     alert(`Changes saved: ${result.success}`);
   } else if (deleteBtn) {

@@ -1,4 +1,3 @@
-// console.log(localStorage.getItem("post"));
 import {
   goBack,
   updateLikesCounter,
@@ -7,14 +6,12 @@ import {
   URL,
   getNewCommentId,
 } from "./event-delegation.js";
-// console.log(currentUser);
 const perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
   location.reload();
 }
-// const dataResponse = await fetch("data.json");
-// const data = await dataResponse.json();
+
 const main = document.querySelector("main");
 const addCommentTextArea = document.querySelector("#add-comment");
 const chararctLeftEle = document.querySelector("[data-comment-count]");
@@ -23,10 +20,7 @@ const commentsSection = document.querySelector(".comments-section");
 const totalComments = document.querySelector("[data-total-comment]");
 const CHAR_MAX = 250;
 
-// console.log(data);
-
 const postWrapper = document.querySelector("[data-post-wrapper]");
-// postWrapper.insertAdjacentHTML("beforeend", localStorage.getItem("post"));
 const post = getPost(localStorage.getItem("post_id"));
 postWrapper.insertAdjacentHTML(
   "beforeend",
@@ -64,9 +58,7 @@ postWrapper.insertAdjacentHTML(
 );
 
 let totalCommentsCount = 0;
-// console.log(post);
 post["comments"]?.forEach((comment) => {
-  // console.log(comment);
   totalCommentsCount += 1;
   const replies = comment["replies"] ?? [];
   totalCommentsCount += replies.length;
@@ -96,7 +88,6 @@ post["comments"]?.forEach((comment) => {
   const replySection =
     commentsSection.lastChild.querySelector(".reply-section");
   for (const reply of replies) {
-    // console.log(reply);
     const { user } = reply;
     replySection.insertAdjacentHTML(
       "beforeend",
@@ -127,9 +118,7 @@ post["comments"]?.forEach((comment) => {
 totalComments.setAttribute("data-total-comment", totalCommentsCount);
 totalComments.textContent = `${totalComments.dataset.totalComment} Comments`;
 
-function checkTextAreaLength(value) {}
 addCommentTextArea.addEventListener("input", (e) => {
-  // console.log(e.target.value);
   const charLeft = CHAR_MAX - e.target.value.length;
   chararctLeftEle.textContent = `${charLeft} Characters left`;
   if (charLeft < 0) {
@@ -139,35 +128,23 @@ addCommentTextArea.addEventListener("input", (e) => {
   }
 });
 
-// console.log(post);
-
 main.addEventListener("click", async (e) => {
   e.preventDefault();
-  //   e.stopImmediatePropagation();
   const goBackBtn = e.target.closest("[data-go-back]");
   const goEditFeedbackBtn = e.target.closest("[data-edit]");
-  // const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
   const replyCont = e.target.closest("[data-reply-show ]");
   const replyToBtn = e.target.closest("[data-reply-to]");
   const postCommentBtn = e.target.closest("[data-post-comment]");
 
   if (goBackBtn) {
-    // location.href = localStorage.getItem("back");
-    // location = "index.html";
-    // await history.go(-1);
     goBack();
   } else if (goEditFeedbackBtn) {
     localStorage.setItem("post_id", post.id);
-    // localStorage.setItem("back", "feedback-detail.html");
     location.href = "feedback-edit.html";
-    // } else if (postEle) {
-    // e.stopImmediatePropagation();
   } else if (labelEle) {
-    // console.log(labelEle);
     await updateLikesCounter(labelEle);
   } else if (replyCont) {
-    // console.log(replyCont.parentElement);
     replyCont.parentElement.insertAdjacentHTML(
       "beforeend",
       `<div class="add-comment-cont reply-comment-cont">
@@ -177,7 +154,6 @@ main.addEventListener("click", async (e) => {
     );
   } else if (replyToBtn) {
     const replyCon = replyToBtn.parentElement;
-    // console.log(replyCon.parentElement);
     const text = replyCon.querySelector("textarea").value;
     const commentId = parseInt(replyCon.parentElement.dataset.userId);
     const reply = replyToBtn.closest("li");
@@ -188,7 +164,6 @@ main.addEventListener("click", async (e) => {
     if (!reply) {
       const replySection =
         replyCon.parentElement.querySelector(".reply-section");
-      // console.log(replyCon.nextElementSibling);
       if (replySection.children.length == 0) {
         const replyBorderDiv = document.createElement("div");
         replyBorderDiv.classList.add("reply-border");
@@ -247,7 +222,6 @@ main.addEventListener("click", async (e) => {
       replyCon.remove();
     }
 
-    // const id = post.comments.replies[post.comments.replies.length - 1]?.id + 1 ?? 0;
     const newReply = {
       content: text,
       replyingTo: replyToBtn.dataset.replyTo,
@@ -256,7 +230,6 @@ main.addEventListener("click", async (e) => {
 
     post.comments.forEach((comment) => {
       if (comment.id === commentId) {
-        // console.log("here");
         if (comment.replies) {
           comment.replies.push(newReply);
         } else {
@@ -264,16 +237,13 @@ main.addEventListener("click", async (e) => {
         }
       }
     });
-    // console.log(newReply);
 
-    // console.log(post.comments);
     const response = await fetch(`${URL}/updatePost/${post.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(post),
     });
 
-    // console.log(await response.json());
     totalCommentCount.setAttribute(
       "data-total-comment",
       parseInt(totalCommentCount.dataset.totalComment) + 1
@@ -284,7 +254,6 @@ main.addEventListener("click", async (e) => {
       addCommentTextArea.value.length > CHAR_MAX ||
       addCommentTextArea.value.length < 1
     ) {
-      // console.log("too long");
     } else {
       const commentSection = document.querySelector(".comments-section");
       commentSection.insertAdjacentHTML(
@@ -311,8 +280,6 @@ main.addEventListener("click", async (e) => {
           </div>`
       );
 
-      // const id = post.comments[(post.comments?.length ?? 1) - 1]?.id + 1 ?? 0;
-      // console.log(getNewCommentId());
       const newComment = {
         id: getNewCommentId(),
         user: currentUser,
@@ -325,16 +292,12 @@ main.addEventListener("click", async (e) => {
         post.comments = [newComment];
       }
 
-      // console.log(post);
-
-      // console.log(getNewCommentId());
       const response = await fetch(`${URL}/updatePost/${post.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(post),
       });
 
-      // console.log(await response.json());
       addCommentTextArea.value = "";
       chararctLeftEle.textContent = `${CHAR_MAX} Characters left`;
       totalCommentCount.setAttribute(

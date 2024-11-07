@@ -32,7 +32,6 @@ main.addEventListener("click", async (e) => {
 
   if (goBackBtn || cancelBtn) {
     goBack();
-    // location.href = localStorage.getItem("back");
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
     const categoryDisplay = choice
@@ -69,7 +68,6 @@ main.addEventListener("click", async (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPost),
     });
-    // console.log(await response.json());
     title.value = "";
     details.value = "";
     category.textContent = "feature";
