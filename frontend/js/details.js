@@ -2,7 +2,6 @@
 import {
   goBack,
   updateLikesCounter,
-  data,
   getPost,
   currentUser,
 } from "./event-delegation.js";

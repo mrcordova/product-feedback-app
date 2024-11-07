@@ -1,14 +1,12 @@
 import {
   updateLikesCounter,
-  data,
   getStatusArray,
-  getPost,
   sortByMostVotes,
   sortByLeastVotes,
   sortByMostComments,
   sortByLeastComments,
 } from "./event-delegation.js";
-console.log(data);
+// console.log(data);
 let perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {

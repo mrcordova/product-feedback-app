@@ -1,7 +1,6 @@
 import {
   goBack,
   getStatusArray,
-  getPost,
   sortByMostVotes,
   updateLikesCounter,
 } from "./event-delegation.js";
@@ -16,10 +15,10 @@ const main = document.querySelector("main");
 // const inProgress = getStatusArray("in-progress");
 // const live = getStatusArray("live");
 const statuses = {
-  planned: await getStatusArray("planned"),
-  "in-progress": await getStatusArray("in-progress"),
-  live: await getStatusArray("live"),
-  suggestion: await getStatusArray("suggestion"),
+  planned: getStatusArray("planned"),
+  "in-progress": getStatusArray("in-progress"),
+  live: getStatusArray("live"),
+  suggestion: getStatusArray("suggestion"),
 };
 const cols = document.querySelectorAll(
   ".planned-col, .in-progress-col, .live-col"
