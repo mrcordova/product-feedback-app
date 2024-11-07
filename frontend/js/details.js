@@ -4,9 +4,10 @@ import {
   updateLikesCounter,
   getPost,
   currentUser,
+  URL,
 } from "./event-delegation.js";
 // console.log(currentUser);
-var perfEntries = performance.getEntriesByType("navigation");
+const perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
   location.reload();
@@ -157,7 +158,7 @@ main.addEventListener("click", async (e) => {
     goBack();
   } else if (goEditFeedbackBtn) {
     localStorage.setItem("post_id", post.id);
-    localStorage.setItem("back", "feedback-detail.html");
+    // localStorage.setItem("back", "feedback-detail.html");
     location.href = "feedback-edit.html";
     // } else if (postEle) {
     // e.stopImmediatePropagation();
@@ -279,6 +280,36 @@ main.addEventListener("click", async (e) => {
           </div>`
       );
 
+      //  {
+      //     "id": 1,
+      //     "content": "Awesome idea! Trying to find framework-specific projects within the hubs can be tedious",
+      //     "user": {
+      //       "image": "./assets/user-images/image-suzanne.jpg",
+      //       "name": "Suzanne Chang",
+      //       "username": "upbeat1811"
+      //     }
+      //   }
+      const id = post.comments[post.comments.length - 1]?.id + 1 ?? 0;
+      const newComment = {
+        id: id,
+        user: currentUser,
+        content: addCommentTextArea.value,
+      };
+
+      if (post.comments) {
+        post.comments?.push(newComment);
+      } else {
+        post.comments = [newComment];
+      }
+
+      // console.log(post.comments);
+      const response = await fetch(`${URL}/updatePost/${post.id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(post),
+      });
+
+      // console.log(await response.json());
       addCommentTextArea.value = "";
       chararctLeftEle.textContent = `${CHAR_MAX} Characters left`;
       totalCommentCount.setAttribute(
