@@ -19,6 +19,13 @@ let connection = mysql.createConnection({
     if (field.type == "NEWDECIMAL") {
       return parseFloat(field.string());
     }
+    if (
+      field.type == "TINYINT" ||
+      field.type == "BOOL" ||
+      field.type == "TINY"
+    ) {
+      return field.string() === "1";
+    }
     return next();
   },
 });
@@ -77,6 +84,16 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ type: "*/*" }));
+
+app.get("/data", async (req, res) => {
+  const dataQuery = "Select * from product_requests";
+  const userQuery = "Select * from users LIMIT 1";
+  const [rows] = await connection.promise().execute(dataQuery);
+  const [user] = await connection.promise().execute(userQuery);
+  //   console.log(user);
+
+  res.json({ productRequests: rows, currentUser: user[0] });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

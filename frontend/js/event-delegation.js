@@ -1,5 +1,5 @@
 export const URL = "http://127.0.0.1:3000";
-export const data = await (await fetch("../../backend/data.json")).json();
+export const data = await (await fetch(`${URL}/data`)).json();
 export const currentUser = data["currentUser"];
 
 // console.log(data);
