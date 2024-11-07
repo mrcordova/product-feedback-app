@@ -98,6 +98,11 @@ export function getNewPostId() {
   return parseInt(latestId) + 1;
 }
 
+export function showDropdown(dropdown) {
+  const checkboxEle = dropdown.nextElementSibling;
+  checkboxEle.checked = !checkboxEle.checked;
+}
+
 export function sortByMostVotes(a, b) {
   const aLikes = parseInt(a.querySelector("[data-likes]").dataset.likes);
   const bLikes = parseInt(b.querySelector("[data-likes]").dataset.likes);

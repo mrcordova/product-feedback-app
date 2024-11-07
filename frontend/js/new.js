@@ -1,4 +1,4 @@
-import { goBack, URL } from "./event-delegation.js";
+import { goBack, URL, showDropdown } from "./event-delegation.js";
 var perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
@@ -8,11 +8,6 @@ const main = document.querySelector("main");
 const title = document.querySelector("#title");
 const category = document.querySelector("[data-category]");
 const details = document.querySelector("#detail");
-
-function showDropdown(dropdown) {
-  const checkboxEle = dropdown.nextElementSibling;
-  checkboxEle.checked = !checkboxEle.checked;
-}
 
 title.addEventListener("input", (e) => {
   title.nextElementSibling.classList.toggle("hide", title.value.length > 0);

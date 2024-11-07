@@ -1,4 +1,4 @@
-import { getPost, goBack, URL } from "./event-delegation.js";
+import { getPost, goBack, URL, showDropdown } from "./event-delegation.js";
 var perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
@@ -16,14 +16,11 @@ const post = getPost(localStorage.getItem("post_id"));
 
 header.textContent = `Editing '${post.title}'`;
 feedbackTitle.value = post.title;
-categoryDisplay.textContent = `${post.category}`;
+categoryDisplay.textContent = `${
+  post.category.length == 2 ? post.category.toUpperCase() : post.category
+}`;
 statusDisplay.textContent = post.status;
 feedbackDetail.value = post.description;
-
-function showDropdown(dropdown) {
-  const checkboxEle = dropdown.nextElementSibling;
-  checkboxEle.checked = !checkboxEle.checked;
-}
 
 feedbackTitle.addEventListener("change", (e) => {
   feedbackTitle.nextElementSibling.classList.toggle(
@@ -53,13 +50,13 @@ main.addEventListener("click", async (e) => {
     goBack();
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
-    const categoryDisplay = choice
+    const display = choice
       .closest("menu")
       .previousElementSibling.querySelector(".dropdown-cont");
 
     inputChoice.checked = !inputChoice.checked;
-    categoryDisplay.textContent = choice.dataset.sortByChoice;
-    showDropdown(categoryDisplay);
+    display.textContent = choice.dataset.sortByChoice;
+    showDropdown(display);
   } else if (dropdownCate || dropdownStat) {
     showDropdown(dropdownCate ?? dropdownStat);
   } else if (saveBtn) {
