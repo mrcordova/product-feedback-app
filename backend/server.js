@@ -113,7 +113,25 @@ app.get("/getPosts/:status", async (req, res) => {
     .execute({ sql: postsQuery, values: [status] });
   res.json({ posts });
 });
-
+app.post("/addPost", async (req, res) => {
+  const { title, category, upvotes, status, description, liked, comments } =
+    req.body;
+  const query =
+    "INSERT INTO `product_requests`(title, category, upvotes, status, description, comments, liked) VALUES ( ?, ?, ?,?,?,?, ? )";
+  cosnt[results] = await connection.promise().execute({
+    sql: query,
+    values: [
+      title,
+      category,
+      upvotes,
+      status,
+      description,
+      comments ?? null,
+      liked,
+    ],
+  });
+  res.json({ success: true });
+});
 app.post("/updatePost/:id", async (req, res) => {
   const id = req.params.id;
   const { title, category, status, description, upvotes, comments, liked } =

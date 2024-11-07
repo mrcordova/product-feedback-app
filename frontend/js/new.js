@@ -1,4 +1,4 @@
-import { goBack } from "./event-delegation.js";
+import { goBack, URL } from "./event-delegation.js";
 var perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
@@ -22,7 +22,7 @@ details.addEventListener("input", (e) => {
   details.nextElementSibling.classList.toggle("hide", details.value.length > 0);
 });
 
-main.addEventListener("click", (e) => {
+main.addEventListener("click", async (e) => {
   e.preventDefault();
   const goBackBtn = e.target.closest("[data-go-back]");
   const choice = e.target.closest("[data-sort-by-choice]");
@@ -57,10 +57,18 @@ main.addEventListener("click", (e) => {
 
     const newPost = {
       title: title.value,
-      category: category.textContent,
+      category: category.textContent.toLowerCase(),
       description: details.value,
       status: "suggestion",
       upvotes: 0,
+      liked: false,
     };
+
+    const response = await fetch(`${URL}/addPost`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPost),
+    });
+    console.log(await response.json());
   }
 });
