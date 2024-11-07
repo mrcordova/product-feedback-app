@@ -1,5 +1,9 @@
 import { goBack } from "./event-delegation.js";
+var perfEntries = performance.getEntriesByType("navigation");
 
+if (perfEntries[0].type === "back_forward") {
+  location.reload();
+}
 const main = document.querySelector("main");
 const title = document.querySelector("#title");
 const category = document.querySelector("[data-category]");

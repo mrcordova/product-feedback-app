@@ -78,12 +78,15 @@ main.addEventListener("click", async (e) => {
     if (feedbackDetail.value.length == 0 || feedbackTitle.value.length == 0) {
       return;
     }
+    console.log(post);
     //update post
     const updatePost = {
       title: feedbackTitle.value,
       category: categoryDisplay.textContent.toLowerCase(),
       status: statusDisplay.textContent.toLowerCase(),
       description: feedbackDetail.value,
+      comments: post.comments ?? null,
+      liked: post.liked,
     };
     const response = await fetch(`${URL}/updatePost/${post.id}`, {
       method: "POST",

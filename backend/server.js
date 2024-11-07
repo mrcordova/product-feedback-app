@@ -116,11 +116,21 @@ app.get("/getPosts/:status", async (req, res) => {
 
 app.post("/updatePost/:id", async (req, res) => {
   const id = req.params.id;
-  const { title, category, status, description } = req.body;
-  const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET title = ?, category = ?, status = ?, description = ? WHERE id = ?`;
+  const { title, category, status, description, upvotes, comments, liked } =
+    req.body;
+  const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET title = ?, category = ?, status = ?, description = ?, upvotes = ?, comments= ?, liked = ? WHERE id = ?`;
   const [result, error] = await connection.promise().execute({
     sql: updateQuery,
-    values: [title, category, status, description, id],
+    values: [
+      title,
+      category,
+      status,
+      description,
+      upvotes,
+      comments ?? null,
+      liked,
+      id,
+    ],
   });
   res.json({ success: true });
 });
