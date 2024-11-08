@@ -38,12 +38,14 @@ const dropdownMem =
     `#${categoryDisplay.textContent.toLowerCase()}`
   );
 dropdownMem.checked = true;
+
+console.log(statusDisplay);
 statusDisplay.textContent = post.status;
 const dropdownStatMem =
   statusDisplay.parentElement.nextElementSibling.querySelector(
     `#${statusDisplay.textContent.toLowerCase()}`
   );
-// console.log(statusDisplay.textContent);
+
 dropdownStatMem.checked = true;
 feedbackDetail.value = post.description;
 
