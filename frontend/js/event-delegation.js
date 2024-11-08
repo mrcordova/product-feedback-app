@@ -1,5 +1,16 @@
-export const BACKEND_URL = "http://127.0.0.1:3000";
-export const data = await (await fetch(`${BACKEND_URL}/data`)).json();
+// export const BACKEND_URL = "http://127.0.0.1:3000";
+export const BACKEND_URL =
+  "https://522f-2603-8001-8107-b1d9-00-1926.ngrok-free.app";
+export const data = await (
+  await fetch(`${BACKEND_URL}/data`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "ngrok-skip-browser-warning": "true",
+    },
+  })
+).json();
 export const currentUser = data["currentUser"];
 
 export function getStatusArray(status = "suggestion") {

@@ -28,6 +28,7 @@ for (const col of cols) {
   const postsArr = statuses[col.dataset.statusCol];
   postHeader.textContent = `${col.dataset.statusCol} (${postsArr.length})`;
   for (const post of postsArr) {
+    post.comments = JSON.parse(post.comments);
     posts.insertAdjacentHTML(
       "beforeend",
       ` <div class="post" data-id="${post.id}">

@@ -46,7 +46,7 @@ for (const statusPost of statusPosts) {
 }
 
 for (const suggestion of suggestions) {
-  const commentAmount = getCommentAmount(suggestion["comments"]);
+  const commentAmount = getCommentAmount(JSON.parse(suggestion["comments"]));
   posts.insertAdjacentHTML(
     "beforeend",
     `<div class="post" data-id="${suggestion.id}">
