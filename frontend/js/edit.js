@@ -20,6 +20,12 @@ const dropdownMem =
   );
 dropdownMem.checked = true;
 const statusDisplay = document.querySelector("[data-status]");
+const dropdownStatMem =
+  statusDisplay.parentElement.nextElementSibling.querySelector(
+    `#${statusDisplay.textContent.toLowerCase()}`
+  );
+
+dropdownStatMem.checked = true;
 const feedbackDetail = document.querySelector("#detail");
 
 const parsedUrl = new URL(window.location.href);
