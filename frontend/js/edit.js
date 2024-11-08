@@ -14,6 +14,11 @@ const main = document.querySelector("main");
 const header = document.querySelector("[data-header]");
 const feedbackTitle = document.querySelector("#title");
 const categoryDisplay = document.querySelector("[data-category]");
+const dropdownMem =
+  categoryDisplay.parentElement.nextElementSibling.querySelector(
+    `#${categoryDisplay.textContent.toLowerCase()}`
+  );
+dropdownMem.checked = true;
 const statusDisplay = document.querySelector("[data-status]");
 const feedbackDetail = document.querySelector("#detail");
 
