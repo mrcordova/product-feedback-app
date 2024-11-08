@@ -3,12 +3,14 @@ import {
   goBack,
   showDropdown,
   BACKEND_URL,
+  popHistory,
+  resetHistory,
 } from "./event-delegation.js";
-var perfEntries = performance.getEntriesByType("navigation");
+// var perfEntries = performance.getEntriesByType("navigation");
 
-if (perfEntries[0].type === "back_forward") {
-  location.reload();
-}
+// if (perfEntries[0].type === "back_forward") {
+//   location.reload();
+// }
 
 const main = document.querySelector("main");
 const header = document.querySelector("[data-header]");
@@ -23,6 +25,7 @@ const feedbackDetail = document.querySelector("#detail");
 
 const parsedUrl = new URL(window.location.href);
 const post = getPost(parsedUrl.searchParams.get("id"));
+// console.log(post);
 
 header.textContent = `Editing '${post.title}'`;
 feedbackTitle.value = post.title;
@@ -40,6 +43,7 @@ const dropdownStatMem =
   statusDisplay.parentElement.nextElementSibling.querySelector(
     `#${statusDisplay.textContent.toLowerCase()}`
   );
+// console.log(statusDisplay.textContent);
 dropdownStatMem.checked = true;
 feedbackDetail.value = post.description;
 
@@ -68,7 +72,12 @@ main.addEventListener("click", async (e) => {
   const deleteBtn = e.target.closest("[data-delete]");
 
   if (goBackBtn || cancelBtn) {
-    goBack();
+    // const returnHtml = new URL(location.href).searchParams.get("from");
+
+    console.log("here");
+    location.href = popHistory();
+    // location.href = `${returnHtml}?id=${post.id}`;
+    // goBack();
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
     const display = choice
@@ -135,6 +144,7 @@ main.addEventListener("click", async (e) => {
       );
     dropdownStatMem.checked = true;
 
+    resetHistory();
     location.href = "index.html";
 
     alert(`Post deleted: ${result.success}`);

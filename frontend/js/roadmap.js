@@ -4,12 +4,14 @@ import {
   sortByMostVotes,
   updateLikesCounter,
   getCommentAmount,
+  popHistory,
+  pushHistory,
 } from "./event-delegation.js";
-var perfEntries = performance.getEntriesByType("navigation");
+// let perfEntries = performance.getEntriesByType("navigation");
 
-if (perfEntries[0].type === "back_forward") {
-  location.reload();
-}
+// if (perfEntries[0].type === "back_forward") {
+//   location.reload();
+// }
 const main = document.querySelector("main");
 
 const statuses = {
@@ -88,10 +90,15 @@ main.addEventListener("click", async (e) => {
   const labelEle = e.target.closest("[data-checked]");
 
   if (goBackBtn) {
-    goBack();
+    // const returnHtml = new URL(location.href).searchParams.get("from");
+    // location.href = `${returnHtml}?from=roadmap.html`;
+    location.href = popHistory();
+    // goBack();
   } else if (addNewFeedbackBtn) {
+    pushHistory(location.href);
     location.href = "feedback-new.html";
   } else if (postEle) {
+    pushHistory(location.href);
     location.href = `feedback-detail.html?id=${postEle.parentElement.dataset.id}`;
   } else if (labelEle) {
     await updateLikesCounter(labelEle);

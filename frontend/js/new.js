@@ -1,9 +1,14 @@
-import { goBack, BACKEND_URL, showDropdown } from "./event-delegation.js";
-var perfEntries = performance.getEntriesByType("navigation");
+import {
+  goBack,
+  BACKEND_URL,
+  showDropdown,
+  popHistory,
+} from "./event-delegation.js";
+// var perfEntries = performance.getEntriesByType("navigation");
 
-if (perfEntries[0].type === "back_forward") {
-  location.reload();
-}
+// if (perfEntries[0].type === "back_forward") {
+//   location.reload();
+// }
 const main = document.querySelector("main");
 const title = document.querySelector("#title");
 const category = document.querySelector("[data-category]");
@@ -26,7 +31,10 @@ main.addEventListener("click", async (e) => {
   const cancelBtn = e.target.closest("[data-cancel]");
 
   if (goBackBtn || cancelBtn) {
-    goBack();
+    // const returnHtml = new URL(location.href).searchParams.get("from");
+    // location.href = `${returnHtml}?from=feedback-new.html`;
+    location.href = popHistory();
+    // goBack();
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
     const categoryDisplay = choice

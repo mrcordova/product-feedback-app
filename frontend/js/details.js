@@ -6,12 +6,21 @@ import {
   BACKEND_URL,
   getNewCommentId,
   getCommentAmount,
+  popHistory,
+  pushHistory,
 } from "./event-delegation.js";
-const perfEntries = performance.getEntriesByType("navigation");
+// const perfEntries = performance.getEntriesByType("navigation");
 
-if (perfEntries[0].type === "back_forward") {
-  location.reload();
-}
+// if (perfEntries[0].type === "back_forward") {
+//   location.reload();
+// }
+
+// console.log(history.p)
+// if (!("history" in sessionStorage)) {
+//   sessionStorage.setItem("history", JSON.stringify([]));
+// }
+
+// console.log(sessionStorage.getItem("history"));
 const parsedUrl = new URL(window.location.href);
 const main = document.querySelector("main");
 const addCommentTextArea = document.querySelector("#add-comment");
@@ -24,6 +33,7 @@ const CHAR_MAX = 250;
 const postWrapper = document.querySelector("[data-post-wrapper]");
 
 const post = getPost(parsedUrl.searchParams.get("id"));
+// console.log(post);
 post.comments = JSON.parse(post.comments);
 postWrapper.insertAdjacentHTML(
   "beforeend",
@@ -142,8 +152,14 @@ main.addEventListener("click", async (e) => {
   const postCommentBtn = e.target.closest("[data-post-comment]");
 
   if (goBackBtn) {
-    goBack();
+    // const returnHtml = new URL(location.href).searchParams.get("from");
+    // console.log(returnHtml);
+    // location.href = `${returnHtml}?from=feedback-detail.html`;
+    // location.href =
+    // goBack();
+    location.href = popHistory();
   } else if (goEditFeedbackBtn) {
+    pushHistory(location.href);
     location.href = `feedback-edit.html?id=${parsedUrl.searchParams.get("id")}`;
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
