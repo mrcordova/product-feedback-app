@@ -88,12 +88,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ type: "*/*" }));
 
 app.get("/data", async (req, res) => {
-  const dataQuery = "Select * from product_requests";
-  const userQuery = "Select * from users LIMIT 1";
-  const [rows] = await connection.promise().execute(dataQuery);
-  const [user] = await connection.promise().execute(userQuery);
 
-  res.json({ productRequests: rows, currentUser: user[0] });
+  try {
+    const dataQuery = "Select * from product_requests";
+    const userQuery = "Select * from users LIMIT 1";
+    const [rows] = await connection.promise().execute(dataQuery);
+    const [user] = await connection.promise().execute(userQuery);
+  
+    res.json({ productRequests: rows, currentUser: user[0] });
+    
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 app.get("/getPost/:id", async (req, res) => {
