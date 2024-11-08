@@ -14,18 +14,11 @@ const main = document.querySelector("main");
 const header = document.querySelector("[data-header]");
 const feedbackTitle = document.querySelector("#title");
 const categoryDisplay = document.querySelector("[data-category]");
-const dropdownMem =
-  categoryDisplay.parentElement.nextElementSibling.querySelector(
-    `#${categoryDisplay.textContent.toLowerCase()}`
-  );
-dropdownMem.checked = true;
-const statusDisplay = document.querySelector("[data-status]");
-const dropdownStatMem =
-  statusDisplay.parentElement.nextElementSibling.querySelector(
-    `#${statusDisplay.textContent.toLowerCase()}`
-  );
 
-dropdownStatMem.checked = true;
+const statusDisplay = document.querySelector("[data-status]");
+
+// console.log(dropdownStatMem);
+
 const feedbackDetail = document.querySelector("#detail");
 
 const parsedUrl = new URL(window.location.href);
@@ -36,7 +29,18 @@ feedbackTitle.value = post.title;
 categoryDisplay.textContent = `${
   post.category.length == 2 ? post.category.toUpperCase() : post.category
 }`;
+
+const dropdownMem =
+  categoryDisplay.parentElement.nextElementSibling.querySelector(
+    `#${categoryDisplay.textContent.toLowerCase()}`
+  );
+dropdownMem.checked = true;
 statusDisplay.textContent = post.status;
+const dropdownStatMem =
+  statusDisplay.parentElement.nextElementSibling.querySelector(
+    `#${statusDisplay.textContent.toLowerCase()}`
+  );
+dropdownStatMem.checked = true;
 feedbackDetail.value = post.description;
 
 feedbackTitle.addEventListener("change", (e) => {
