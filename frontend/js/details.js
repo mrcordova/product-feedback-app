@@ -24,6 +24,7 @@ const CHAR_MAX = 250;
 const postWrapper = document.querySelector("[data-post-wrapper]");
 
 const post = getPost(parsedUrl.searchParams.get("id"));
+post.comments = JSON.parse(post.comments);
 postWrapper.insertAdjacentHTML(
   "beforeend",
   `<div class="post" data-id="${post.id}">
@@ -60,6 +61,7 @@ postWrapper.insertAdjacentHTML(
 );
 
 let totalCommentsCount = 0;
+// console.log(post["comments"]);
 post["comments"]?.forEach((comment) => {
   totalCommentsCount += 1;
   const replies = comment["replies"] ?? [];
