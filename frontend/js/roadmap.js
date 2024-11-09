@@ -1,5 +1,4 @@
 import {
-  goBack,
   getStatusArray,
   sortByMostVotes,
   updateLikesCounter,
@@ -7,11 +6,6 @@ import {
   popHistory,
   pushHistory,
 } from "./event-delegation.js";
-// let perfEntries = performance.getEntriesByType("navigation");
-
-// if (perfEntries[0].type === "back_forward") {
-//   location.reload();
-// }
 
 const perfEntries = performance.getEntriesByType("navigation");
 
@@ -102,10 +96,7 @@ main.addEventListener("click", async (e) => {
   const labelStatusEle = e.target.closest("[data-status-header]");
 
   if (goBackBtn) {
-    // const returnHtml = new URL(location.href).searchParams.get("from");
-    // location.href = `${returnHtml}?from=roadmap.html`;
     location.href = popHistory();
-    // goBack();
   } else if (addNewFeedbackBtn) {
     pushHistory(location.href);
     location.href = "feedback-new.html";

@@ -1,5 +1,4 @@
 import {
-  goBack,
   updateLikesCounter,
   getPost,
   currentUser,
@@ -16,12 +15,6 @@ if (perfEntries[0].type === "back_forward") {
   popHistory();
 }
 
-// console.log(history.p)
-// if (!("history" in sessionStorage)) {
-//   sessionStorage.setItem("history", JSON.stringify([]));
-// }
-
-// console.log(sessionStorage.getItem("history"));
 const parsedUrl = new URL(window.location.href);
 const main = document.querySelector("main");
 const addCommentTextArea = document.querySelector("#add-comment");
@@ -34,7 +27,6 @@ const CHAR_MAX = 250;
 const postWrapper = document.querySelector("[data-post-wrapper]");
 
 const post = getPost(parsedUrl.searchParams.get("id"));
-// console.log(post);
 post.comments = JSON.parse(post.comments);
 postWrapper.insertAdjacentHTML(
   "beforeend",
@@ -72,7 +64,6 @@ postWrapper.insertAdjacentHTML(
 );
 
 let totalCommentsCount = 0;
-// console.log(post["comments"]);
 post["comments"]?.forEach((comment) => {
   totalCommentsCount += 1;
   const replies = comment["replies"] ?? [];
@@ -153,11 +144,6 @@ main.addEventListener("click", async (e) => {
   const postCommentBtn = e.target.closest("[data-post-comment]");
 
   if (goBackBtn) {
-    // const returnHtml = new URL(location.href).searchParams.get("from");
-    // console.log(returnHtml);
-    // location.href = `${returnHtml}?from=feedback-detail.html`;
-    // location.href =
-    // goBack();
     location.href = popHistory();
   } else if (goEditFeedbackBtn) {
     pushHistory(location.href);

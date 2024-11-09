@@ -9,11 +9,6 @@ import {
   pushHistory,
   popHistory,
 } from "./event-delegation.js";
-// let perfEntries = performance.getEntriesByType("navigation");
-
-// if (perfEntries[0].type === "back_forward") {
-//   location.reload();
-// }
 
 const perfEntries = performance.getEntriesByType("navigation");
 
@@ -108,20 +103,12 @@ body.addEventListener("click", async (e) => {
   if (postEle) {
     pushHistory(location.href);
     location.href = `feedback-detail.html?id=${postEle.parentElement.dataset.id}`;
-    // location.href = newUrl;
-    // console.log(sessionStorage.getItem("history"));
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
   } else if (newFeedbackBtn) {
-    // console.log(`feedback-new.html`);
-    // let historyArray = JSON.parse(sessionStorage.getItem("history"));
     pushHistory(location.href);
     location.href = "feedback-new.html";
-    // historyArray.push(newUrl);
-    // sessionStorage.setItem("histroy", JSON.stringify(historyArray));
-    // location.href = newUrl;
   } else if (goRoadmap) {
-    // console.log(`feedback-new.html`);
     pushHistory(location.href);
     location.href = "roadmap.html";
   } else if (token) {

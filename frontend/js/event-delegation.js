@@ -161,7 +161,3 @@ export function sortByLeastComments(a, b) {
 
   return aComments - bComments;
 }
-
-export function goBack() {
-  history.back();
-}

@@ -1,6 +1,5 @@
 import {
   getPost,
-  goBack,
   showDropdown,
   BACKEND_URL,
   popHistory,
@@ -19,13 +18,10 @@ const categoryDisplay = document.querySelector("[data-category]");
 
 const statusDisplay = document.querySelector("[data-status]");
 
-// console.log(dropdownStatMem);
-
 const feedbackDetail = document.querySelector("#detail");
 
 const parsedUrl = new URL(window.location.href);
 const post = getPost(parsedUrl.searchParams.get("id"));
-// console.log(post);
 
 header.textContent = `Editing '${post.title}'`;
 feedbackTitle.value = post.title;
@@ -74,12 +70,7 @@ main.addEventListener("click", async (e) => {
   const deleteBtn = e.target.closest("[data-delete]");
 
   if (goBackBtn || cancelBtn) {
-    // const returnHtml = new URL(location.href).searchParams.get("from");
-
-    console.log("here");
     location.href = popHistory();
-    // location.href = `${returnHtml}?id=${post.id}`;
-    // goBack();
   } else if (choice) {
     const inputChoice = choice.querySelector('input[type="radio"]');
     const display = choice
