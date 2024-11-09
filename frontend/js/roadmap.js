@@ -95,6 +95,7 @@ main.addEventListener("click", async (e) => {
   const addNewFeedbackBtn = e.target.closest("[data-go-new]");
   const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
+  const labelStatusEle = e.target.closest("[data-status]");
 
   if (goBackBtn) {
     // const returnHtml = new URL(location.href).searchParams.get("from");
@@ -109,5 +110,7 @@ main.addEventListener("click", async (e) => {
     location.href = `feedback-detail.html?id=${postEle.parentElement.dataset.id}`;
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
+  } else if (labelStatusEle) {
+    labelStatusEle.children[0].checked = true;
   }
 });

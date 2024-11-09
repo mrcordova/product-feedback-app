@@ -400,6 +400,9 @@ main {
       color: var(--american-bluish);
       border-bottom: 4px solid var(--purple);
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &:has(#planned:checked) + .post-grid > .planned-col {
