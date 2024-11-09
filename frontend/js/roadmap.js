@@ -36,6 +36,10 @@ for (const col of cols) {
   const postHeader = col.querySelector(".post-header");
   const postsArr = statuses[col.dataset.statusCol];
   postHeader.textContent = `${col.dataset.statusCol} (${postsArr.length})`;
+  const mobileStatusHeader = document.querySelector(
+    `[data-status-header="${col.dataset.statusCol}"]`
+  );
+  mobileStatusHeader.childNodes[0].textContent = `${col.dataset.statusCol} (${postsArr.length})`;
   for (const post of postsArr) {
     post.comments = JSON.parse(post.comments);
     posts.insertAdjacentHTML(
@@ -95,7 +99,7 @@ main.addEventListener("click", async (e) => {
   const addNewFeedbackBtn = e.target.closest("[data-go-new]");
   const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
-  const labelStatusEle = e.target.closest("[data-status]");
+  const labelStatusEle = e.target.closest("[data-status-header]");
 
   if (goBackBtn) {
     // const returnHtml = new URL(location.href).searchParams.get("from");
