@@ -9,11 +9,12 @@ import {
   popHistory,
   pushHistory,
 } from "./event-delegation.js";
-// const perfEntries = performance.getEntriesByType("navigation");
+const perfEntries = performance.getEntriesByType("navigation");
 
-// if (perfEntries[0].type === "back_forward") {
-//   location.reload();
-// }
+if (perfEntries[0].type === "back_forward") {
+  // location.reload();
+  popHistory();
+}
 
 // console.log(history.p)
 // if (!("history" in sessionStorage)) {

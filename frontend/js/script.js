@@ -7,6 +7,7 @@ import {
   sortByLeastComments,
   getCommentAmount,
   pushHistory,
+  popHistory,
 } from "./event-delegation.js";
 // let perfEntries = performance.getEntriesByType("navigation");
 
@@ -14,6 +15,12 @@ import {
 //   location.reload();
 // }
 
+const perfEntries = performance.getEntriesByType("navigation");
+
+if (perfEntries[0].type === "back_forward") {
+  // location.reload();
+  popHistory();
+}
 const body = document.querySelector("body");
 const popover = document.getElementById("sidebar");
 const posts = document.querySelector(".posts");

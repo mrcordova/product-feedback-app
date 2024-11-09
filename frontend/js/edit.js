@@ -6,12 +6,12 @@ import {
   popHistory,
   resetHistory,
 } from "./event-delegation.js";
-// var perfEntries = performance.getEntriesByType("navigation");
+const perfEntries = performance.getEntriesByType("navigation");
 
-// if (perfEntries[0].type === "back_forward") {
-//   location.reload();
-// }
-
+if (perfEntries[0].type === "back_forward") {
+  // location.reload();
+  popHistory();
+}
 const main = document.querySelector("main");
 const header = document.querySelector("[data-header]");
 const feedbackTitle = document.querySelector("#title");

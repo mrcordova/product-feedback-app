@@ -12,6 +12,13 @@ import {
 // if (perfEntries[0].type === "back_forward") {
 //   location.reload();
 // }
+
+const perfEntries = performance.getEntriesByType("navigation");
+
+if (perfEntries[0].type === "back_forward") {
+  // location.reload();
+  popHistory();
+}
 const main = document.querySelector("main");
 
 const statuses = {
