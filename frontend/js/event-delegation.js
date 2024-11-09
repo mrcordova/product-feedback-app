@@ -87,7 +87,7 @@ export function pushHistory(url) {
 
 export function popHistory() {
   let historyArray = JSON.parse(sessionStorage.getItem("history"));
-  const url = historyArray.pop();
+  const url = historyArray.pop() ?? "index.html";
   sessionStorage.setItem("history", JSON.stringify(historyArray));
   return url;
 }
