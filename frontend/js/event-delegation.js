@@ -4,7 +4,7 @@ if (!("history" in sessionStorage)) {
   sessionStorage.setItem("history", JSON.stringify([]));
 }
 export const BACKEND_URL =
-  "https://522f-2603-8001-8107-b1d9-00-1926.ngrok-free.app";
+  "https://6578-2603-8001-8107-b1d9-00-1926.ngrok-free.app";
 export const data = await (
   await fetch(`${BACKEND_URL}/data`, {
     method: "GET",
