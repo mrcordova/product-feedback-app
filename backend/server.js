@@ -107,7 +107,7 @@ const allowedOrigins = [
 // };
 // app.use(cors(corsOptions));
 const corsOptions = {
-  origin: 'https://audiophile-e-commerce-website.onrender.com', // allow only this origin
+  origin: 'https://product-feedback-app-ikpg.onrender.com', // allow only this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // allowed methods
   allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder', "localtunnel-agent-ips"], // allowed headers
   credentials: true // allow cookies to be sent
