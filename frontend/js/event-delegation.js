@@ -4,14 +4,12 @@ if (!("history" in sessionStorage)) {
   sessionStorage.setItem("history", JSON.stringify([]));
 }
 export const BACKEND_URL =
-  "https://6578-2603-8001-8107-b1d9-00-1926.ngrok-free.app";
+  "https://product-feedback-backend.loca.lt";
 export const data = await (
   await fetch(`${BACKEND_URL}/data`, {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "ngrok-skip-browser-warning": "true",
+      headers: {"bypass-tunnel-reminder": true }
     },
   })
 ).json();
