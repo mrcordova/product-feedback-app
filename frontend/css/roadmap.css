@@ -387,6 +387,7 @@ main {
   color: #8c92b3;
 
   & label {
+    text-transform: capitalize;
     padding-block: 1.25rem 1.03125rem;
     flex: 1;
     border-bottom: 4px solid transparent;
@@ -399,6 +400,9 @@ main {
     &:has(input:checked) {
       color: var(--american-bluish);
       border-bottom: 4px solid var(--purple);
+    }
+    &:hover {
+      cursor: pointer;
     }
   }
 

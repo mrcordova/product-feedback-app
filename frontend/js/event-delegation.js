@@ -1,6 +1,10 @@
 // export const BACKEND_URL = "http://127.0.0.1:3000";
+
+if (!("history" in sessionStorage)) {
+  sessionStorage.setItem("history", JSON.stringify([]));
+}
 export const BACKEND_URL =
-  "https://522f-2603-8001-8107-b1d9-00-1926.ngrok-free.app";
+  "https://6578-2603-8001-8107-b1d9-00-1926.ngrok-free.app";
 export const data = await (
   await fetch(`${BACKEND_URL}/data`, {
     method: "GET",
@@ -74,6 +78,24 @@ export async function updateLikesCounter(labelEle) {
   });
 }
 
+export function pushHistory(url) {
+  let historyArray = JSON.parse(sessionStorage.getItem("history"));
+  historyArray.push(url);
+  sessionStorage.setItem("history", JSON.stringify(historyArray));
+  return url;
+}
+
+export function popHistory() {
+  let historyArray = JSON.parse(sessionStorage.getItem("history"));
+  const url = historyArray.pop() ?? "index.html";
+  sessionStorage.setItem("history", JSON.stringify(historyArray));
+  return url;
+}
+
+export function resetHistory() {
+  sessionStorage.setItem("history", JSON.stringify([]));
+}
+
 export function getNewCommentId() {
   let latestId = -1;
   for (const productRequest of data["productRequests"]) {
@@ -138,8 +160,4 @@ export function sortByLeastComments(a, b) {
   );
 
   return aComments - bComments;
-}
-
-export function goBack() {
-  history.back();
 }

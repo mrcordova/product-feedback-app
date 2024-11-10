@@ -1,14 +1,17 @@
 import {
-  goBack,
   getStatusArray,
   sortByMostVotes,
   updateLikesCounter,
   getCommentAmount,
+  popHistory,
+  pushHistory,
 } from "./event-delegation.js";
-var perfEntries = performance.getEntriesByType("navigation");
+
+const perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
-  location.reload();
+  // location.reload();
+  popHistory();
 }
 const main = document.querySelector("main");
 
@@ -27,6 +30,10 @@ for (const col of cols) {
   const postHeader = col.querySelector(".post-header");
   const postsArr = statuses[col.dataset.statusCol];
   postHeader.textContent = `${col.dataset.statusCol} (${postsArr.length})`;
+  const mobileStatusHeader = document.querySelector(
+    `[data-status-header="${col.dataset.statusCol}"]`
+  );
+  mobileStatusHeader.childNodes[0].textContent = `${col.dataset.statusCol} (${postsArr.length})`;
   for (const post of postsArr) {
     post.comments = JSON.parse(post.comments);
     posts.insertAdjacentHTML(
@@ -86,14 +93,19 @@ main.addEventListener("click", async (e) => {
   const addNewFeedbackBtn = e.target.closest("[data-go-new]");
   const postEle = e.target.closest("[data-post]");
   const labelEle = e.target.closest("[data-checked]");
+  const labelStatusEle = e.target.closest("[data-status-header]");
 
   if (goBackBtn) {
-    goBack();
+    location.href = popHistory();
   } else if (addNewFeedbackBtn) {
+    pushHistory(location.href);
     location.href = "feedback-new.html";
   } else if (postEle) {
+    pushHistory(location.href);
     location.href = `feedback-detail.html?id=${postEle.parentElement.dataset.id}`;
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
+  } else if (labelStatusEle) {
+    labelStatusEle.children[0].checked = true;
   }
 });

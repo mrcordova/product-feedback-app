@@ -6,11 +6,15 @@ import {
   sortByMostComments,
   sortByLeastComments,
   getCommentAmount,
+  pushHistory,
+  popHistory,
 } from "./event-delegation.js";
-let perfEntries = performance.getEntriesByType("navigation");
+
+const perfEntries = performance.getEntriesByType("navigation");
 
 if (perfEntries[0].type === "back_forward") {
-  location.reload();
+  // location.reload();
+  popHistory();
 }
 const body = document.querySelector("body");
 const popover = document.getElementById("sidebar");
@@ -97,12 +101,15 @@ body.addEventListener("click", async (e) => {
   const goRoadmap = e.target.closest("[data-go-roadmap]");
 
   if (postEle) {
+    pushHistory(location.href);
     location.href = `feedback-detail.html?id=${postEle.parentElement.dataset.id}`;
   } else if (labelEle) {
     await updateLikesCounter(labelEle);
   } else if (newFeedbackBtn) {
+    pushHistory(location.href);
     location.href = "feedback-new.html";
   } else if (goRoadmap) {
+    pushHistory(location.href);
     location.href = "roadmap.html";
   } else if (token) {
     const tokens = body.querySelectorAll(
