@@ -213,6 +213,20 @@ app.delete("/deletePost/:id", async (req, res) => {
   res.json({ success: true });
 });
 
+app.get("/health-check", async (req, res) => {
+
+  try {
+   
+    const userQuery = "Select 1 from users LIMIT 1";
+   
+    const [user] = await poolPromise.query(userQuery);
+  
+    res.json({ success: true });
+    
+  } catch (error) {
+    console.error(error);
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
