@@ -8,9 +8,7 @@ export const BACKEND_URL =
 export const data = await (
   await fetch(`${BACKEND_URL}/data`, {
     method: "GET",
-    headers: {
-      headers: {"bypass-tunnel-reminder": true }
-    },
+    headers: {"bypass-tunnel-reminder": true }
   })
 ).json();
 export const currentUser = data["currentUser"];
