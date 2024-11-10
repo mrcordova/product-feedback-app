@@ -154,6 +154,7 @@ app.get("/getPosts/:status", async (req, res) => {
 app.post("/addPost", async (req, res) => {
   const { title, category, upvotes, status, description, liked, comments } =
     req.body;
+    const commentsString = JSON.stringify(comments ?? null)
   const query =
     "INSERT INTO `product_requests`(title, category, upvotes, status, description, comments, liked) VALUES ( ?, ?, ?,?,?,?, ? )";
   const [results] = await poolPromise.query({
@@ -164,7 +165,7 @@ app.post("/addPost", async (req, res) => {
       upvotes,
       status,
       description,
-      comments ?? null,
+      commentsString,
       liked,
     ],
   });
@@ -175,6 +176,7 @@ app.post("/updatePost/:id", async (req, res) => {
   const { title, category, status, description, upvotes, comments, liked } =
     req.body;
 
+  const commentsString = JSON.stringify(comments ?? null)
   const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET title = ?, category = ?, status = ?, description = ?, upvotes = ?, comments= ?, liked = ? WHERE id = ?`;
   const [result, error] = await poolPromise.query({
     sql: updateQuery,
@@ -184,7 +186,7 @@ app.post("/updatePost/:id", async (req, res) => {
       status,
       description,
       upvotes,
-      comments ?? null,
+      commentsString,
       liked,
       id,
     ],
