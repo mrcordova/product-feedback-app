@@ -90,10 +90,10 @@ const poolPromise = pool.promise();
 //   }
 // );
 
-const allowedOrigins = [
-  "http://127.0.0.1:5500",
-  "https://product-feedback-app-ikpg.onrender.com",
-];
+// const allowedOrigins = [
+//   "http://127.0.0.1:5500",
+//   "https://product-feedback-app-ikpg.onrender.com",
+// ];
 
 // const corsOptions = {
 //   origin: function (origin, callback) {
@@ -106,11 +106,36 @@ const allowedOrigins = [
 //   methods: ["GET", "POST", "PUT", "DELETE"],
 // };
 // app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: 'https://product-feedback-app-ikpg.onrender.com', // allow only this origin
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // allowed methods
+//   allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder', "localtunnel-agent-ips"], // allowed headers
+//   credentials: true // allow cookies to be sent
+// };
+// List of allowed origins
+const allowedOrigins = [
+  "https://product-feedback-app-ikpg.onrender.com", 
+  "https://product-feedback-backend.loca.lt" // Replace with your LocalTunnel or Ngrok URL
+];
+
+// CORS options to control which origins, methods, and headers are allowed
 const corsOptions = {
-  origin: 'https://product-feedback-app-ikpg.onrender.com', // allow only this origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder', "localtunnel-agent-ips"], // allowed headers
-  credentials: true // allow cookies to be sent
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error("Not allowed by CORS")); // Block the request
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "bypass-tunnel-reminder", // Custom headers if necessary
+    "localtunnel-agent-ips",
+    'origin'
+  ],
 };
 
 app.use(cors(corsOptions));
