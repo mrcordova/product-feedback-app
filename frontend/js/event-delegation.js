@@ -3,8 +3,10 @@
 if (!("history" in sessionStorage)) {
   sessionStorage.setItem("history", JSON.stringify([]));
 }
+// export const BACKEND_URL =
+//   "https://product-feedback-backend.loca.lt";
 export const BACKEND_URL =
-  "https://product-feedback-backend.loca.lt";
+  "https://product-feedback.noahprojects.work";
 export const data = await (
   await fetch(`${BACKEND_URL}/data`, {
     method: "GET",

@@ -120,22 +120,16 @@ const allowedOrigins = [
 
 // CORS options to control which origins, methods, and headers are allowed
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error("Not allowed by CORS")); // Block the request
-    }
-  },
+  origin: "https://product-feedback-app-ikpg.onrender.com",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
   allowedHeaders: [
     "Content-Type",
     "Authorization",
     "bypass-tunnel-reminder", // Custom headers if necessary
     "localtunnel-agent-ips",
-    'origin'
+    'Origin'
   ],
+   credentials: true,
 };
 
 app.use(cors(corsOptions));
