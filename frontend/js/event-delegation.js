@@ -1,29 +1,18 @@
-// export const BACKEND_URL = "http://127.0.0.1:3000";
-
 if (!("history" in sessionStorage)) {
   sessionStorage.setItem("history", JSON.stringify([]));
 }
-// export const BACKEND_URL =
-//   "https://product-feedback-backend.loca.lt";
-export const BACKEND_URL =
-  "https://product-feedback.noahprojects.work";
+
+export const BACKEND_URL = "https://product-feedback.noahprojects.work";
 export const data = await (
   await fetch(`${BACKEND_URL}/data`, {
     method: "GET",
-    headers: {"bypass-tunnel-reminder": true }
+    headers: { "bypass-tunnel-reminder": true },
   })
 ).json();
 export const currentUser = data["currentUser"];
 
 export function getStatusArray(status = "suggestion") {
-  // console.log(data);
-
-  // const postsResponse = await fetch(`${URL}/getPosts/${status}`, {
-  //   method: "GET",
-  //   headers: { "Content-Type": "application/json" },
-  // });
   const productRequests = data["productRequests"];
-  // const results = await postsResponse.json();
   const results = [];
 
   for (const productRequest of productRequests) {
@@ -31,16 +20,11 @@ export function getStatusArray(status = "suggestion") {
       results.push(productRequest);
     }
   }
-  // console.log(results);
 
   return results;
 }
 export function getPost(id) {
   const productRequests = data["productRequests"];
-  // const response = await fetch(`${URL}/getPost/${id}`, {
-  //   method: "GET",
-  //   headers: { "Content-Type": "application/json" },
-  // });
 
   const post_id = parseInt(id);
   let post;
@@ -49,8 +33,7 @@ export function getPost(id) {
       post = productRequest;
     }
   }
-  // const postResponse = await response.json();
-  // const post = postResponse.post;
+
   return post;
 }
 export async function updateLikesCounter(labelEle) {

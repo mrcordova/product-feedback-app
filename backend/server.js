@@ -9,31 +9,6 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// let connection = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASS,
-//   database: process.env.DB_NAME,
-//   typeCast: function (field, next) {
-//     if (field.type == "NEWDECIMAL") {
-//       return parseFloat(field.string());
-//     }
-//     if (
-//       field.type == "TINYINT" ||
-//       field.type == "BOOL" ||
-//       field.type == "TINY"
-//     ) {
-//       return field.string() === "1";
-//     }
-//     return next();
-//   },
-// });
-
-// connection.connect(function (err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -43,7 +18,7 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-   typeCast: function (field, next) {
+  typeCast: function (field, next) {
     if (field.type == "NEWDECIMAL") {
       return parseFloat(field.string());
     }
@@ -58,6 +33,7 @@ const pool = mysql.createPool({
   },
 });
 const poolPromise = pool.promise();
+// code to reinitalize database
 // async function setUsers() {
 //   const { image, name, username } = data["currentUser"];
 //   await connection.promise().query(`USE ${process.env.DB_NAME}`);
@@ -90,32 +66,10 @@ const poolPromise = pool.promise();
 //   }
 // );
 
-// const allowedOrigins = [
-//   "http://127.0.0.1:5500",
-//   "https://product-feedback-app-ikpg.onrender.com",
-// ];
-
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (allowedOrigins.includes(origin) || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not Allowed by CORS"));
-//     }
-//   },
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-// };
-// app.use(cors(corsOptions));
-// const corsOptions = {
-//   origin: 'https://product-feedback-app-ikpg.onrender.com', // allow only this origin
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // allowed methods
-//   allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder', "localtunnel-agent-ips"], // allowed headers
-//   credentials: true // allow cookies to be sent
-// };
 // List of allowed origins
 const allowedOrigins = [
-  "https://product-feedback-app-ikpg.onrender.com", 
-  "https://product-feedback-backend.loca.lt" // Replace with your LocalTunnel or Ngrok URL
+  "https://product-feedback-app-ikpg.onrender.com",
+  "https://product-feedback-backend.loca.lt", // Replace with your LocalTunnel or Ngrok URL
 ];
 
 // CORS options to control which origins, methods, and headers are allowed
@@ -127,30 +81,28 @@ const corsOptions = {
     "Authorization",
     "bypass-tunnel-reminder", // Custom headers if necessary
     "localtunnel-agent-ips",
-    'Origin'
+    "Origin",
   ],
-   credentials: true,
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
 
 // For preflight requests (OPTIONS)
-app.options('*', cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ type: "*/*" }));
 
 app.get("/data", async (req, res) => {
-
   try {
     const dataQuery = "Select * from product_requests";
     const userQuery = "Select * from users LIMIT 1";
     const [rows] = await poolPromise.query(dataQuery);
     const [user] = await poolPromise.query(userQuery);
-  
+
     res.json({ productRequests: rows, currentUser: user[0] });
-    
   } catch (error) {
     console.error(error);
   }
@@ -167,13 +119,16 @@ app.get("/getPost/:id", async (req, res) => {
 app.get("/getPosts/:status", async (req, res) => {
   const status = req.params.status;
   const postsQuery = `SELECT * FROM ${process.env.DB_PRODUCT_NAME} WHERE status = ?`;
-  const [posts] = await poolPromise.query({ sql: postsQuery, values: [status] });
+  const [posts] = await poolPromise.query({
+    sql: postsQuery,
+    values: [status],
+  });
   res.json({ posts });
 });
 app.post("/addPost", async (req, res) => {
   const { title, category, upvotes, status, description, liked, comments } =
     req.body;
-    const commentsString = JSON.stringify(comments ?? null)
+  const commentsString = JSON.stringify(comments ?? null);
   const query =
     "INSERT INTO `product_requests`(title, category, upvotes, status, description, comments, liked) VALUES ( ?, ?, ?,?,?,?, ? )";
   const [results] = await poolPromise.query({
@@ -195,7 +150,7 @@ app.post("/updatePost/:id", async (req, res) => {
   const { title, category, status, description, upvotes, comments, liked } =
     req.body;
 
-  const commentsString = JSON.stringify(comments ?? null)
+  const commentsString = JSON.stringify(comments ?? null);
   const updateQuery = `UPDATE \`${process.env.DB_PRODUCT_NAME}\` SET title = ?, category = ?, status = ?, description = ?, upvotes = ?, comments= ?, liked = ? WHERE id = ?`;
   const [result, error] = await poolPromise.query({
     sql: updateQuery,
@@ -227,21 +182,21 @@ app.put("/updateLike/:id", async (req, res) => {
 app.delete("/deletePost/:id", async (req, res) => {
   const id = req.params.id;
   const deleteQuery = `DELETE FROM \`${process.env.DB_PRODUCT_NAME}\` WHERE id = ? LIMIT 1`;
-  const [results, error] = await poolPromise.query({ sql: deleteQuery, values: [id] });
+  const [results, error] = await poolPromise.query({
+    sql: deleteQuery,
+    values: [id],
+  });
 
   res.json({ success: true });
 });
 
 app.get("/health-check", async (req, res) => {
-
   try {
-   
     const userQuery = "Select 1 from users LIMIT 1";
-   
+
     const [user] = await poolPromise.query(userQuery);
-  
+
     res.json({ success: true });
-    
   } catch (error) {
     console.error(error);
   }
