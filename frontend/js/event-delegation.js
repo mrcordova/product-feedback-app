@@ -2,7 +2,7 @@ if (!("history" in sessionStorage)) {
   sessionStorage.setItem("history", JSON.stringify([]));
 }
 
-export const BACKEND_URL = "https://product-feedback.noahprojects.work";
+export const BACKEND_URL = "https://product-feedback.noahproject.site";
 export const data = await (
   await fetch(`${BACKEND_URL}/data`, {
     method: "GET",
